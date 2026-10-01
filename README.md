@@ -6,6 +6,7 @@ The services site: French, with English pages under `/en/`. Static HTML, CSS and
 1. Edit the fragment in `src/fr/` or `src/en/` (content only — the header, navigation and footer live in the builder).
 2. Run `python build/build_site.py`.
 3. Preview locally: `python -m http.server 8766` from this folder, then open http://localhost:8766/.
+4. Commit, get the review, then publish: `python build/publish.py "What changed"` (rebuilds, refuses uncommitted changes, pushes the tracked files to the public repo; live about a minute later).
 
 **Never edit the generated pages** (`index.html`, `offres/index.html`, `cgv.html`, …): the builder overwrites them.
 

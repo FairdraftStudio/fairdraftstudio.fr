@@ -569,9 +569,9 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 
 /* ---------- about ---------- */
 .bio { padding-block: var(--section); }
-.bio-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
-.bio-grid .id-card { order: -1; max-width: 380px; }
-.bio-text { display: grid; gap: 18px; max-width: 46rem; }
+.bio-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+.bio-grid .id-card { order: -1; max-width: 340px; }
+.bio-text { display: grid; gap: 22px; max-width: 44rem; padding-top: 8px; }
 .id-card { padding: 26px 26px 22px; display: grid; gap: 6px; }
 .id-photo { width: 100%; height: auto; border-radius: 4px; margin-bottom: 16px; }
 .id-kicker { font: 600 .6875rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--orange); padding-right: 26px; }
@@ -582,8 +582,8 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 .id-facts dt { font: 600 .6875rem/1.7 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .id-facts dd { margin: 0; font-size: .9375rem; }
 .id-card .link-arrow { margin-top: 16px; justify-self: start; color: var(--teal-deep); }
-.lead-text { font-size: 1.25rem; line-height: 1.5; color: var(--teal-deep); }
-.bio-text p { font-size: 1.0625rem; }
+.bio-text p { font-size: 1.1875rem; line-height: 1.6; }
+.bio-text .lead-text { font: 400 clamp(1.5rem, 1rem + 1.3vw, 2rem)/1.28 var(--serif); color: var(--teal-deep); }
 .bio-text .fine { font-size: .875rem; color: var(--muted); }
 
 /* ---------- contact page ---------- */
