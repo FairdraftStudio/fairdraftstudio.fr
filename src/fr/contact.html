@@ -1,0 +1,72 @@
+<!--meta
+title: Contact · Fairdraft Studio
+ogtitle: Parlons de ce qui vous prend du temps
+description: Décrivez la tâche qui vous prend du temps. Réponse écrite sous un jour ouvré, puis, si c'est utile, je vous appelle. contact@fairdraftstudio.fr
+path: contact/index.html
+alt: en/contact/index.html
+nav: contact
+kicker: Contact
+h1: Parlons de ce qui vous prend du temps
+intro: Quelques lignes suffisent. Je vous réponds par écrit sous un jour ouvré, avec une première piste et, si c'est utile, une proposition d'appel de 20 minutes.
+-->
+  <section class="contact-page" aria-label="Formulaire et coordonnées">
+    <div class="wrap contact-grid">
+      <div class="contact-details reveal">
+        <h2 class="contact-title">Me joindre directement</h2>
+        <p class="contact-line"><a href="mailto:contact@fairdraftstudio.fr">contact@fairdraftstudio.fr</a></p>
+        <dl class="contact-facts">
+          <div><dt>Réponse</dt><dd>sous un jour ouvré, par écrit</dd></div>
+          <div><dt>Appel</dt><dd>je vous appelle après avoir lu votre message, si c'est utile (20 minutes, gratuit)</dd></div>
+          <div><dt>Où</dt><dd>Montpellier, et à distance partout en France</dd></div>
+          <div><dt>Langues</dt><dd>français, anglais, arabe</dd></div>
+        </dl>
+        <p class="fine">Vos informations servent uniquement à vous répondre. Voir la <a href="/confidentialite.html">politique de confidentialité</a>.</p>
+      </div>
+      <form class="sheet form" id="contact-form" action="mailto:contact@fairdraftstudio.fr" method="post" enctype="text/plain" novalidate>
+        <p class="form-head">Formulaire de demande</p>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Votre nom</label>
+            <input id="f-name" name="nom" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Votre e-mail</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-phone">Votre téléphone <span class="opt">(facultatif, si vous préférez un appel)</span></label>
+          <input id="f-phone" name="telephone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-company">Votre entreprise et votre métier <span class="opt">(facultatif)</span></label>
+          <input id="f-company" name="entreprise" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="f-offer">L'offre qui vous intéresse</label>
+          <select id="f-offer" name="offre">
+            <option value="">Je ne sais pas encore</option>
+            <option value="relances">Relances de factures automatiques (390&nbsp;€)</option>
+            <option value="comptes-rendus">Comptes rendus et tâches automatiques (290&nbsp;€)</option>
+            <option value="assistant">Assistant IA pour vos textes répétitifs (149&nbsp;€)</option>
+            <option value="autre">Autre besoin</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-task">La tâche, en quelques lignes</label>
+          <textarea id="f-task" name="message" required placeholder="Par exemple&nbsp;: je relance mes clients à la main chaque fin de mois, avec un tableau Excel."></textarea>
+        </div>
+        <div class="form-foot">
+          <p class="form-note">Offres réservées aux professionnels (entreprises, indépendants, associations).</p>
+          <button class="btn" type="submit">Préparer l'e-mail</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <div class="form-fallback" hidden>
+            <p>Rien ne s'est ouvert&nbsp;? Copiez ce message et envoyez-le à <strong>contact@fairdraftstudio.fr</strong> depuis votre messagerie habituelle.</p>
+            <textarea readonly rows="8" aria-label="Message prêt à copier"></textarea>
+            <button class="btn btn-ghost" type="button" data-copy>Copier le message</button>
+          </div>
+          <p class="form-note">Le bouton ouvre votre messagerie avec votre message déjà rempli&nbsp;: il ne reste qu'à l'envoyer. Rien n'est enregistré sur ce site. Voir la <a href="/confidentialite.html">politique de confidentialité</a>.</p>
+        </div>
+      </form>
+    </div>
+  </section>

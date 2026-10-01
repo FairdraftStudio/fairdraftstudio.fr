@@ -1,0 +1,72 @@
+<!--meta
+title: Contact · Fairdraft Studio
+ogtitle: Tell me what's taking up your time
+description: Describe the task that takes up your time. A written reply within one working day, then, if useful, I'll call you. contact@fairdraftstudio.fr
+path: en/contact/index.html
+alt: contact/index.html
+nav: contact
+kicker: Contact
+h1: Tell me what's taking up your time
+intro: A few lines are enough. I'll reply in writing within one working day with a first idea and, if useful, a suggested 20-minute call.
+-->
+  <section class="contact-page" aria-label="Form and contact details">
+    <div class="wrap contact-grid">
+      <div class="contact-details reveal">
+        <h2 class="contact-title">Reach me directly</h2>
+        <p class="contact-line"><a href="mailto:contact@fairdraftstudio.fr">contact@fairdraftstudio.fr</a></p>
+        <dl class="contact-facts">
+          <div><dt>Reply</dt><dd>within one working day, in writing</dd></div>
+          <div><dt>Call</dt><dd>I'll call you after reading your message, if useful (20 minutes, free)</dd></div>
+          <div><dt>Where</dt><dd>Montpellier, France, and remotely</dd></div>
+          <div><dt>Languages</dt><dd>English, French, Arabic</dd></div>
+        </dl>
+        <p class="fine">Your details are only used to reply to you. See the <a href="/confidentialite.html" hreflang="fr">privacy policy</a> (in French).</p>
+      </div>
+      <form class="sheet form" id="contact-form" action="mailto:contact@fairdraftstudio.fr" method="post" enctype="text/plain" novalidate>
+        <p class="form-head">Enquiry form</p>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="nom" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Your email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-phone">Your phone number <span class="opt">(optional, if you'd like a call)</span></label>
+          <input id="f-phone" name="telephone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-company">Your business and what you do <span class="opt">(optional)</span></label>
+          <input id="f-company" name="entreprise" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="f-offer">The offer you're interested in</label>
+          <select id="f-offer" name="offre">
+            <option value="">Not sure yet</option>
+            <option value="relances">Automatic invoice reminders (€390)</option>
+            <option value="comptes-rendus">Automatic meeting notes and tasks (€290)</option>
+            <option value="assistant">Custom AI assistant for repetitive writing (€149)</option>
+            <option value="autre">Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-task">The task, in a few lines</label>
+          <textarea id="f-task" name="message" required placeholder="For example: at the end of every month I chase unpaid invoices by hand, using an Excel sheet."></textarea>
+        </div>
+        <div class="form-foot">
+          <p class="form-note">For businesses only: companies, sole traders, associations.</p>
+          <button class="btn" type="submit">Prepare the email</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <div class="form-fallback" hidden>
+            <p>Nothing opened? Copy this message and send it to <strong>contact@fairdraftstudio.fr</strong> from your usual email.</p>
+            <textarea readonly rows="8" aria-label="Message ready to copy"></textarea>
+            <button class="btn btn-ghost" type="button" data-copy>Copy the message</button>
+          </div>
+          <p class="form-note">The button opens your email app with your message already filled in: you just press send. Nothing is stored on this site. See the <a href="/confidentialite.html" hreflang="fr">privacy policy</a> (in French).</p>
+        </div>
+      </form>
+    </div>
+  </section>

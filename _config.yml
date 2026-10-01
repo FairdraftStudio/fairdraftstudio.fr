@@ -1,0 +1,9 @@
+# GitHub Pages runs Jekyll on the repository and reads this file. Anything listed here is NOT published
+# on fairdraftstudio.fr (the address returns the site's 404 page). It does not hide the files inside the
+# repository itself; that is a question of whether the repository is public.
+# Do NOT add a .nojekyll file: it would switch this file off.
+title: Fairdraft Studio
+exclude:
+  - README.md
+  - src
+  - build
