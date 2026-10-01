@@ -130,15 +130,15 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 .top {
   position: sticky; top: 0; z-index: 30;
   background: var(--teal-deep); color: var(--on-teal);
-  transition: box-shadow .25s ease;
+  transition: box-shadow .25s ease, background-color .25s ease, color .25s ease;
 }
 .top.is-stuck { box-shadow: 0 12px 30px -20px rgba(0, 0, 0, .8); }
 .top-inner {
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  padding-block: 20px;
+  padding-block: 12px;
   transition: padding-block .2s ease;
 }
-.top.is-stuck .top-inner { padding-block: 11px; }
+.top.is-stuck .top-inner { padding-block: 9px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand-mark { width: 42px; height: 42px; flex: none; }
 .brand-name { font: 400 1.5rem/1 var(--serif); letter-spacing: .005em; }
@@ -468,7 +468,7 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 }
 @media (max-width: 700px) {
   body { font-size: 1rem; }
-  .top { padding-block: 16px; }
+  .top { padding-block: 4px; }
   .brand-mark { width: 36px; height: 36px; }
   .brand-name { font-size: 1.25rem; }
   .brand-name span { display: none; }
@@ -685,4 +685,27 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 }
 @media (max-width: 380px) {
   .top-actions .btn-small { display: none; }
+}
+
+/* ---------- header at the very top: beige, so it stands apart from the teal hero; teal again once scrolled (.is-stuck) ---------- */
+.top:not(.is-stuck) { background: var(--paper-2); color: var(--ink); }
+.top:not(.is-stuck) .nav a { color: var(--muted); }
+.top:not(.is-stuck) .nav a:hover,
+.top:not(.is-stuck) .nav a[aria-current="page"] { color: var(--ink); }
+.top:not(.is-stuck) .nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--orange); }
+.top:not(.is-stuck) .brand-name span { color: var(--orange); }
+.top:not(.is-stuck) .lang,
+.top:not(.is-stuck) .menu-toggle { color: var(--ink); border-color: rgba(30, 58, 64, .35); }
+.top:not(.is-stuck) .lang:hover,
+.top:not(.is-stuck) .menu-toggle:hover { border-color: var(--ink); }
+@media (max-width: 1080px) {
+  .top:not(.is-stuck) .nav { background: var(--paper-2); box-shadow: 0 18px 30px -22px rgba(11, 57, 69, .45); }
+  .top:not(.is-stuck) .nav a { border-top-color: rgba(30, 58, 64, .14); }
+}
+@media (max-width: 700px) {
+  .top-actions .btn-small { padding: 8px 11px; font-size: .8125rem; white-space: nowrap; }
+}
+/* phones 381-430 px: the one-line button needs the room, so only the logo mark shows (below 381 px the button is hidden and the name comes back) */
+@media (min-width: 381px) and (max-width: 430px) {
+  .brand-name { display: none; }
 }
