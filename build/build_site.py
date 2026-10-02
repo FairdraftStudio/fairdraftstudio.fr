@@ -106,7 +106,7 @@ SHELL = """<!doctype html>
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{ogimage}">
 <meta name="twitter:image:alt" content="{ogimagealt}">
-<meta name="theme-color" content="#0B3945">
+<meta name="theme-color" content="#EFE7DB">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon-48.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/dm-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin>

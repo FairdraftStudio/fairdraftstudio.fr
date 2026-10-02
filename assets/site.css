@@ -66,7 +66,7 @@ img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
-.desk :focus-visible, .footer :focus-visible, .contact :focus-visible { outline-color: var(--peach); }
+.desk :focus-visible, .footer :focus-visible, .contact :focus-visible, .top.is-stuck :focus-visible { outline-color: var(--peach); }
 h1, h2, h3, p, ol, ul, dl, dd, figure, blockquote { margin: 0; }
 ol, ul { padding: 0; list-style: none; }
 sup { line-height: 0; }
@@ -693,7 +693,11 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 .top:not(.is-stuck) .nav a:hover,
 .top:not(.is-stuck) .nav a[aria-current="page"] { color: var(--ink); }
 .top:not(.is-stuck) .nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--orange); }
-.top:not(.is-stuck) .brand-name span { color: var(--orange); }
+.top:not(.is-stuck) .brand-name span { color: #A8380A; } /* the button-hover orange: 5.29:1 on paper-2 (brand orange is 4.22:1, too low for 11 px text) */
+.top .nav a, .top .brand-name span, .top .lang, .top .menu-toggle { transition: color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+/* header controls: an invisible hit area so phones get ~44 px targets without changing the look */
+.lang, .menu-toggle, .top-actions .btn-small { position: relative; }
+.lang::after, .menu-toggle::after, .top-actions .btn-small::after { content: ""; position: absolute; inset: -7px -5px; }
 .top:not(.is-stuck) .lang,
 .top:not(.is-stuck) .menu-toggle { color: var(--ink); border-color: rgba(30, 58, 64, .35); }
 .top:not(.is-stuck) .lang:hover,

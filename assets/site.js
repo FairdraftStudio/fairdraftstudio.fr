@@ -58,7 +58,14 @@
 
   var header = document.getElementById('top');
   if (header) {
-    var setStuck = function () { header.classList.toggle('is-stuck', window.scrollY > 12); };
+    // the phone address bar follows the header: beige at the very top, teal once scrolled
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    var setStuck = function () {
+      var stuck = window.scrollY > 12;
+      header.classList.toggle('is-stuck', stuck);
+      var colour = stuck ? '#0B3945' : '#EFE7DB';
+      if (themeMeta && themeMeta.getAttribute('content') !== colour) themeMeta.setAttribute('content', colour);
+    };
     setStuck();
     window.addEventListener('scroll', setStuck, { passive: true });
   }
