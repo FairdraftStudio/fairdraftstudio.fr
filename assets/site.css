@@ -1,7 +1,7 @@
 /* Fairdraft Studio: fairdraftstudio.fr
    Brand: teal / cream / orange (logo, 2026-09-11). Type: DM Serif Display (logo face, headings),
    Atkinson Hyperlegible Next (text), Atkinson Hyperlegible Mono (document data, "the machine").
-   All fonts self-hosted: the site loads nothing from third parties. */
+   All fonts self-hosted. The only outside request is the GoatCounter visit counter (see README). */
 
 @font-face {
   font-family: "Atkinson Next";
@@ -288,6 +288,8 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 .fe-dates li:last-child { border-bottom: 1px solid var(--rule); }
 .fe-date { font: 400 1.9rem/1.05 var(--serif); color: var(--teal-deep); }
 .fe-date sup { font-size: .5em; }
+.fe-link { margin-top: 22px; }
+.fe-link + .fine { margin-top: 14px; }
 .fe-dates strong { display: block; font: 700 1.125rem/1.3 var(--sans); color: var(--teal-deep); margin-bottom: 4px; }
 .tag {
   display: inline-block; margin-top: 10px;
@@ -667,6 +669,39 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 .tool-next { padding-block: var(--section); background: var(--paper-2); }
 .tool-next p + p { margin-top: 14px; }
 .tool-next p { color: var(--muted); font-size: 1.0625rem; }
+
+/* e-invoicing checker: radio answers and the dated result */
+.choices { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 8px; }
+.choices legend { padding: 0; margin-bottom: 8px; font-weight: 700; font-size: .9375rem; color: var(--teal-deep); }
+.choice {
+  display: flex; gap: 10px; align-items: flex-start; cursor: pointer;
+  padding: 10px 12px; background: #fff; border: 1px solid #C9BEAE; border-radius: 4px;
+  font-size: .9375rem; line-height: 1.4;
+}
+.choice input { flex: none; width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--teal); }
+.choice small { display: block; color: var(--muted); font-size: .8125rem; }
+.choice:has(input:checked) { border-color: var(--teal); box-shadow: inset 0 0 0 1px var(--teal); }
+.choice:focus-within { outline: 2px solid var(--teal); outline-offset: 1px; }
+.choice input:focus-visible { outline: none; }
+.choice-help { font-size: .8125rem; color: var(--muted); }
+.fe-out { display: grid; gap: 22px; }
+.fe-out h3 { font-size: 1.0625rem; margin-bottom: 6px; }
+.fe-out p { font-size: .9375rem; }
+.fe-steps li { padding-block: 14px; border-top: 1px solid var(--rule); }
+.fe-steps li:last-child { border-bottom: 1px solid var(--rule); }
+.fe-when { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font: 400 1.35rem/1.1 var(--serif); color: var(--teal-deep); }
+.fe-out .fe-when { font-size: 1.35rem; }
+.fe-when sup { font-size: .5em; }
+.fe-out p sup, .fe-out li sup, .fe-out h3 sup { line-height: 0; }
+.fe-when .tag { margin-top: 0; }
+.fe-steps strong { display: block; margin: 8px 0 2px; color: var(--teal-deep); }
+.fe-steps p + p { margin-top: 6px; }
+.fe-list { display: grid; gap: 8px; margin-top: 8px; }
+.fe-list li { position: relative; padding-left: 24px; font-size: .9375rem; }
+.fe-list li::before { content: ""; position: absolute; left: 4px; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.fe-todo li::before { top: .3em; width: 13px; height: 13px; left: 0; border-radius: 2px; background: none; border: 2px solid var(--teal); }
+.fe-list + p { margin-top: 10px; }
+.fe-note { color: var(--muted); font-size: .875rem; }
 
 @media (max-width: 1080px) {
   .tool-grid { grid-template-columns: minmax(0, 1fr); }

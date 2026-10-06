@@ -1,0 +1,71 @@
+<!--meta
+title: Facture électronique : vos dates et vos obligations · Fairdraft Studio
+ogtitle: Facture électronique : vos dates et vos obligations
+description: Quatre questions pour savoir quand votre entreprise doit recevoir et émettre des factures électroniques, et ce qui change sur vos factures. Gratuit, sans inscription, sources officielles.
+path: outils/facture-electronique/index.html
+switch: /en/tools/
+nav: outils
+script: /assets/facture-electronique.js
+kicker: Outil gratuit
+h1: Facture électronique : vos dates et ce qui change
+intro: Répondez à quatre questions pour voir vos dates et ce qui change sur vos factures. Vos réponses ne sont envoyées nulle part : tout se passe dans votre navigateur.
+-->
+  <section class="tool" aria-label="Outil facture électronique">
+    <div class="wrap tool-grid">
+      <form class="sheet tool-form" id="fe-form" novalidate>
+        <p class="form-head">Votre entreprise</p>
+        <fieldset class="choices">
+          <legend>Quelle est la taille de votre entreprise&nbsp;?</legend>
+          <label class="choice"><input type="radio" name="taille" value="pme" checked><span>Micro-entreprise, TPE ou PME</span></label>
+          <label class="choice"><input type="radio" name="taille" value="eti"><span>ETI ou grande entreprise</span></label>
+          <p class="choice-help">Les catégories sont celles de la loi de modernisation de l'économie (article&nbsp;51). Un doute&nbsp;: <a href="https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation">la page d'impots.gouv.fr</a>.</p>
+        </fieldset>
+        <fieldset class="choices">
+          <legend>À qui vendez-vous&nbsp;?</legend>
+          <label class="choice"><input type="radio" name="clients" value="pro" checked><span>À des entreprises, en France</span></label>
+          <label class="choice"><input type="radio" name="clients" value="part"><span>À des particuliers</span></label>
+          <label class="choice"><input type="radio" name="clients" value="both"><span>Aux deux</span></label>
+        </fieldset>
+        <fieldset class="choices">
+          <legend>Facturez-vous la TVA&nbsp;?</legend>
+          <label class="choice"><input type="radio" name="tva" value="tva" checked><span>Oui</span></label>
+          <label class="choice"><input type="radio" name="tva" value="franchise"><span>Non, je suis en franchise en base <small>«&nbsp;TVA non applicable, art.&nbsp;293&nbsp;B du CGI&nbsp;»</small></span></label>
+        </fieldset>
+        <fieldset class="choices">
+          <legend>Que vendez-vous&nbsp;?</legend>
+          <label class="choice"><input type="radio" name="ventes" value="services" checked><span>Des services</span></label>
+          <label class="choice"><input type="radio" name="ventes" value="biens"><span>Des biens</span></label>
+          <label class="choice"><input type="radio" name="ventes" value="both"><span>Les deux</span></label>
+        </fieldset>
+      </form>
+
+      <div class="tool-output">
+        <div class="sheet tool-result">
+          <p class="form-head">Ce que la réforme vous demande</p>
+          <div class="fe-out" id="fe-output" aria-live="polite">
+            <noscript><p>Activez JavaScript pour voir votre résultat.</p></noscript>
+          </div>
+          <div class="tool-actions">
+            <button class="btn" type="button" id="fe-copy">Copier ma liste</button>
+          </div>
+          <p class="form-status" role="status" aria-live="polite" id="fe-status"></p>
+        </div>
+        <p class="fine">Sources officielles, lues du 2 au 4 octobre 2026&nbsp;: impots.gouv.fr, <a href="https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique">«&nbsp;Je découvre la facturation électronique&nbsp;»</a> (modifiée le 26&nbsp;mai 2026), <a href="https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation">«&nbsp;À partir de quand suis-je concerné&nbsp;?&nbsp;»</a> et le <a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/guide_pratique_facturation_electronique.pdf">guide pratique de démarrage (PDF)</a>&nbsp;; Service-Public Entreprendre, <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F31808">«&nbsp;Factures&nbsp;: mentions obligatoires&nbsp;»</a> (vérifiée le 11&nbsp;août 2026) et <a href="https://entreprendre.service-public.gouv.fr/actualites/A18953">l'actualité du 2&nbsp;septembre 2026</a>. Cet outil donne une première orientation, pas un conseil fiscal. Fairdraft Studio n'est pas une plateforme agréée.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tool-next" aria-labelledby="tool-next-title">
+    <div class="wrap proof-grid">
+      <div class="section-head">
+        <p class="eyebrow">Et pour votre entreprise</p>
+        <h2 id="tool-next-title">Votre cas, par écrit</h2>
+      </div>
+      <div>
+        <p>Votre logiciel, le nombre de factures par mois, vos clients&nbsp;: quelques lignes suffisent. Je vous réponds sous un jour ouvré, avec une première piste.</p>
+        <p>J'organise vos outils et vos relances autour de la plateforme agréée que vous aurez choisie&nbsp;; je n'émets pas vos factures à votre place.</p>
+        <p><a class="link-arrow" href="/contact/?offre=autre">Décrire ma situation</a></p>
+        <p>Si vous utilisez Claude, l'assistant gratuit <a href="https://www.agensi.io/skills/v-rificateur-de-facture">Vérificateur de facture</a> relit une de vos factures et liste les mentions présentes, manquantes ou à vérifier, avec leur source.</p>
+      </div>
+    </div>
+  </section>

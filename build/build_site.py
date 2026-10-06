@@ -52,7 +52,7 @@ TEXT = {
                f_reply="Réponse écrite sous un jour ouvré", f_where="Montpellier · à distance, partout en France",
                f_legal="Mentions légales", f_privacy="Confidentialité", f_terms="Conditions générales de vente",
                f_vat="TVA non applicable, art. 293 B du CGI",
-               f_cookies="Ce site ne dépose aucun cookie et ne charge aucune ressource externe.",
+               f_cookies="Aucun cookie. Les visites sont comptées sans vous identifier (GoatCounter).",
                f_siret="Micro-entreprise (EI) · SIRET 938 479 193 00014"),
     "en": dict(menu="Menu", skip="Skip to content", home="Fairdraft Studio, home", nav="Main navigation",
                cta="Describe your task", cta_href="/en/contact/", lang_label="Version française",
@@ -62,7 +62,7 @@ TEXT = {
                f_reply="Written reply within one working day", f_where="Montpellier, France · remote",
                f_legal="Legal notice (FR)", f_privacy="Privacy (FR)", f_terms="Terms of sale (FR)",
                f_vat="VAT not applicable, art. 293 B of the French tax code (CGI)",
-               f_cookies="This site sets no cookies and loads nothing from third parties.",
+               f_cookies="No cookies. Visits are counted without identifying you (GoatCounter).",
                f_siret="Sole trader (EI) · SIRET 938 479 193 00014"),
 }
 
@@ -114,6 +114,8 @@ SHELL = """<!doctype html>
 <link rel="stylesheet" href="/assets/site.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="/assets/site.js" defer></script>{extra_script}
+<script>window.goatcounter = {{ no_onload: 'doNotTrack' in navigator && navigator.doNotTrack === '1' }};</script>
+<script data-goatcounter="https://fairdraftstudio.goatcounter.com/count" async src="/assets/count.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">{skip}</a>

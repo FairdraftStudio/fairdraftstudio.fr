@@ -1,4 +1,4 @@
-// Invoice reminder letter generator. Everything runs in the browser: nothing is sent anywhere.
+// Invoice reminder letter generator. Everything runs in the browser: what the visitor types is sent nowhere.
 (function () {
   var form = document.getElementById('relance-form');
   if (!form) return;
