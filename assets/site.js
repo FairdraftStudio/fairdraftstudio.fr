@@ -1,9 +1,9 @@
-// Fairdraft Studio: small enhancements only. The page works without this file.
+// Suivel: small enhancements only. The page works without this file.
 (function () {
   var fr = document.documentElement.lang !== 'en';
-  var TO = 'contact@fairdraftstudio.fr';
+  var TO = 'contact@suivel.fr';
   var T = fr ? {
-    subject: 'Demande via fairdraftstudio.fr',
+    subject: 'Demande via suivel.fr',
     offer: 'Offre',
     none: 'Je ne sais pas encore',
     name: 'Nom', email: 'E-mail', phone: 'Téléphone', company: 'Entreprise',
@@ -13,7 +13,7 @@
     opened: "Votre messagerie devrait s'ouvrir avec le message prêt à envoyer.",
     to: 'À', subj: 'Objet', copied: 'Message copié'
   } : {
-    subject: 'Enquiry via fairdraftstudio.fr',
+    subject: 'Enquiry via suivel.fr',
     offer: 'Offer',
     none: 'Not sure yet',
     name: 'Name', email: 'Email', phone: 'Phone', company: 'Business',

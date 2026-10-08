@@ -101,7 +101,7 @@
     text.push('', 'À faire :');
     todo.forEach(function (t) { text.push('- ' + plain(t)); });
     text.push('', 'Liste des plateformes agréées : ' + PLATFORMS,
-      'Outil : https://fairdraftstudio.fr/outils/facture-electronique/ (sources officielles lues en octobre 2026 ; première orientation, pas un conseil fiscal)');
+      'Outil : https://suivel.fr/outils/facture-electronique/ (sources officielles lues en octobre 2026 ; première orientation, pas un conseil fiscal)');
     lastText = text.join('\n');
     status.textContent = '';
   }

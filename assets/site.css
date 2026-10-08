@@ -1,4 +1,4 @@
-/* Fairdraft Studio: fairdraftstudio.fr
+/* Suivel: suivel.fr
    Brand: teal / cream / orange (logo, 2026-09-11). Type: DM Serif Display (logo face, headings),
    Atkinson Hyperlegible Next (text), Atkinson Hyperlegible Mono (document data, "the machine").
    All fonts self-hosted. The only outside request is the GoatCounter visit counter (see README). */
@@ -48,7 +48,7 @@
   --wrap: 1180px;
   --gutter: clamp(16px, 4vw, 40px);
   --section: clamp(72px, 9vw, 128px);
-  --fold: 26px;               /* folded corner of every sheet, as in the logo */
+  --fold: 26px;               /* folded corner of every sheet (the site's paper motif) */
   --shadow: drop-shadow(0 1px 1px rgba(11, 57, 69, .10)) drop-shadow(0 16px 28px rgba(11, 57, 69, .16));
 }
 
@@ -109,7 +109,7 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 .link-arrow { font-weight: 700; text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
 .link-arrow::after { content: " →"; }
 
-/* ---------- sheets: every document on the site has the logo's folded corner ---------- */
+/* ---------- sheets: every document on the site has a folded corner ---------- */
 .sheet {
   position: relative;
   background: linear-gradient(225deg, transparent 0 calc(var(--fold) * .7071), var(--sheet) calc(var(--fold) * .7071));
@@ -139,13 +139,10 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
   transition: padding-block .2s ease;
 }
 .top.is-stuck .top-inner { padding-block: 9px; }
-.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand-mark { width: 42px; height: 42px; flex: none; }
-.brand-name { font: 400 1.5rem/1 var(--serif); letter-spacing: .005em; }
-.brand-name span {
-  font: 600 .6875rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase;
-  color: var(--peach); margin-left: .35em; vertical-align: .25em;
-}
+/* logo: mark + name cut from the same lockup (same height), so these ratios keep its proportions */
+.brand { --logo-h: 34px; display: inline-flex; align-items: center; gap: calc(var(--logo-h) * .1846); text-decoration: none; }
+.brand-mark { height: var(--logo-h); width: calc(var(--logo-h) * .6493); flex: none; }
+.brand-name { height: var(--logo-h); width: calc(var(--logo-h) * 2.316); flex: none; }
 .nav { display: flex; gap: clamp(16px, 2.2vw, 30px); font-size: .9688rem; }
 .nav a { text-decoration: none; color: var(--on-teal-muted); padding-block: 6px; }
 .nav a:hover { color: var(--on-teal); text-decoration: underline; }
@@ -471,9 +468,7 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 @media (max-width: 700px) {
   body { font-size: 1rem; }
   .top { padding-block: 4px; }
-  .brand-mark { width: 36px; height: 36px; }
-  .brand-name { font-size: 1.25rem; }
-  .brand-name span { display: none; }
+  .brand { --logo-h: 30px; }
   .top-actions { gap: 10px; }
   .hero h1 { max-width: none; }
   .demo { grid-template-columns: minmax(0, 1fr); }
@@ -544,8 +539,10 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 .proof-list strong { color: var(--teal-deep); }
 
 /* ---------- call to action band ---------- */
-.cta-band { background: var(--teal-deep); color: var(--on-teal); padding-block: clamp(56px, 7vw, 96px); }
+/* a teal card on the page's paper, with paper around it, so it stands apart from the footer (owner, 7 Oct) */
+.cta-band { background: var(--paper); color: var(--on-teal); padding-block: clamp(40px, 6vw, 88px); }
 .cta-inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.cta-band .cta-inner { background: var(--teal); border-radius: 8px; padding: clamp(28px, 5vw, 64px); }
 .cta-band .eyebrow { color: var(--on-teal-muted); margin-bottom: 14px; }
 .cta-band h2 { color: var(--on-teal); margin-bottom: 14px; }
 .cta-band p { color: var(--on-teal-muted); max-width: 40rem; }
@@ -728,8 +725,8 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 .top:not(.is-stuck) .nav a:hover,
 .top:not(.is-stuck) .nav a[aria-current="page"] { color: var(--ink); }
 .top:not(.is-stuck) .nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--orange); }
-.top:not(.is-stuck) .brand-name span { color: #A8380A; } /* the button-hover orange: 5.29:1 on paper-2 (brand orange is 4.22:1, too low for 11 px text) */
-.top .nav a, .top .brand-name span, .top .lang, .top .menu-toggle { transition: color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.top:not(.is-stuck) .brand { color: var(--teal); } /* logo: teal on light, cream on teal */
+.top .nav a, .top .brand, .top .lang, .top .menu-toggle { transition: color .25s ease, border-color .25s ease, box-shadow .25s ease; }
 /* header controls: an invisible hit area so phones get ~44 px targets without changing the look */
 .lang, .menu-toggle, .top-actions .btn-small { position: relative; }
 .lang::after, .menu-toggle::after, .top-actions .btn-small::after { content: ""; position: absolute; inset: -7px -5px; }
@@ -747,4 +744,74 @@ h3 { font: 700 1.3rem/1.25 var(--sans); color: var(--teal-deep); }
 /* phones 381-430 px: the one-line button needs the room, so only the logo mark shows (below 381 px the button is hidden and the name comes back) */
 @media (min-width: 381px) and (max-width: 430px) {
   .brand-name { display: none; }
+}
+
+/* chat assistant */
+/* Widget of assets/chat.js, loaded by every page; inactive on the live site until its address is set. */
+.chat { position: fixed; right: 16px; bottom: 16px; z-index: 40; font-family: var(--sans); color: var(--ink); }
+/* Orange like the "Décrire mon besoin" button (7 Oct: in teal it melted into the teal sections). */
+.chat-launch {
+  display: inline-flex; align-items: center; gap: .6em; min-height: 48px;
+  background: var(--orange); color: #fff; border: 0; border-radius: 999px;
+  padding: 12px 20px 12px 16px; font: 700 1rem/1 var(--sans); cursor: pointer;
+  box-shadow: 0 6px 18px rgba(11, 57, 69, .3);
+  transition: background-color .15s ease;
+}
+.chat-launch:hover { background: #A8380A; }
+.chat-launch svg { width: 22px; height: 22px; flex: none; }
+.chat-launch:focus-visible, .chat-send:focus-visible, .chat-chip:focus-visible { outline-color: var(--teal); }
+.chat-head :focus-visible { outline-color: var(--peach); }
+.chat[data-open="true"] .chat-launch, .chat-panel[hidden] { display: none; }
+
+.chat-panel {
+  display: flex; flex-direction: column;
+  width: min(390px, calc(100vw - 32px)); height: min(580px, calc(100vh - 32px));
+  background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 18px 44px rgba(11, 57, 69, .3);
+}
+.chat-head { display: flex; align-items: center; gap: 4px; background: var(--teal); color: var(--on-teal); padding: 8px 8px 8px 16px; }
+.chat-title { flex: 1; margin: 0; white-space: nowrap; font: 700 1.0625rem/1.2 var(--sans); }
+.chat-head-btn {
+  display: inline-grid; place-items: center; width: 40px; height: 40px; padding: 0;
+  background: transparent; color: var(--on-teal); border: 0; border-radius: 6px; cursor: pointer;
+}
+.chat-head-btn svg { width: 20px; height: 20px; }
+.chat-head-btn:hover { background: rgba(246, 241, 234, .14); }
+
+.chat-log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; background: var(--paper); overscroll-behavior: contain; }
+.chat-msg { max-width: 90%; padding: 10px 12px; border-radius: 10px; font-size: .9375rem; line-height: 1.5; overflow-wrap: anywhere; }
+.chat-msg p { margin: 0; white-space: pre-line; }
+.chat-msg p + p { margin-top: .6em; }
+.chat-msg-bot { align-self: flex-start; background: var(--sheet); border: 1px solid var(--rule); }
+.chat-msg-user { align-self: flex-end; background: var(--teal); color: var(--on-teal); }
+.chat-msg-error { border-color: var(--orange); }
+.chat-msg-pending { color: var(--muted); font-style: italic; }
+.chat-msg a { color: var(--teal); text-decoration: underline; text-underline-offset: 2px; }
+
+.chat-suggest { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 14px 12px; background: var(--paper); }
+.chat-suggest[hidden] { display: none; }
+.chat-chip {
+  background: transparent; color: var(--teal-deep); border: 1px solid var(--teal); border-radius: 999px;
+  padding: 9px 13px; min-height: 40px; font: 600 .875rem/1.2 var(--sans); cursor: pointer; text-align: left;
+}
+.chat-chip:hover { background: var(--paper-2); }
+
+.chat-form { display: flex; align-items: flex-end; gap: 8px; padding: 10px 12px 4px; border-top: 1px solid var(--rule); background: var(--sheet); }
+.chat-input {
+  flex: 1; min-width: 0; resize: none; padding: 10px; font: 1rem/1.4 var(--sans); color: var(--ink);
+  background: #fff; border: 1px solid var(--muted); border-radius: 6px;
+}
+.chat-input:disabled { background: var(--paper-2); }
+.chat-send {
+  background: var(--orange); color: #fff; border: 0; border-radius: 6px; padding: 12px 16px; min-height: 44px;
+  font: 700 1rem/1 var(--sans); cursor: pointer;
+}
+.chat-send:hover { background: #A8380A; }
+.chat-send:disabled { opacity: .55; cursor: default; }
+.chat-fine { margin: 0; padding: 4px 12px 10px; background: var(--sheet); color: var(--muted); font-size: .8125rem; line-height: 1.4; }
+
+@media (max-width: 480px) {
+  .chat { right: 8px; bottom: 8px; }
+  .chat-panel { width: calc(100vw - 16px); height: calc(100vh - 16px); height: calc(100dvh - 16px); }
+  .chat-head-btn { width: 44px; height: 44px; }
 }

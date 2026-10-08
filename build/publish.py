@@ -1,4 +1,4 @@
-"""Publish the site to fairdraftstudio.fr (public repo FairdraftStudio/fairdraftstudio.fr, GitHub Pages).
+"""Publish the site to suivel.fr (public repo FairdraftStudio/fairdraftstudio.fr, GitHub Pages).
 
     python repos/fairdraftstudio.fr/build/publish.py "What changed"
 
@@ -60,7 +60,7 @@ def main():
     git(*AUTHOR, "commit", "-q", "-m", message, cwd=CLONE)
     git("push", "-q", "origin", "main", cwd=CLONE)
     print("Published: " + git("log", "--oneline", "-1", cwd=CLONE, capture=True).strip())
-    print("Live on https://fairdraftstudio.fr/ in about a minute.")
+    print("Live on https://suivel.fr/ in about a minute.")
 
 
 if __name__ == "__main__":
