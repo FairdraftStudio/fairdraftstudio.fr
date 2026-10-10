@@ -2,15 +2,27 @@
 (function () {
   var fr = document.documentElement.lang !== 'en';
   var TO = 'contact@suivel.fr';
+  var band = document.querySelector('.cta-band');
+  var top = document.getElementById('top');
+  if (band && top && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      top.classList.toggle('cta-near', entries[0].isIntersecting);
+    }).observe(band);
+  }
+  // The form is sent by our Worker (Brevo delivers it to contact@suivel.fr); the copy box is the fallback.
+  var CONTACT_ENDPOINT = window.SUIVEL_CONTACT_ENDPOINT || 'https://fairdraft-chat.fairdraft-chat.workers.dev/contact';
+  var loadedAt = Date.now();
   var T = fr ? {
     subject: 'Demande via suivel.fr',
     offer: 'Offre',
     none: 'Je ne sais pas encore',
     name: 'Nom', email: 'E-mail', phone: 'Téléphone', company: 'Entreprise',
-    missing: 'Merci de remplir : ',
+    missing: 'Merci de remplir\u00a0: ',
     fields: { nom: 'votre nom', email: 'votre e-mail', message: 'la tâche' },
     badEmail: "L'adresse e-mail semble incomplète.",
-    opened: "Votre messagerie devrait s'ouvrir avec le message prêt à envoyer.",
+    sending: 'Envoi en cours…',
+    sent: 'Merci, votre message est bien parti. Je vous réponds par écrit sous un jour ouvré.',
+    failed: "Le message n'a pas pu partir. Copiez-le ci-dessous et envoyez-le à contact@suivel.fr depuis votre messagerie.",
     to: 'À', subj: 'Objet', copied: 'Message copié'
   } : {
     subject: 'Enquiry via suivel.fr',
@@ -20,7 +32,9 @@
     missing: 'Please fill in: ',
     fields: { nom: 'your name', email: 'your email', message: 'the task' },
     badEmail: 'The email address looks incomplete.',
-    opened: 'Your email app should open with the message ready to send.',
+    sending: 'Sending…',
+    sent: 'Thank you, your message has been sent. I will reply in writing within one working day.',
+    failed: 'The message could not be sent. Copy it below and send it to contact@suivel.fr from your usual email.',
     to: 'To', subj: 'Subject', copied: 'Message copied'
   };
 
@@ -125,18 +139,49 @@
     if (get('telephone')) lines.push(T.phone + sep + get('telephone'));
     if (get('entreprise')) lines.push(T.company + sep + get('entreprise'));
     var body = lines.join('\n');
-    window.location.href = 'mailto:' + TO +
-      '?subject=' + encodeURIComponent(T.subject) +
-      '&body=' + encodeURIComponent(body);
-    status.textContent = T.opened;
-
-    // Webmail users often have no mail app set up: show the message ready to copy
+    var button = form.querySelector('button[type="submit"]');
     var fallback = form.querySelector('.form-fallback');
-    if (fallback) {
-      fallback.querySelector('textarea').value =
-        T.to + sep + TO + '\n' + T.subj + sep + T.subject + '\n\n' + body;
-      fallback.hidden = false;
-    }
+    var showFallback = function (message) {
+      status.textContent = message || T.failed;
+      if (fallback) {
+        fallback.querySelector('textarea').value =
+          T.to + sep + TO + '\n' + T.subj + sep + T.subject + '\n\n' + body;
+        fallback.hidden = false;
+      }
+      button.disabled = false;
+    };
+    var source = form.elements.source;
+    var payload = {
+      nom: get('nom'), email: get('email'), message: get('message'),
+      telephone: get('telephone'), entreprise: get('entreprise'),
+      offre: select.value ? select.options[select.selectedIndex].text : '',
+      source: source && source.value ? source.options[source.selectedIndex].text : '',
+      lang: fr ? 'fr' : 'en',
+      site_web: form.elements.site_web ? form.elements.site_web.value : '',
+      elapsed: Date.now() - loadedAt
+    };
+    button.disabled = true;
+    status.textContent = T.sending;
+    if (fallback) fallback.hidden = true;
+    fetch(CONTACT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        if (res.ok && data.ok) {
+          status.textContent = T.sent;
+          form.reset();
+          loadedAt = Date.now();
+          button.disabled = false;
+        } else if (res.status === 400 || res.status === 413) {
+          status.textContent = data.message || T.failed;   // the visitor can fix this one
+          button.disabled = false;
+        } else {
+          showFallback(data.message);
+        }
+      });
+    }, function () { showFallback(); });
   });
 
   form.addEventListener('click', function (e) {

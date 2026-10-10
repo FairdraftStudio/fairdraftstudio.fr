@@ -1,5 +1,5 @@
 <!--meta
-title: Contact · Suivel
+title: Contact: describe the task you want automated · Suivel
 ogtitle: Tell me what's taking up your time
 description: Describe the task that takes up your time. A written reply within one working day, then, if useful, I'll call you. contact@suivel.fr
 path: en/contact/index.html
@@ -22,7 +22,7 @@ intro: A few lines are enough. I'll reply in writing within one working day with
         </dl>
         <p class="fine">Your details are only used to reply to you. See the <a href="/confidentialite.html" hreflang="fr">privacy policy</a> (in French).</p>
       </div>
-      <form class="sheet form" id="contact-form" action="mailto:contact@suivel.fr" method="post" enctype="text/plain" novalidate>
+      <form class="sheet form" id="contact-form" method="post" novalidate>
         <p class="form-head">Enquiry form</p>
         <div class="field-row">
           <div class="field">
@@ -56,16 +56,31 @@ intro: A few lines are enough. I'll reply in writing within one working day with
           <label for="f-task">The task, in a few lines</label>
           <textarea id="f-task" name="message" required placeholder="For example: at the end of every month I chase unpaid invoices by hand, using an Excel sheet."></textarea>
         </div>
+        <div class="field">
+          <label for="f-source">How did you hear about Suivel? <span class="opt">(optional)</span></label>
+          <select id="f-source" name="source">
+            <option value="">Choose…</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="google">A Google search</option>
+            <option value="malt">Malt</option>
+            <option value="bouche-a-oreille">Someone recommended it</option>
+            <option value="autre">Another way</option>
+          </select>
+        </div>
+        <div class="field hp" aria-hidden="true">
+          <label for="f-site">Leave this field empty</label>
+          <input id="f-site" name="site_web" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-foot">
           <p class="form-note">For businesses only: companies, sole traders, associations.</p>
-          <button class="btn" type="submit">Prepare the email</button>
+          <button class="btn" type="submit">Send the enquiry</button>
           <p class="form-status" role="status" aria-live="polite"></p>
           <div class="form-fallback" hidden>
-            <p>Nothing opened? Copy this message and send it to <strong>contact@suivel.fr</strong> from your usual email.</p>
+            <p>Copy this message and send it to <strong>contact@suivel.fr</strong> from your usual email.</p>
             <textarea readonly rows="8" aria-label="Message ready to copy"></textarea>
             <button class="btn btn-ghost" type="button" data-copy>Copy the message</button>
           </div>
-          <p class="form-note">The button opens your email app with your message already filled in: you just press send. Nothing is stored on this site. See the <a href="/confidentialite.html" hreflang="fr">privacy policy</a> (in French).</p>
+          <p class="form-note">Your message reaches me by email through Brevo, a French email delivery service. The site itself stores nothing. See the <a href="/confidentialite.html" hreflang="fr">privacy policy</a> (in French).</p>
         </div>
       </form>
     </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact · Suivel</title>
+<title>Contact&nbsp;: décrivez la tâche à automatiser · Suivel</title>
 <meta name="description" content="Décrivez la tâche qui vous prend du temps. Réponse écrite sous un jour ouvré, puis, si c'est utile, je vous appelle. contact@suivel.fr">
 <link rel="canonical" href="https://suivel.fr/contact/">
 <link rel="alternate" hreflang="fr" href="https://suivel.fr/contact/">
@@ -48,7 +48,7 @@
     <nav class="nav" id="site-nav" aria-label="Navigation principale">
       <a href="/offres/">Offres et prix</a>
       <a href="/outils/">Outils gratuits</a>
-      <a href="/realisations/">Réalisations</a>
+      <a href="/realisations/">Démos et projets</a>
       <a href="/a-propos/">À propos</a>
       <a href="/contact/" aria-current="page">Contact</a>
     </nav>
@@ -81,7 +81,7 @@
         </dl>
         <p class="fine">Vos informations servent uniquement à vous répondre. Voir la <a href="/confidentialite.html">politique de confidentialité</a>.</p>
       </div>
-      <form class="sheet form reveal" id="contact-form" action="mailto:contact@suivel.fr" method="post" enctype="text/plain" novalidate>
+      <form class="sheet form reveal" id="contact-form" method="post" novalidate>
         <p class="form-head">Formulaire de demande</p>
         <div class="field-row">
           <div class="field">
@@ -115,16 +115,31 @@
           <label for="f-task">La tâche, en quelques lignes</label>
           <textarea id="f-task" name="message" required placeholder="Par exemple&nbsp;: je relance mes clients à la main chaque fin de mois, avec un tableau Excel."></textarea>
         </div>
+        <div class="field">
+          <label for="f-source">Comment avez-vous connu Suivel&nbsp;? <span class="opt">(facultatif)</span></label>
+          <select id="f-source" name="source">
+            <option value="">Choisir…</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="google">Une recherche Google</option>
+            <option value="malt">Malt</option>
+            <option value="bouche-a-oreille">Quelqu'un me l'a recommandé</option>
+            <option value="autre">Autrement</option>
+          </select>
+        </div>
+        <div class="field hp" aria-hidden="true">
+          <label for="f-site">Ne pas remplir ce champ</label>
+          <input id="f-site" name="site_web" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-foot">
           <p class="form-note">Offres réservées aux professionnels (entreprises, indépendants, associations).</p>
-          <button class="btn" type="submit">Préparer l'e-mail</button>
+          <button class="btn" type="submit">Envoyer la demande</button>
           <p class="form-status" role="status" aria-live="polite"></p>
           <div class="form-fallback" hidden>
-            <p>Rien ne s'est ouvert&nbsp;? Copiez ce message et envoyez-le à <strong>contact@suivel.fr</strong> depuis votre messagerie habituelle.</p>
+            <p>Copiez ce message et envoyez-le à <strong>contact@suivel.fr</strong> depuis votre messagerie habituelle.</p>
             <textarea readonly rows="8" aria-label="Message prêt à copier"></textarea>
             <button class="btn btn-ghost" type="button" data-copy>Copier le message</button>
           </div>
-          <p class="form-note">Le bouton ouvre votre messagerie avec votre message déjà rempli&nbsp;: il ne reste qu'à l'envoyer. Rien n'est enregistré sur ce site. Voir la <a href="/confidentialite.html">politique de confidentialité</a>.</p>
+          <p class="form-note">Votre message m'est transmis par e-mail via Brevo, un service d'envoi français. Le site lui-même n'enregistre rien. Voir la <a href="/confidentialite.html">politique de confidentialité</a>.</p>
         </div>
       </form>
     </div>
@@ -153,7 +168,7 @@
     <div>
       <h2 class="footer-title">En savoir plus</h2>
       <ul class="footer-list">
-        <li><a href="/realisations/">Réalisations</a></li>
+        <li><a href="/realisations/">Démos et projets</a></li>
         <li><a href="/a-propos/">À propos</a></li>
         <li><a href="/contact/">Contact</a></li>
         <li><a href="/en/">English</a></li>

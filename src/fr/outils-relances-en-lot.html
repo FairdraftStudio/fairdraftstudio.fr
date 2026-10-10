@@ -1,0 +1,141 @@
+<!--meta
+title: Relances de factures en lot : retard et indemnité · Suivel
+ogtitle: Relances de factures en lot : retard, indemnité et textes
+description: Collez vos factures impayées&nbsp;: jours de retard, indemnité de 40&nbsp;€, pénalités estimées, un texte de relance par facture. Gratuit, tout reste dans le navigateur.
+path: outils/relances-en-lot/index.html
+switch: /en/tools/
+nav: outils
+script: /assets/relances-lot.js
+kicker: Outil gratuit
+h1: Relances de factures en lot
+intro: Collez vos factures impayées depuis un tableur&nbsp;: pour chacune, les jours de retard, le niveau de relance, l'indemnité de 40&nbsp;€ pour les clients professionnels et un texte prêt à copier. Ce que vous tapez n'est envoyé nulle part&nbsp;: tout se passe dans votre navigateur.
+-->
+  <section class="tool" id="rl-app" aria-label="Relances de factures en lot">
+    <div class="wrap rl-stack">
+      <form class="sheet rl-form" id="rl-form" novalidate>
+        <p class="form-head">Vos factures impayées</p>
+
+        <div class="rl-paste">
+          <div class="field">
+            <label for="rl-paste">Collez vos lignes depuis Excel ou Google Sheets</label>
+            <textarea id="rl-paste" rows="4" spellcheck="false" autocomplete="off" placeholder="Client A;F-2026-014;1 250,50;15/09/2026&#10;Société B;F-2026-017;3 400;20/08/2026"></textarea>
+            <p class="choice-help">Quatre colonnes, dans cet ordre&nbsp;: client, numéro de facture, montant TTC, date d'échéance. Une cinquième, «&nbsp;particulier&nbsp;» ou «&nbsp;entreprise&nbsp;», est facultative. La première ligne peut être un en-tête. Aucune adresse e-mail n'est demandée.</p>
+          </div>
+          <div class="rl-paste-actions">
+            <div class="field">
+              <label for="rl-default">Sans cinquième colonne, mes clients sont</label>
+              <select id="rl-default">
+                <option value="pro">des entreprises</option>
+                <option value="part">des particuliers</option>
+              </select>
+            </div>
+            <button class="btn" type="button" id="rl-load">Charger dans le tableau</button>
+          </div>
+          <div class="rl-messages" id="rl-load-status" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="rl-editor-block">
+          <p class="rl-sub">Votre tableau</p>
+          <div class="rl-scroll">
+            <table class="rl-editor">
+              <thead>
+                <tr>
+                  <th scope="col">Client</th>
+                  <th scope="col">N° de facture</th>
+                  <th scope="col">Montant TTC</th>
+                  <th scope="col">Date d'échéance</th>
+                  <th scope="col">Type</th>
+                  <th scope="col"><span class="visually-hidden">Supprimer</span></th>
+                </tr>
+              </thead>
+              <tbody id="rl-rows"></tbody>
+            </table>
+          </div>
+          <div class="tool-actions">
+            <button class="btn btn-ghost btn-small" type="button" id="rl-add">Ajouter une ligne</button>
+            <button class="btn btn-ghost btn-small" type="button" id="rl-example">Voir un exemple fictif</button>
+            <button class="btn btn-ghost btn-small" type="button" id="rl-clear">Tout effacer</button>
+          </div>
+          <div class="rl-messages rl-error" id="rl-problems" role="status" aria-live="polite"></div>
+        </div>
+
+        <fieldset class="rl-settings">
+          <legend>Réglages</legend>
+          <div class="field">
+            <label for="rl-rate">Taux annuel des pénalités de retard, en&nbsp;% <span class="opt">(facultatif)</span></label>
+            <input id="rl-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="Taux de vos conditions de vente">
+            <p class="choice-help">Le taux écrit dans vos conditions générales de vente ou sur vos factures. Sans taux, l'outil ne calcule pas de pénalités.</p>
+            <p class="choice-help" id="rl-rate-ref"></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="rl-firm">Relance ferme à partir de <span class="opt">(jours de retard)</span></label>
+              <input id="rl-firm" type="number" inputmode="numeric" min="2" max="364" value="15">
+            </div>
+            <div class="field">
+              <label for="rl-formal">Mise en demeure à partir de <span class="opt">(jours de retard)</span></label>
+              <input id="rl-formal" type="number" inputmode="numeric" min="3" max="365" value="30">
+            </div>
+          </div>
+          <p class="choice-help">Seuils proposés par Suivel, à adapter à vos clients&nbsp;: rappel poli avant 15&nbsp;jours de retard, relance ferme de 15 à 29&nbsp;jours, mise en demeure à partir de 30&nbsp;jours.</p>
+          <div class="rl-messages rl-error" id="rl-settings-note" role="status" aria-live="polite"></div>
+        </fieldset>
+      </form>
+
+      <div class="rl-out">
+        <p class="rl-empty sheet" id="rl-empty">Ajoutez une facture ou collez vos lignes&nbsp;: le résultat apparaît ici. Pas de données sous la main&nbsp;? Chargez l'exemple fictif.</p>
+        <noscript><p class="rl-empty sheet">Activez JavaScript pour utiliser cet outil.</p></noscript>
+        <div class="rl-results" id="rl-output" aria-live="polite"></div>
+        <div class="tool-actions" id="rl-actions" hidden>
+          <button class="btn" type="button" id="rl-copy-all">Copier tous les textes</button>
+          <button class="btn btn-ghost" type="button" id="rl-ics">Télécharger le calendrier (.ics)</button>
+        </div>
+        <p class="form-status" role="status" aria-live="polite" id="rl-status"></p>
+      </div>
+
+      <div class="rl-notes">
+        <div>
+          <h2>Comment l'outil calcule</h2>
+          <ul class="fe-list">
+            <li><strong>Retard.</strong> Nombre de jours entre la date d'échéance et aujourd'hui. Une facture qui arrive à échéance aujourd'hui n'est pas encore en retard&nbsp;: les pénalités se calculent à partir du lendemain de la date de règlement.</li>
+            <li><strong>Niveau.</strong> De 1 à 14&nbsp;jours de retard, un rappel poli&nbsp;; de 15 à 29&nbsp;jours, une relance ferme&nbsp;; à partir de 30&nbsp;jours, une mise en demeure. Ces seuils sont une proposition de Suivel&nbsp;: vous pouvez les changer dans les réglages.</li>
+            <li><strong>Indemnité de 40&nbsp;€.</strong> Une fois par facture en retard, quel que soit le nombre de jours, en plus des pénalités, et sans TVA. Seulement pour un client professionnel.</li>
+            <li><strong>Pénalités, en estimation.</strong> Montant TTC × taux annuel × jours de retard ÷ 365, avec le taux que vous saisissez. C'est la formule de cet outil&nbsp;: les pages officielles citées plus bas ne donnent pas de formule. Les pénalités peuvent être appliquées sans rappel ni mise en demeure.</li>
+            <li><strong>Calendrier.</strong> La première relance est à envoyer maintenant. La date de suivi est le jour où la facture atteint le niveau suivant, au plus tôt 7&nbsp;jours après aujourd'hui, et jamais un samedi ou un dimanche. Une facture pas encore échue n'est ni comptée ni dans le calendrier&nbsp;: revenez après son échéance.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ce que l'outil ne couvre pas</h2>
+          <ul class="fe-list">
+            <li><strong>Les clients particuliers.</strong> Ni indemnité de 40&nbsp;€ ni estimation de pénalités. Les règles citées plus bas sont celles des relations entre professionnels&nbsp;; d'autres règles s'appliquent aux particuliers.</li>
+            <li><strong>Une facture contestée ou un litige.</strong> L'outil suppose que la facture est due.</li>
+            <li><strong>Un paiement partiel.</strong> Saisissez le solde restant dû. L'indemnité de 40&nbsp;€ reste due même en cas de paiement partiel.</li>
+            <li><strong>Des frais de recouvrement supérieurs à 40&nbsp;€.</strong> Une indemnisation complémentaire peut être demandée, sur justificatifs.</li>
+            <li><strong>Les délais particuliers.</strong> Certains secteurs ont des délais de paiement spécifiques&nbsp;: saisissez la date d'échéance écrite sur votre facture.</li>
+            <li><strong>Les baux commerciaux et la location avec option d'achat.</strong> L'indemnité de 40&nbsp;€ ne s'y applique pas.</li>
+            <li><strong>Vos conditions de vente et vos factures.</strong> Le taux des pénalités de retard et leurs conditions d'application doivent figurer dans vos conditions générales de vente&nbsp;; l'indemnité de 40&nbsp;€ aussi, et les deux sur vos factures. Vérifiez-le avant de relancer.</li>
+            <li><strong>Une procédure judiciaire.</strong> Pour un impayé important ou une injonction de payer, parlez-en à un avocat ou à un commissaire de justice.</li>
+          </ul>
+          <p class="fine">La mise en demeure est un modèle à envoyer vous-même, de préférence en recommandé&nbsp;: cet outil n'envoie rien. Cet outil ne remplace pas un conseil juridique.</p>
+        </div>
+        <div>
+          <h2>Sources</h2>
+          <p class="fine">Pages officielles lues le 4&nbsp;octobre 2026&nbsp;: Service-Public Entreprendre, <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23211">«&nbsp;Délais de paiement entre professionnels et pénalités de retard&nbsp;»</a> (page vérifiée le 7&nbsp;août 2026, elle cite les articles L441-10 et D441-5 du Code de commerce)&nbsp;; Service-Public Entreprendre, <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F31808">«&nbsp;Factures&nbsp;: mentions obligatoires&nbsp;»</a> (vérifiée le 11&nbsp;août 2026). Le taux de repère de 12,40&nbsp;% vient de la première page, pour le 2e semestre 2026&nbsp;; il change chaque semestre, vérifiez-le sur la page avant de l'utiliser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tool-next" aria-labelledby="tool-next-title">
+    <div class="wrap proof-grid">
+      <div class="section-head">
+        <p class="eyebrow">Et si ça revient tous les mois&nbsp;?</p>
+        <h2 id="tool-next-title">Ces relances peuvent partir toutes seules.</h2>
+      </div>
+      <div>
+        <p>Trier vos impayés prend une minute. Le vrai coût, c'est de recommencer chaque semaine&nbsp;: surveiller qui a payé, s'en souvenir, relancer.</p>
+        <p>L'offre «&nbsp;Relances de factures automatiques&nbsp;» fait ce suivi à votre place&nbsp;: vos relances partent aux dates que vous choisissez, depuis votre adresse e-mail, et s'arrêtent dès que la facture est marquée payée&nbsp;; la mise en demeure est préparée, jamais envoyée sans vous.</p>
+        <p><a class="link-arrow" href="/offres/#offre-relances">Voir l'offre et son prix</a></p>
+      </div>
+    </div>
+  </section>

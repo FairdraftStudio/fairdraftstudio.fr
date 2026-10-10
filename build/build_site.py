@@ -7,8 +7,10 @@ Every page = one fragment in src/<lang>/<name>.html:
 
 Run: python build/build_site.py     (from the site folder or the workspace root)
 """
+import json
 import re
 import sys
+from html import unescape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -30,12 +32,12 @@ EMAIL = "contact@suivel.fr"
 NAV = {
     "fr": [("/offres/", "Offres et prix", "offres"),
            ("/outils/", "Outils gratuits", "outils"),
-           ("/realisations/", "Réalisations", "realisations"),
+           ("/realisations/", "Démos et projets", "realisations"),
            ("/a-propos/", "À propos", "a-propos"),
            ("/contact/", "Contact", "contact")],
     "en": [("/en/offers/", "Offers and prices", "offers"),
            ("/en/tools/", "Free tools", "tools"),
-           ("/en/work/", "Work", "work"),
+           ("/en/work/", "Demos and projects", "work"),
            ("/en/about/", "About", "about"),
            ("/en/contact/", "Contact", "contact")],
 }
@@ -69,7 +71,7 @@ FOOTER_LINKS = {
                    ("/offres/#offre-comptes-rendus", "Comptes rendus et tâches automatiques · 290&nbsp;€"),
                    ("/offres/#offre-assistant", "Assistant IA pour vos textes répétitifs · 149&nbsp;€"),
                    ("/offres/#suivi", "Suivi mensuel · 49&nbsp;€/mois")],
-        "studio": [("/realisations/", "Réalisations"), ("/a-propos/", "À propos"),
+        "studio": [("/realisations/", "Démos et projets"), ("/a-propos/", "À propos"),
                    ("/contact/", "Contact"), ("/en/", "English")],
     },
     "en": {
@@ -77,7 +79,7 @@ FOOTER_LINKS = {
                    ("/en/offers/#offer-meetings", "Automatic meeting notes and tasks · €290"),
                    ("/en/offers/#offer-assistant", "Custom AI assistant for repetitive writing · €149"),
                    ("/en/offers/#support", "Monthly support · €49/month")],
-        "studio": [("/en/work/", "Work"), ("/en/about/", "About"),
+        "studio": [("/en/work/", "Demos and projects"), ("/en/about/", "About"),
                    ("/en/contact/", "Contact"), ("/", "Français")],
     },
 }
@@ -104,7 +106,7 @@ SHELL = """<!doctype html>
 <meta name="twitter:image" content="{ogimage}">
 <meta name="twitter:image:alt" content="{ogimagealt}">
 <meta name="theme-color" content="#EFE7DB">
-<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+{jsonld}<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon-48.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/dm-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -192,6 +194,52 @@ PAGE_HEAD = """<div class="desk desk-page">
 """
 
 
+def offers_from_site():
+    """The three offers (anchor, name, price in euros) read from the French offers page, so the structured data
+    on the home page cannot drift from /offres/. Stops the build if the page layout changes."""
+    text = (SRC / "fr" / "offres.html").read_text(encoding="utf-8")
+    found = re.findall(r'<article class="sheet quote" id="(offre-[a-z-]+)".*?<h3 id="q\d">(.*?)</h3>'
+                       r'.*?<p class="quote-total"><span>Total</span><strong>(\d+)&nbsp;€</strong>', text, re.S)
+    if len(found) != 3:
+        sys.exit("offres.html: expected 3 offers for the JSON-LD, found {}".format(len(found)))
+    return [(anchor, unescape(name), int(price)) for anchor, name, price in found]
+
+
+def home_jsonld() -> str:
+    """JSON-LD for the French home page only: ProfessionalService (with the three offers) and WebSite.
+    Only facts that are on the site: no reviews, no ratings, no street address."""
+    offers = offers_from_site()
+    prices = [price for _, _, price in offers]
+    service = {
+        "@type": "ProfessionalService",
+        "@id": SITE + "#service",
+        "name": "Suivel",
+        "url": SITE,
+        "description": TEXT["fr"]["tagline"],
+        "image": OG_IMAGE,
+        "email": EMAIL,
+        "founder": {"@type": "Person", "name": "Mohamed Kanso"},
+        "address": {"@type": "PostalAddress", "addressLocality": "Montpellier", "postalCode": "34090",
+                    "addressCountry": "FR"},
+        "areaServed": {"@type": "Country", "name": "France"},
+        "knowsLanguage": ["fr", "en"],
+        "priceRange": "{} € – {} €".format(min(prices), max(prices)),
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Offres Suivel",
+            "itemListElement": [
+                {"@type": "Offer", "url": SITE + "offres/#" + anchor, "price": str(price), "priceCurrency": "EUR",
+                 "itemOffered": {"@type": "Service", "name": name}}
+                for anchor, name, price in offers],
+        },
+    }
+    website = {"@type": "WebSite", "@id": SITE + "#website", "url": SITE, "name": "Suivel", "inLanguage": "fr-FR",
+               "publisher": {"@id": SITE + "#service"}}
+    data = {"@context": "https://schema.org", "@graph": [service, website]}
+    return '<script type="application/ld+json">\n{}\n</script>\n'.format(
+        json.dumps(data, ensure_ascii=False, indent=1).replace("</", "<\\/"))
+
+
 def parse(fragment: str):
     m = re.match(r"<!--meta\n(.*?)\n-->\n", fragment, re.S)
     if not m:
@@ -274,7 +322,7 @@ def build_page(lang: str, fragment: str) -> tuple[Path, str, str | None]:
     extra = meta.get("script", "")
     extra_script = '\n<script src="{}" defer></script>'.format(extra) if extra else ""
     html = SHELL.format(
-        extra_script=extra_script,
+        extra_script=extra_script, jsonld=home_jsonld() if path == "index.html" else "",
         lang=lang, title=meta["title"], description=meta["description"],
         canonical=canonical, ogurl=ogurl, ogimage=OG_IMAGE, ogimagealt=OG_IMAGE_ALT[lang],
         alternates=alternates, oglocale="fr_FR" if lang == "fr" else "en_GB",
