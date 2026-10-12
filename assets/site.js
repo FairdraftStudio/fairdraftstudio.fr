@@ -2,6 +2,14 @@
 (function () {
   var fr = document.documentElement.lang !== 'en';
   var TO = 'contact@suivel.fr';
+  // A card about the site's AI assistant opens the chat instead of going to the contact page (its fallback link)
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('[data-open-chat]');
+    var launch = document.querySelector('.chat-launch');
+    if (!card || !launch) return;
+    e.preventDefault();
+    launch.click();
+  });
   var band = document.querySelector('.cta-band');
   var top = document.getElementById('top');
   if (band && top && 'IntersectionObserver' in window) {

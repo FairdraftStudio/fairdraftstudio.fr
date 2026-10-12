@@ -1,183 +1,297 @@
 <!--meta
-title: Automate invoice reminders and meeting notes · Suivel
-ogtitle: Small-business admin, automated
-description: Invoice reminders, meeting notes and repetitive writing, automated on your own tools for a fixed price. A one-person business in Montpellier, France.
+title: Automate your repetitive tasks, at a fixed price · Suivel
+ogtitle: Your repetitive tasks, automated
+description: Tell me what takes up your time every week and I'll automate it on your own tools, at a fixed price. Your first automation costs €99.
 path: en/index.html
 alt: index.html
 nav: home
+script: /assets/home.js
 -->
 <!--banner-->
 <div class="desk">
   <section class="hero wrap" aria-labelledby="hero-title">
-    <p class="eyebrow">Montpellier, France · remote, in English or French</p>
-    <h1 id="hero-title">Small-business admin, <span class="typed" style="--chars: 10"><span class="typed-text">automated.</span></span></h1>
+    <p class="eyebrow">For small businesses · Montpellier or remote, in English or French</p>
+    <h1 id="hero-title">Your repetitive tasks, <span class="typed" style="--chars: 10"><span class="typed-text">automated.</span></span></h1>
 
     <div class="hero-grid">
       <div class="hero-text">
-        <p class="lead">Invoice reminders, meeting notes, the documents you rewrite every week: I automate them on the tools you already use, at a fixed price agreed up front.</p>
+        <p class="lead">Tell me what takes up your time every week. I build the automation on your own tools, at a fixed price, and test it on your real examples before I hand it over.</p>
         <div class="hero-cta">
           <a class="btn" href="/en/offers/">See offers and prices</a>
           <a class="link-arrow" href="/en/contact/">Describe your task</a>
         </div>
         <ul class="hero-facts">
-          <li>Fixed price, agreed before we start</li>
+          <li>Price stated before we start</li>
           <li>Your accounts stay in your name</li>
           <li>Written reply within one working day</li>
         </ul>
+        <a class="latest" href="/outils/cout-taches-administratives/" hreflang="fr"><span class="latest-label">Latest free tool (in French)<span class="visually-hidden">:</span></span><span class="latest-name">What your repetitive tasks cost you</span></a>
       </div>
 
-      <figure class="demo" aria-labelledby="demo-cap">
-        <div class="sheet invoice">
-          <div class="inv-head">
-            <p class="inv-kind">Invoice</p>
-            <p class="inv-no">No. F-2026-031</p>
+      <figure class="machine" aria-labelledby="machine-cap">
+        <div class="m-bar">
+          <div class="m-tabs" role="tablist" aria-label="Examples of automated tasks">
+            <button type="button" role="tab" id="m-tab-1" aria-controls="m-panel-1" aria-selected="true">Meeting notes</button>
+            <button type="button" role="tab" id="m-tab-2" aria-controls="m-panel-2" aria-selected="false" tabindex="-1">Attachments</button>
+            <button type="button" role="tab" id="m-tab-3" aria-controls="m-panel-3" aria-selected="false" tabindex="-1">Website enquiries</button>
+            <button type="button" role="tab" id="m-tab-4" aria-controls="m-panel-4" aria-selected="false" tabindex="-1">Quotes to write</button>
           </div>
-          <dl class="inv-meta">
-            <div><dt>Issued</dt><dd>5 Oct 2026</dd></div>
-            <div><dt>Due</dt><dd>19 Oct 2026</dd></div>
-            <div><dt>Client</dt><dd>Cabinet Durand</dd></div>
-          </dl>
-          <table class="inv-lines">
-            <thead><tr><th scope="col">Description</th><th scope="col">Amount</th></tr></thead>
-            <tbody>
-              <tr><td>Training workshop (1 day)</td><td>€850.00</td></tr>
-              <tr><td>Training materials</td><td>€90.00</td></tr>
-            </tbody>
-            <tfoot><tr><th scope="row">Total</th><td>€940.00</td></tr></tfoot>
-          </table>
-          <div class="inv-foot"><p>Bank transfer, 14 days</p><p>VAT not applicable,</p><p>art. 293 B CGI</p></div>
-          <p class="stamp"><span>Paid</span><span>30 Oct 2026</span></p>
+          <button type="button" class="m-pause" hidden>Pause</button>
         </div>
 
-        <div class="followup">
-          <p class="log-title">Automatic follow-up</p>
-          <ol class="log">
-            <li style="--i: 0"><time datetime="2026-10-05">Mon 5 Oct</time>Invoice sent to the client.</li>
-            <li style="--i: 1"><time datetime="2026-10-22">Thu 22 Oct</time>3 days overdue: first reminder, polite.
-              <blockquote class="mail">“Just a quick note: invoice F-2026-031 from 5 October is still outstanding…”</blockquote></li>
-            <li style="--i: 2"><time datetime="2026-10-29">Thu 29 Oct</time>Still unpaid: second reminder, firmer.</li>
-            <li style="--i: 3" class="is-paid"><time datetime="2026-10-30">Fri 30 Oct</time>Payment received: the reminders stop.</li>
-          </ol>
+        <div class="m-stage kb-skip">
+          <div class="m-panel" role="tabpanel" id="m-panel-1" aria-labelledby="m-tab-1">
+            <div class="m-before">
+              <p class="m-label">Before</p>
+              <div class="m-scrap">
+                <p>mtg Cabinet Durand</p>
+                <p>website quote → me, friday?</p>
+                <p><s>call</s> Paul chase supplier</p>
+                <p>next meeting??</p>
+              </div>
+            </div>
+            <p class="m-pipe"><span class="m-dot" aria-hidden="true"></span><span class="m-via">Your notes <span aria-hidden="true">→</span> Trello</span></p>
+            <div class="m-after sheet">
+              <p class="m-label">After</p>
+              <p class="m-title">Meeting summary</p>
+              <table class="m-table">
+                <thead><tr><th scope="col">Task</th><th scope="col">Who, by when</th></tr></thead>
+                <tbody>
+                  <tr><td>Send the website quote</td><td>You, Friday</td></tr>
+                  <tr><td>Chase the supplier</td><td>Paul, to confirm</td></tr>
+                  <tr><td>Next meeting</td><td>To confirm</td></tr>
+                </tbody>
+              </table>
+              <p class="m-note">Recap email saved as a draft</p>
+              <p class="stamp"><span>Ready</span><span>to check</span></p>
+            </div>
+            <p class="m-offer">Offer: <a href="/en/offers/#offer-meetings">Automatic meeting notes and tasks, €299</a></p>
+          </div>
+
+          <div class="m-panel" role="tabpanel" id="m-panel-2" aria-labelledby="m-tab-2" hidden>
+            <div class="m-before">
+              <p class="m-label">Before</p>
+              <ul class="m-inbox">
+                <li><b>Roux Printing</b><span>Invoice_0923.pdf</span></li>
+                <li><b>Your bank</b><span>Statement_September.pdf</span></li>
+                <li><b>Ms&nbsp;Leroy</b><span>Purchase_order.pdf</span></li>
+              </ul>
+            </div>
+            <p class="m-pipe"><span class="m-dot" aria-hidden="true"></span><span class="m-via">Gmail <span aria-hidden="true">→</span> Google Drive</span></p>
+            <div class="m-after sheet">
+              <p class="m-label">After</p>
+              <p class="m-title">Google Drive</p>
+              <ul class="m-tree">
+                <li><span class="m-folder">Suppliers / October</span><span>Invoice_0923.pdf</span></li>
+                <li><span class="m-folder">Bank / Statements</span><span>Statement_September.pdf</span></li>
+                <li><span class="m-folder">Clients / Leroy</span><span>Purchase_order.pdf</span></li>
+              </ul>
+              <p class="m-note">Every attachment in its folder, as soon as it arrives</p>
+              <p class="stamp"><span>Filed</span><span>in Drive</span></p>
+            </div>
+            <p class="m-offer">Offer: <a href="/en/offers/#offer-first-automation">Your first automation, €99</a></p>
+          </div>
+
+          <div class="m-panel" role="tabpanel" id="m-panel-3" aria-labelledby="m-tab-3" hidden>
+            <div class="m-before">
+              <p class="m-label">Before</p>
+              <div class="m-mail">
+                <p class="m-mail-from">New message from your website</p>
+                <p>Name: Claire Petit</p>
+                <p>Project: three doors</p>
+                <p>Request: a quote for three interior doors, fitted before December.</p>
+              </div>
+            </div>
+            <p class="m-pipe"><span class="m-dot" aria-hidden="true"></span><span class="m-via">Form <span aria-hidden="true">→</span> Google Sheets</span></p>
+            <div class="m-after sheet">
+              <p class="m-label">After</p>
+              <p class="m-title">Client requests</p>
+              <table class="m-table m-grid">
+                <thead><tr><th scope="col">Name</th><th scope="col">Request</th><th scope="col">Next</th></tr></thead>
+                <tbody>
+                  <tr class="is-old"><td>Mr&nbsp;Garcia</td><td>Living-room window</td><td>Quote sent</td></tr>
+                  <tr class="is-new"><td>Claire Petit</td><td>Three doors</td><td>Call back</td></tr>
+                </tbody>
+              </table>
+              <p class="m-note">One row per request, nothing typed twice</p>
+              <p class="stamp"><span>Added</span><span>to the sheet</span></p>
+            </div>
+            <p class="m-offer">Offer: <a href="/en/offers/#offer-first-automation">Your first automation, €99</a></p>
+          </div>
+
+          <div class="m-panel" role="tabpanel" id="m-panel-4" aria-labelledby="m-tab-4" hidden>
+            <div class="m-before">
+              <p class="m-label">Before</p>
+              <div class="m-scrap">
+                <p>Leroy kitchen</p>
+                <p>oak top 3&nbsp;m → 840</p>
+                <p>fitting 2 days → 640</p>
+                <p>steel sink + tap??</p>
+              </div>
+            </div>
+            <p class="m-pipe"><span class="m-dot" aria-hidden="true"></span><span class="m-via">Your notes <span aria-hidden="true">→</span> the assistant</span></p>
+            <div class="m-after sheet">
+              <p class="m-label">After</p>
+              <p class="m-title">Quote: Leroy kitchen</p>
+              <table class="m-table">
+                <thead><tr><th scope="col">Item</th><th scope="col">Amount</th></tr></thead>
+                <tbody>
+                  <tr><td>Oak worktop, 3&nbsp;m</td><td>€840</td></tr>
+                  <tr><td>Fitting (2 days)</td><td>€640</td></tr>
+                  <tr><td>Stainless sink and tap</td><td>[to fill in]</td></tr>
+                </tbody>
+              </table>
+              <p class="m-note">The missing price is flagged, not made up</p>
+              <p class="stamp"><span>Ready</span><span>to check</span></p>
+            </div>
+            <p class="m-offer">Offer: <a href="/en/offers/#offer-assistant">Custom AI assistant for repetitive writing, €149</a></p>
+          </div>
         </div>
-        <figcaption id="demo-cap">Illustrative example: what the “Automatic invoice reminders” offer does.</figcaption>
+        <figcaption id="machine-cap">Fictional examples, on everyday tools. Pick a task to see the before and after.</figcaption>
       </figure>
     </div>
   </section>
 </div>
 <!--/banner-->
-  <section class="tiles-section" aria-labelledby="tiles-title">
+  <section class="shelf" aria-labelledby="shelf-title">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Services</p>
-        <h2 id="tiles-title">Three tasks I can automate for you</h2>
-        <p>Everything runs on your own tools, so you stay in control.</p>
+      <div class="section-head">
+        <h2 id="shelf-title">Try what I've already built</h2>
+        <p>Free, with no account to create: open one and it works straight away (the tools are in French).</p>
       </div>
-      <div class="tiles">
-        <a class="sheet tile reveal" style="--i: 0" href="/en/offers/#offer-reminders">
-          <p class="tile-kicker">Quote no. 01 · €390</p>
-          <h3>Automatic invoice reminders</h3>
-          <p>Your invoices are tracked automatically. Reminders go out in your tone of voice and stop as soon as the client pays.</p>
-          <span class="tile-more">See the details</span>
-        </a>
-        <a class="sheet tile reveal" style="--i: 1" href="/en/offers/#offer-meetings">
-          <p class="tile-kicker">Quote no. 02 · €290</p>
-          <h3>Automatic meeting notes and tasks</h3>
-          <p>Your meeting notes become a clear summary, a recap email for you to check, and tasks in the tool you already use.</p>
-          <span class="tile-more">See the details</span>
-        </a>
-        <a class="sheet tile reveal" style="--i: 2" href="/en/offers/#offer-assistant">
-          <p class="tile-kicker">Quote no. 03 · €149</p>
-          <h3>Custom AI assistant for repetitive writing</h3>
-          <p>An assistant that drafts the same kind of document for you every week, in your format and in your words.</p>
-          <span class="tile-more">See the details</span>
-        </a>
-      </div>
+      <ul class="cards">
+        <li><a class="card" href="/outils/cout-taches-administratives/" hreflang="fr">
+          <span class="card-top"><span class="io"><span>Your tasks</span><span>Hours and euros a year</span></span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#clock"/></svg></span>
+          <h3>What your repetitive tasks cost you</h3>
+          <p>The hours that recurring tasks take from you each year and, if you like, what they cost in euros. Nothing leaves your browser.</p>
+          <span class="card-more">Open the tool</span>
+        </a></li>
+        <li><a class="card" href="/outils/notes-en-taches/" hreflang="fr">
+          <span class="card-top"><span class="io"><span>Rough notes</span><span>Tasks and email</span></span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#notes"/></svg></span>
+          <h3>Meeting notes to tasks</h3>
+          <p>The decisions, who does what by when, and a recap email. Your text is processed by an AI.</p>
+          <span class="card-more">Open the tool</span>
+        </a></li>
+        <li><a class="card" href="/en/contact/" data-open-chat>
+          <span class="card-top"><span class="io"><span>Your question</span><span>An answer from the site</span></span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg></span>
+          <h3>This site's AI assistant</h3>
+          <p>Ask it about the offers, prices or how a project runs: it answers from the site's pages, without making up a price or a timeline.</p>
+          <span class="card-more">Ask it a question</span>
+        </a></li>
+      </ul>
+      <p class="shelf-more"><a class="link-arrow" href="/en/work/">All projects</a></p>
     </div>
   </section>
 
-  <section class="fe" aria-labelledby="fe-title">
-    <div class="wrap fe-grid">
+  <section class="how" id="how" aria-labelledby="how-title">
+    <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">E-invoicing in France</p>
-        <h2 id="fe-title">E-invoicing is becoming mandatory in France</h2>
-        <p>It covers invoices between businesses, including micro-businesses. A good moment to put your whole quote, invoice and reminder cycle in order.</p>
+        <h2 id="how-title">Stay in control at every step</h2>
       </div>
-      <div>
-        <ol class="fe-dates">
+      <div class="how-grid">
+      <aside class="sheet id-card who">
+        <img class="id-photo" src="/assets/img/mohamed.jpg" alt="Mohamed Kanso" width="640" height="640" loading="lazy">
+        <p class="id-name">Mohamed Kanso</p>
+        <p class="id-role">Sole trader (micro-entrepreneur), Montpellier</p>
+        <p class="who-line">From 2023 to 2026, my job was to spot where an AI gets things wrong. In my automations, anything missing is flagged rather than made up.</p>
+        <a class="link-arrow" href="/en/about/">My background</a>
+      </aside>
+      <div class="how-text">
+        <ol class="steps">
           <li>
-            <p class="fe-date"><time datetime="2026-09-01">1 Sept 2026</time></p>
-            <div>
-              <strong>Receiving</strong>
-              <p>Every business, whatever its size, must be able to receive invoices electronically.</p>
-              <span class="tag">In force</span>
-            </div>
+            <h3>You describe the task</h3>
+            <p class="when">A few lines</p>
+            <p>Through the contact form or by email: what you do, which tools you use and how often.</p>
           </li>
           <li>
-            <p class="fe-date"><time datetime="2027-09-01">1 Sept 2027</time></p>
-            <div>
-              <strong>Sending</strong>
-              <p>SMEs and micro-businesses will also have to send their invoices to other businesses electronically, through an approved platform (<i lang="fr">plateforme agréée</i>).</p>
-              <span class="tag tag-next">Coming up</span>
-            </div>
+            <h3>I call you, if it helps</h3>
+            <p class="when">20 minutes, free</p>
+            <p>No obligation, once I've read your message: we look together at how you work today.</p>
+          </li>
+          <li>
+            <h3>You get a written quote</h3>
+            <p class="when">Within one working day</p>
+            <p>The price, the timeline, what is included and what isn't. It's a flat fee: it doesn't change along the way.</p>
+          </li>
+          <li>
+            <h3>I set it up and test it</h3>
+            <p class="when">2 to 5 working days</p>
+            <p>On your own accounts, which you connect yourself. Then you get a written guide and, with the €299 offers, a short handover video.</p>
           </li>
         </ol>
-        <p class="fe-link"><a class="link-arrow" href="/outils/facture-electronique/" hreflang="fr">See your dates and invoice changes in four questions (French)</a></p>
-        <p class="fine">Source: <a href="https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation" hreflang="fr">impots.gouv.fr</a> (in French). Suivel is not an approved platform and does not transmit your invoices. I set up your tools and reminders around the platform you choose.</p>
+      </div>
       </div>
     </div>
   </section>
 
-  <section class="proof" aria-labelledby="proof-title">
-    <div class="wrap proof-grid">
-      <div class="section-head reveal">
-        <p class="eyebrow">Demos and projects</p>
-        <h2 id="proof-title">What I've built so far</h2>
-        <p>Public tools you can open and test yourself.</p>
-        <p class="reveal"><a class="link-arrow" href="/en/work/">See demos and projects</a></p>
-        <p class="reveal"><a class="link-arrow" href="/en/work/#demos">Watch the two demos (in French)</a></p>
-      </div>
-      <div>
-        <ul class="proof-list">
-          <li class="reveal" style="--i: 0"><strong>Free tools on this site</strong> (in French): a reminder-letter generator (a polite reminder, a firmer follow-up or a formal demand letter), a batch helper for unpaid invoices (days late, the €40 recovery fee for business clients, a reminder text for each) and a tool that gives a business in France its e-invoicing dates and the mentions to add to its invoices.</li>
-          <li class="reveal" style="--i: 1"><strong>An invoice checker</strong>, free and in French, published on Agensi: it lists the mandatory invoice mentions that are present, missing or to check, each with its official source.</li>
-          <li class="reveal" style="--i: 2"><strong>Twenty writing assistants</strong> published on Agensi for freelancers: proposals, call summaries, monthly reports, invoice follow-ups, procedures. Four are free.</li>
-          <li class="reveal" style="--i: 3"><strong>An open-source assistant</strong> on GitHub, under the MIT licence, that turns call notes into an action list with an owner and a date on every line.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="method" id="how" aria-labelledby="how-title">
+  <section class="pick" id="prices" aria-labelledby="pick-title">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">How it works</p>
-        <h2 id="how-title">Four steps, and you stay in control</h2>
+        <h2 id="pick-title">Start with a single task</h2>
+        <p>The price depends on what the task involves. It's fixed, and the quote spells out what's included.</p>
       </div>
-      <ol class="steps">
-        <li>
-          <h3>You describe the task</h3>
-          <p>Through the contact form or by email. A few lines are enough.</p>
+      <ul class="tiers">
+        <li class="sheet tier">
+          <p class="tier-kind">One task, two tools</p>
+          <h3>Your first automation</h3>
+          <p class="tier-price"><strong>€99</strong><span>5 working days</span></p>
+          <p class="tier-for">One repetitive task between two of your tools, without AI. For example:</p>
+          <ul class="tier-list">
+            <li>Filing your email attachments in the right folder</li>
+            <li>Copying your form enquiries into a spreadsheet</li>
+            <li>Emailing your clients a reminder the day before their appointment</li>
+            <li>Adding a task to your Trello or Todoist when a client emails you</li>
+          </ul>
+          <p class="tier-cost">A free tool when one is enough.</p>
+          <a class="tier-more" href="/en/offers/#offer-first-automation">See the detailed quote</a>
         </li>
-        <li>
-          <h3>I'll call you, if useful</h3>
-          <p>After reading your message: 20 minutes, free, no obligation. We look at how you work today and which tools you use.</p>
+        <li class="sheet tier">
+          <p class="tier-kind">An AI assistant</p>
+          <h3>Custom AI assistant for repetitive writing</h3>
+          <p class="tier-price"><strong>€149</strong><span>2 working days</span></p>
+          <p class="tier-for">An assistant that always writes the same kind of document from what you give it, in your format and in your words. For example:</p>
+          <ul class="tier-list">
+            <li>Your quotes, from your notes</li>
+            <li>Your monthly client reports</li>
+            <li>Your answers to questions that keep coming back</li>
+            <li>Your internal procedures</li>
+          </ul>
+          <p class="tier-cost">Claude subscription in your name, paid separately.</p>
+          <a class="tier-more" href="/en/offers/#offer-assistant">See the detailed quote</a>
         </li>
-        <li>
-          <h3>A written quote</h3>
-          <p>Within one working day: a fixed price, a timeline, and exactly what is and isn't included.</p>
+        <li class="sheet tier">
+          <p class="tier-kind">Several tools, with or without AI</p>
+          <h3>A multi-step automation</h3>
+          <p class="tier-price"><strong>€299</strong><span>5 working days</span></p>
+          <p class="tier-for">Several tools working in sequence, with a handover video. For example:</p>
+          <ul class="tier-list">
+            <li>Your meeting notes turned into a summary, a recap email and tasks</li>
+            <li>A booking request that fills your calendar and sends the confirmation</li>
+            <li>Incoming requests sorted by type, each with a draft reply</li>
+            <li>Every Monday, one email with your pending quotes, tasks and the week's meetings</li>
+          </ul>
+          <p class="tier-cost">Tools and AI in your name, paid separately.</p>
+          <a class="tier-more" href="/en/offers/#offer-meetings">See the detailed quotes</a>
         </li>
-        <li>
-          <h3>Set-up and handover</h3>
-          <p>On your own accounts, which you connect yourself. You get a written guide and, depending on the offer, a short video.</p>
-        </li>
-      </ol>
+      </ul>
+      <p class="tiers-foot">VAT not applicable, art. 293 B of the French tax code. Another task? <a href="/en/contact/">Describe it</a> and I'll tell you whether it's feasible, and at what price.</p>
+    </div>
+  </section>
+
+  <section class="faq faq-home" id="questions" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="faq-title">Find your answers before you start</h2>
+      </div>
+      <div class="qa">
+<!--include: faq-->
+      </div>
     </div>
   </section>
 
   <section class="cta-band" aria-labelledby="cta-title">
     <div class="wrap cta-inner">
       <div>
-        <p class="eyebrow">Contact</p>
         <h2 id="cta-title">Tell me what's taking up your time</h2>
         <p>A few lines are enough. I'll reply in writing within one working day: what can be automated, and how.</p>
       </div>

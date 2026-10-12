@@ -1,96 +1,76 @@
 <!--meta
-title: Demos and projects: free tools, writing assistants · Suivel
+title: Projects: free tools, writing assistants · Suivel
 ogtitle: What I've built, and where to see it
-description: Tools by Suivel: a free e-invoicing tool and reminder-letter generator (in French), an invoice checker, twenty writing assistants on Agensi, one on GitHub.
+description: Free admin tools (in French), this site's AI assistant, writing assistants on Agensi and an open-source assistant on GitHub.
 path: en/work/index.html
 alt: realisations/index.html
 nav: work
-kicker: Demos and projects
+kicker: Projects
 h1: What I've built, and where to see it
 intro: Here is what I have published, with links so you can check everything.
 -->
   <section class="work" aria-label="Published work">
-    <div class="wrap work-list">
-      <article class="sheet work-item reveal" style="--i: 0">
-        <p class="work-tag">Online tool · free · in French</p>
-        <h2>E-invoicing in France: your dates and invoice changes</h2>
-        <p>Four questions about your business: the tool shows its dates to receive and then issue e-invoices, the new mentions to add to its invoices and what to prepare. Every rule comes from an official page, cited under the result.</p>
-        <a class="link-arrow" href="/outils/facture-electronique/" hreflang="fr">Open the tool (French)</a>
-      </article>
-      <article class="sheet work-item reveal" style="--i: 1">
-        <p class="work-tag">Assistant · free · in French</p>
-        <h2>Invoice checker (Vérificateur de facture)</h2>
-        <p>Paste an invoice: it lists the mandatory mentions under French rules that are present, missing or to check, including the four new e-invoicing ones, each with its official reference and the text to add.</p>
-        <p class="work-meta">Tested on four fictional invoices before publication. Every rule points to the official page it comes from, with the date it was read. Installs in Claude.</p>
-        <a class="link-arrow" href="https://www.agensi.io/skills/v-rificateur-de-facture">See it on Agensi</a>
-      </article>
-      <article class="sheet work-item reveal" style="--i: 2">
-        <p class="work-tag">Online tool · free · in French</p>
-        <h2>Reminder-letter generator</h2>
-        <p>A polite reminder, a firmer follow-up or a formal demand letter (<i lang="fr">mise en demeure</i>) citing the French Commercial Code, drafted in a minute. No sign-up, and nothing you type into it leaves your browser.</p>
-        <p class="work-meta">It is the manual version of the Automatic invoice reminders offer: a good way to see how I write these letters before trusting me with the follow-up.</p>
-        <a class="link-arrow" href="/outils/lettre-de-relance/" hreflang="fr">Open the tool (French)</a>
-      </article>
-      <article class="sheet work-item reveal" style="--i: 3">
-        <p class="work-tag">Online tool · free · in French</p>
-        <h2>Batch reminders for unpaid invoices</h2>
-        <p>Paste your unpaid invoices from a spreadsheet: for each one, the days late, the reminder level, the flat €40 recovery fee for business clients and a reminder text ready to copy. Nothing you type into it leaves your browser.</p>
-        <a class="link-arrow" href="/outils/relances-en-lot/" hreflang="fr">Open the tool (French)</a>
-      </article>
-      <article class="sheet work-item reveal" style="--i: 3">
-        <p class="work-tag">Open source · free</p>
-        <h2>Call Notes to Actions</h2>
-        <p>An assistant that turns raw call notes into an action list: one line per action, with an owner and a date. Anything not said on the call is marked “to confirm” instead of being made up.</p>
-        <p class="work-meta">MIT licence, installs in Claude. It shows how I work: its instructions are public and readable by anyone.</p>
-        <a class="link-arrow" href="https://github.com/FairdraftStudio/call-notes-to-actions-skill">See it on GitHub</a>
-      </article>
-      <article class="sheet work-item reveal" style="--i: 4">
-        <p class="work-tag">Twenty assistants · four free</p>
-        <h2>Writing assistants for client work</h2>
-        <p>Proposals, scopes of work, session summaries, monthly reports, invoice follow-ups, internal procedures: twenty assistants published on Agensi for freelancers, coaches, social media managers and virtual assistants.</p>
-        <p class="work-meta">Each one has been run on its worked example and fixed where the result wasn't right.</p>
-        <a class="link-arrow" href="https://www.agensi.io/creators/suivel">See them on Agensi</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="demos" id="demos" aria-labelledby="demos-title">
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Demos</p>
-        <h2 id="demos-title">Two demos on video</h2>
-        <p>They show what the “Automatic invoice reminders” and “Automatic meeting notes and tasks” offers do, using the data of a fictional business (Atelier Exemple) and a test mailbox: no email went out over the internet. The videos are in French, silent, with French captions.</p>
-      </div>
-      <div class="demo-list">
-        <article class="demo-item reveal" style="--i: 0">
-          <div class="demo-text">
-            <h3>Overdue invoice reminders</h3>
-            <p>Six fake invoices. Depending on how late each one is, the automation sends a friendly reminder or a firmer follow-up, and it prepares a formal demand letter (<i lang="fr">mise en demeure</i>) for the business's manager: she checks it and sends it herself by registered post. The automation never sends that letter on its own.</p>
-            <p>It is set up to run by itself Monday to Friday at 9:00; for the demo, I started it by hand.</p>
-          </div>
-          <figure class="demo-video">
-            <video controls preload="none" playsinline poster="/assets/video/relances-poster.png" aria-label="Demo of the overdue invoice reminders, silent, with French captions">
-              <source src="/assets/video/relances.mp4" type="video/mp4">
-              <p>Your browser cannot play this video. <a href="/assets/video/relances.mp4">Open the video file</a> (MP4, 47 s).</p>
-            </video>
-            <figcaption>Demo on fictional data, 47 s, no sound, in French with captions: 6 fake invoices, 4 emails in a test mailbox, none actually sent.</figcaption>
-          </figure>
-        </article>
-        <article class="demo-item reveal" style="--i: 1">
-          <div class="demo-text">
-            <h3>From meeting notes to tasks</h3>
-            <p>From the raw notes of an invented team meeting, Claude (an AI) pulls out the tasks. Each task gets an owner and, when the notes give one, a date. An idea that is too vague stays visible, marked “À définir” (“to be defined”), instead of getting lost. The tasks are added to an Excel table, and the meeting summary is emailed to the three team members.</p>
-            <p>I started it by hand for the demo. Claude takes about 43 seconds to read the notes: in the video, that wait is sped up eight times and labelled on screen. The task table is redrawn from the Excel file this run wrote.</p>
-          </div>
-          <figure class="demo-video">
-            <video controls preload="none" playsinline poster="/assets/video/comptes-rendus-poster.png" aria-label="Demo of meeting notes turned into tasks, silent, with French captions">
-              <source src="/assets/video/comptes-rendus.mp4" type="video/mp4">
-              <p>Your browser cannot play this video. <a href="/assets/video/comptes-rendus.mp4">Open the video file</a> (MP4, 38 s).</p>
-            </video>
-            <figcaption>Demo on fictional data, 38 s, no sound, in French with captions: invented notes, test mailbox, Claude's wait sped up (×8).</figcaption>
-          </figure>
-        </article>
-      </div>
+      <ul class="cards cards-2">
+        <li><a class="card" href="/outils/cout-taches-administratives/" hreflang="fr">
+          <span class="card-top"><span class="chip">Online tool, free, in French</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#clock"/></svg></span>
+          <h2>What your repetitive tasks cost you</h2>
+          <p>List the tasks that keep coming back, with their minutes and how often they happen: the tool works out the hours they take each year and, with your hourly rate, what they cost in euros. Nothing you type leaves your browser.</p>
+          <span class="card-more">Open the tool (French)</span>
+        </a></li>
+        <li><a class="card" href="/outils/notes-en-taches/" hreflang="fr">
+          <span class="card-top"><span class="chip">Online tool, free, in French</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#notes"/></svg></span>
+          <h2>Meeting notes to tasks</h2>
+          <p>Paste your meeting or call notes as they are: you get the decisions, who does what by when, the points to confirm and a recap email to copy. A name or a deadline that isn't in your notes becomes “à confirmer” (to be confirmed). Your text is sent to an AI to be processed.</p>
+          <span class="card-more">Open the tool (French)</span>
+        </a></li>
+        <li><a class="card" href="/en/contact/" data-open-chat>
+          <span class="card-top"><span class="chip">AI assistant, on every page</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg></span>
+          <h2>This site's AI assistant</h2>
+          <p>Ask it about the offers, prices or how a project runs: it answers from the site's pages, without making up a price or a timeline.</p>
+          <span class="card-more">Ask it a question</span>
+        </a></li>
+        <li><a class="card" href="/outils/relances-en-lot/" hreflang="fr">
+          <span class="card-top"><span class="chip">Online tool, free, in French</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#stack"/></svg></span>
+          <h2>Batch reminders for unpaid invoices</h2>
+          <p>Paste your unpaid invoices from a spreadsheet: for each one, the days late, the reminder level, the flat €40 recovery fee for business clients and a reminder text ready to copy. Nothing you type into it leaves your browser.</p>
+          <span class="card-more">Open the tool (French)</span>
+        </a></li>
+        <li><a class="card" href="/outils/lettre-de-relance/" hreflang="fr">
+          <span class="card-top"><span class="chip">Online tool, free, in French</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#letter"/></svg></span>
+          <h2>Late-payment letter for an unpaid invoice</h2>
+          <p>A polite reminder, a firm reminder or a formal notice (<i lang="fr">mise en demeure</i>) citing the French Commercial Code, drafted in a minute. No sign-up, and nothing you type into it leaves your browser.</p>
+          <p class="card-meta">It is the manual version of an automated reminder follow-up: a good way to see how I write these letters before trusting me with the follow-up.</p>
+          <span class="card-more">Open the tool (French)</span>
+        </a></li>
+        <li><a class="card" href="/outils/facture-electronique/" hreflang="fr">
+          <span class="card-top"><span class="chip">Online tool, free, in French</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#calendar"/></svg></span>
+          <h2>E-invoicing in France: your dates and invoice details</h2>
+          <p>Four questions about your business: the tool shows its dates to receive and then issue e-invoices, the new required invoice details to add and what to prepare. Every rule comes from an official page, cited under the result.</p>
+          <span class="card-more">Open the tool (French)</span>
+        </a></li>
+        <li><a class="card" href="https://www.agensi.io/skills/v-rificateur-de-facture">
+          <span class="card-top"><span class="chip">On Agensi, free, in French</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#check-doc"/></svg></span>
+          <h2>Invoice checker (Vérificateur de facture)</h2>
+          <p>Paste an invoice: it lists which invoice details required under French rules are present, missing or to check, including the four new e-invoicing ones, each with its official reference and the text to add.</p>
+          <p class="card-meta">Tested on four fictional invoices before publication. Every rule points to the official page it comes from, with the date it was read. Installs in Claude.</p>
+          <span class="card-more">See it on Agensi</span>
+        </a></li>
+        <li><a class="card" href="https://www.agensi.io/creators/suivel">
+          <span class="card-top"><span class="chip">On Agensi, free and paid</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#pen"/></svg></span>
+          <h2>Writing assistants for client work</h2>
+          <p>Proposals, scopes of work, session summaries, monthly reports, invoice follow-ups, internal procedures: assistants published on Agensi for freelancers, coaches, social media managers and virtual assistants.</p>
+          <p class="card-meta">Each one has been run on its worked example and fixed where the result wasn't right.</p>
+          <span class="card-more">See them on Agensi</span>
+        </a></li>
+        <li><a class="card" href="https://github.com/FairdraftStudio/call-notes-to-actions-skill">
+          <span class="card-top"><span class="chip">On GitHub, open source</span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#code"/></svg></span>
+          <h2>Call Notes to Actions</h2>
+          <p>An assistant that turns raw call notes into an action list: one line per action, with an owner and a date. Anything not said on the call is marked “to confirm” instead of being made up.</p>
+          <p class="card-meta">MIT licence, installs in Claude. It shows how I work: its instructions are public and readable by anyone.</p>
+          <span class="card-more">See it on GitHub</span>
+        </a></li>
+      </ul>
     </div>
   </section>
 

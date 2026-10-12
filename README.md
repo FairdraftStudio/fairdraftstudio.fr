@@ -19,6 +19,9 @@ The services site: French, with English pages under `/en/`. Static HTML, CSS and
 | `/contact/` | `src/fr/contact.html` |
 | `/outils/`, `/outils/lettre-de-relance/` (free tool; script `assets/relance.js`) | `src/fr/outils.html`, `src/fr/outils-lettre-de-relance.html` |
 | `/outils/facture-electronique/` (free e-invoicing checker; script `assets/facture-electronique.js`) | `src/fr/outils-facture-electronique.html` |
+| `/outils/relances-en-lot/` (free batch reminders for unpaid invoices; script `assets/relances-lot.js`, tests `tests/relances-lot.test.js`) | `src/fr/outils-relances-en-lot.html` |
+| `/outils/notes-en-taches/` (free meeting notes to tasks; the text goes to the Worker route `/notes`, then Anthropic; script `assets/notes-taches.js`, tests `tests/notes-taches.test.js`) | `src/fr/outils-notes-en-taches.html` |
+| `/outils/cout-taches-administratives/` (free calculator: hours and euros a year spent on repetitive tasks; in the browser, nothing sent; script `assets/cout-taches.js`, tests `tests/cout-taches.test.js`) | `src/fr/outils-cout-taches.html` |
 | `/mentions-legales.html`, `/confidentialite.html`, `/cgv.html` | `src/fr/…` |
 | `/en/`, `/en/offers/`, `/en/tools/`, `/en/work/`, `/en/about/`, `/en/contact/` | `src/en/…` |
 | 404 page (GitHub Pages serves `/404.html` for any unknown address; `robots: noindex` in its meta block) | `src/fr/404.html` |
@@ -28,7 +31,7 @@ The builder also writes `sitemap.xml` (every page except the 404) and `robots.tx
 ## What is published
 GitHub Pages builds this folder with Jekyll, and `_config.yml` lists what it leaves out of the website: `README.md`, `src/` and `build/`. So `suivel.fr/src/…` and `/README.md` answer with the 404 page. This does not hide those files inside a public repository. Do not add a `.nojekyll` file: it switches `_config.yml` off.
 
-Demo videos: the `#demos` section of `src/fr/realisations.html` and `src/en/work.html` (files in `assets/video/`; the home pages link to `#demos`, the menu does not). No autoplay, no third-party player; the text beside each video must match what the video shows.
+Demo videos: removed from /realisations/ on 11 Oct 2026 (they showed the old name « Fairdraft Studio » and the n8n back end; owner: not acceptable). Files kept outside the site in `Brainstorm/demos/site-videos-2026-09/`. A new demo shows what the client sees, never the back end; no autoplay, no third-party player, and the text beside it must match what it shows.
 
 The builder also adds the `reveal` class (fade-in on scroll) to section heads, quote sheets, steps and list items, so fragments stay free of motion markup.
 

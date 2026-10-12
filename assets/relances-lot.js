@@ -447,14 +447,14 @@ if (typeof module !== 'undefined' && module.exports) module.exports = RelancesLo
 
     // summary
     var stats = el('dl', { class: 'rl-stats' });
-    stats.appendChild(stat('Factures en retard', String(s.lateCount), s.pendingCount ? plural(s.pendingCount, 'autre facture pas encore échue', 'autres factures pas encore échues') + ', non comptées' : ''));
+    stats.appendChild(stat('Factures en retard', String(s.lateCount), s.pendingCount ? plural(s.pendingCount, 'autre facture pas encore échue, non comptée', 'autres factures pas encore échues, non comptées') : ''));
     stats.appendChild(stat('Total dû (TTC)', RL.formatEuros(s.totalDueCents)));
     stats.appendChild(stat('Indemnités de 40 €', RL.formatEuros(s.feesCents), s.feeCount ? plural(s.feeCount, 'facture', 'factures') + ', clients professionnels' : 'aucun client professionnel en retard'));
     stats.appendChild(stat('Pénalités estimées', s.penaltiesCents === null ? 'taux non saisi' : RL.formatEuros(s.penaltiesCents), s.penaltiesCents === null ? (s.feeCount ? 'saisissez votre taux plus haut' : '') : 'estimation'));
     stats.appendChild(stat('Total à réclamer', RL.formatEuros(s.totalClaimCents), 'estimation, hors frais éventuels'));
     out.appendChild(el('div', { class: 'sheet rl-block' }, [
       el('p', { class: 'form-head', text: 'Résumé au ' + RL.frenchDate(today) }), stats,
-      s.privateLateCount ? el('p', { class: 'rl-small', text: plural(s.privateLateCount, 'facture est celle', 'factures sont celles') + ' d\'un particulier : ni indemnité de 40 € ni pénalités calculées.' }) : el('span')
+      s.privateLateCount ? el('p', { class: 'rl-small', text: plural(s.privateLateCount, 'facture d\'un client particulier', 'factures de clients particuliers') + ' : ni indemnité de 40 € ni pénalités calculées.' }) : el('span')
     ]));
 
     // detail table

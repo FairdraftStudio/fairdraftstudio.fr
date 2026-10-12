@@ -1,181 +1,296 @@
 <!--meta
-title: Automatiser l'administratif des petites entreprises · Suivel
-ogtitle: L'administratif des petites entreprises, automatisé
-description: Relances de factures, comptes rendus, textes répétitifs&nbsp;: automatisations à prix fixe sur vos outils. Micro-entreprise à Montpellier, partout en France.
+title: Automatiser vos tâches répétitives, à prix fixe · Suivel
+ogtitle: Vos tâches répétitives, automatisées
+description: Vous me dites ce qui vous prend du temps chaque semaine&nbsp;; je l'automatise sur vos propres outils, à prix fixe. Première automatisation à 99&nbsp;€.
 path: index.html
 nav: accueil
+script: /assets/home.js
 -->
 <!--banner-->
 <div class="desk">
   <section class="hero wrap" aria-labelledby="hero-title">
-    <p class="eyebrow">Montpellier · à distance, partout en France</p>
-    <h1 id="hero-title">L'administratif des petites entreprises, <span class="typed" style="--chars: 11"><span class="typed-text">automatisé.</span></span></h1>
+    <p class="eyebrow">Pour les petites entreprises · Montpellier et à distance</p>
+    <h1 id="hero-title">Vos tâches répétitives, <span class="typed" style="--chars: 13"><span class="typed-text">automatisées.</span></span></h1>
 
     <div class="hero-grid">
       <div class="hero-text">
-        <p class="lead">Relances de factures, comptes rendus de rendez-vous, textes que vous réécrivez chaque semaine&nbsp;: je les automatise sur vos propres outils, à prix fixe, annoncé d'avance.</p>
+        <p class="lead">Vous me dites ce qui vous prend du temps chaque semaine. Je construis l'automatisation sur vos propres outils, à prix fixe, et je la teste sur vos vrais exemples avant de vous la remettre.</p>
         <div class="hero-cta">
           <a class="btn" href="/offres/">Voir les offres et les prix</a>
           <a class="link-arrow" href="/contact/">Décrire mon besoin</a>
         </div>
         <ul class="hero-facts">
-          <li>Prix fixe, annoncé avant de commencer</li>
+          <li>Prix annoncé avant de commencer</li>
           <li>Vos comptes restent à votre nom</li>
           <li>Réponse écrite sous un jour ouvré</li>
         </ul>
+        <a class="latest" href="/outils/cout-taches-administratives/"><span class="latest-label">Dernier outil gratuit<span class="visually-hidden">&nbsp;:</span></span><span class="latest-name">Combien vous coûtent vos tâches répétitives&nbsp;?</span></a>
       </div>
 
-      <figure class="demo" aria-labelledby="demo-cap">
-        <div class="sheet invoice">
-          <div class="inv-head">
-            <p class="inv-kind">Facture</p>
-            <p class="inv-no">N° F-2026-031</p>
+      <figure class="machine" aria-labelledby="machine-cap">
+        <div class="m-bar">
+          <div class="m-tabs" role="tablist" aria-label="Exemples de tâches automatisées">
+            <button type="button" role="tab" id="m-tab-1" aria-controls="m-panel-1" aria-selected="true">Notes de réunion</button>
+            <button type="button" role="tab" id="m-tab-2" aria-controls="m-panel-2" aria-selected="false" tabindex="-1">Pièces jointes</button>
+            <button type="button" role="tab" id="m-tab-3" aria-controls="m-panel-3" aria-selected="false" tabindex="-1">Demandes du site</button>
+            <button type="button" role="tab" id="m-tab-4" aria-controls="m-panel-4" aria-selected="false" tabindex="-1">Devis à rédiger</button>
           </div>
-          <dl class="inv-meta">
-            <div><dt>Émise le</dt><dd>05/10/2026</dd></div>
-            <div><dt>Échéance</dt><dd>19/10/2026</dd></div>
-            <div><dt>Client</dt><dd>Cabinet Durand</dd></div>
-          </dl>
-          <table class="inv-lines">
-            <thead><tr><th scope="col">Désignation</th><th scope="col">Montant</th></tr></thead>
-            <tbody>
-              <tr><td>Atelier de formation (1 journée)</td><td>850,00&nbsp;€</td></tr>
-              <tr><td>Support de formation</td><td>90,00&nbsp;€</td></tr>
-            </tbody>
-            <tfoot><tr><th scope="row">Total</th><td>940,00&nbsp;€</td></tr></tfoot>
-          </table>
-          <div class="inv-foot"><p>Virement à 14 jours</p><p>TVA non applicable,</p><p>art. 293 B du CGI</p></div>
-          <p class="stamp"><span>Payée</span><span>le 30/10/2026</span></p>
+          <button type="button" class="m-pause" hidden>Pause</button>
         </div>
 
-        <div class="followup">
-          <p class="log-title">Suivi automatique</p>
-          <ol class="log">
-            <li style="--i: 0"><time datetime="2026-10-05">lun. 5 oct.</time>Facture envoyée au client.</li>
-            <li style="--i: 1"><time datetime="2026-10-22">jeu. 22 oct.</time>Échéance dépassée de 3&nbsp;jours&nbsp;: 1<sup>re</sup> relance, polie.
-              <blockquote class="mail">«&nbsp;Sauf erreur de ma part, la facture F-2026-031 du 5&nbsp;octobre reste à régler…&nbsp;»</blockquote></li>
-            <li style="--i: 2"><time datetime="2026-10-29">jeu. 29 oct.</time>Toujours impayée&nbsp;: 2<sup>e</sup> relance, plus ferme.</li>
-            <li style="--i: 3" class="is-paid"><time datetime="2026-10-30">ven. 30 oct.</time>Paiement reçu&nbsp;: les relances s'arrêtent.</li>
-          </ol>
+        <div class="m-stage kb-skip">
+          <div class="m-panel" role="tabpanel" id="m-panel-1" aria-labelledby="m-tab-1">
+            <div class="m-before">
+              <p class="m-label">Avant</p>
+              <div class="m-scrap">
+                <p>rdv Cabinet Durand</p>
+                <p>devis site → moi, vendredi&nbsp;?</p>
+                <p><s>appeler</s> Paul relance fournisseur</p>
+                <p>prochain point&nbsp;??</p>
+              </div>
+            </div>
+            <p class="m-pipe"><span class="m-dot" aria-hidden="true"></span><span class="m-via">Vos notes <span aria-hidden="true">→</span> Trello</span></p>
+            <div class="m-after sheet">
+              <p class="m-label">Après</p>
+              <p class="m-title">Compte rendu</p>
+              <table class="m-table">
+                <thead><tr><th scope="col">Tâche</th><th scope="col">Qui, pour quand</th></tr></thead>
+                <tbody>
+                  <tr><td>Envoyer le devis du site</td><td>Vous, vendredi</td></tr>
+                  <tr><td>Relancer le fournisseur</td><td>Paul, à confirmer</td></tr>
+                  <tr><td>Prochain point</td><td>À confirmer</td></tr>
+                </tbody>
+              </table>
+              <p class="m-note">E&#8209;mail récapitulatif en brouillon</p>
+              <p class="stamp"><span>Prêt</span><span>à relire</span></p>
+            </div>
+            <p class="m-offer">Offre&nbsp;: <a href="/offres/#offre-comptes-rendus">Comptes rendus et tâches automatiques, 299&nbsp;€</a></p>
+          </div>
+
+          <div class="m-panel" role="tabpanel" id="m-panel-2" aria-labelledby="m-tab-2" hidden>
+            <div class="m-before">
+              <p class="m-label">Avant</p>
+              <ul class="m-inbox">
+                <li><b>Imprimerie Roux</b><span>Facture_0923.pdf</span></li>
+                <li><b>Votre banque</b><span>Releve_septembre.pdf</span></li>
+                <li><b>Mme&nbsp;Leroy</b><span>Bon_de_commande.pdf</span></li>
+              </ul>
+            </div>
+            <p class="m-pipe"><span class="m-dot" aria-hidden="true"></span><span class="m-via">Gmail <span aria-hidden="true">→</span> Google Drive</span></p>
+            <div class="m-after sheet">
+              <p class="m-label">Après</p>
+              <p class="m-title">Google Drive</p>
+              <ul class="m-tree">
+                <li><span class="m-folder">Fournisseurs / Octobre</span><span>Facture_0923.pdf</span></li>
+                <li><span class="m-folder">Banque / Relevés</span><span>Releve_septembre.pdf</span></li>
+                <li><span class="m-folder">Clients / Leroy</span><span>Bon_de_commande.pdf</span></li>
+              </ul>
+              <p class="m-note">Chaque pièce jointe dans son dossier, dès réception</p>
+              <p class="stamp"><span>Classé</span><span>dans Drive</span></p>
+            </div>
+            <p class="m-offer">Offre&nbsp;: <a href="/offres/#offre-premiere-automatisation">Votre première automatisation, 99&nbsp;€</a></p>
+          </div>
+
+          <div class="m-panel" role="tabpanel" id="m-panel-3" aria-labelledby="m-tab-3" hidden>
+            <div class="m-before">
+              <p class="m-label">Avant</p>
+              <div class="m-mail">
+                <p class="m-mail-from">Nouveau message de votre site</p>
+                <p>Nom&nbsp;: Claire Petit</p>
+                <p>Projet&nbsp;: trois portes</p>
+                <p>Demande&nbsp;: un devis pour trois portes intérieures, posées avant décembre.</p>
+              </div>
+            </div>
+            <p class="m-pipe"><span class="m-dot" aria-hidden="true"></span><span class="m-via">Formulaire <span aria-hidden="true">→</span> Google Sheets</span></p>
+            <div class="m-after sheet">
+              <p class="m-label">Après</p>
+              <p class="m-title">Demandes clients</p>
+              <table class="m-table m-grid">
+                <thead><tr><th scope="col">Nom</th><th scope="col">Demande</th><th scope="col">Suite</th></tr></thead>
+                <tbody>
+                  <tr class="is-old"><td>M.&nbsp;Garcia</td><td>Fenêtre du salon</td><td>Devis envoyé</td></tr>
+                  <tr class="is-new"><td>Claire Petit</td><td>Trois portes</td><td>À rappeler</td></tr>
+                </tbody>
+              </table>
+              <p class="m-note">Une ligne par demande, sans rien recopier</p>
+              <p class="stamp"><span>Ajouté</span><span>au tableau</span></p>
+            </div>
+            <p class="m-offer">Offre&nbsp;: <a href="/offres/#offre-premiere-automatisation">Votre première automatisation, 99&nbsp;€</a></p>
+          </div>
+
+          <div class="m-panel" role="tabpanel" id="m-panel-4" aria-labelledby="m-tab-4" hidden>
+            <div class="m-before">
+              <p class="m-label">Avant</p>
+              <div class="m-scrap">
+                <p>cuisine Mme&nbsp;Leroy</p>
+                <p>plan chêne 3&nbsp;m → 840</p>
+                <p>pose 2&nbsp;j → 640</p>
+                <p>évier inox + robinet&nbsp;??</p>
+              </div>
+            </div>
+            <p class="m-pipe"><span class="m-dot" aria-hidden="true"></span><span class="m-via">Vos notes <span aria-hidden="true">→</span> l'assistant</span></p>
+            <div class="m-after sheet">
+              <p class="m-label">Après</p>
+              <p class="m-title">Devis, cuisine Leroy</p>
+              <table class="m-table">
+                <thead><tr><th scope="col">Désignation</th><th scope="col">Montant</th></tr></thead>
+                <tbody>
+                  <tr><td>Plan de travail en chêne, 3&nbsp;m</td><td>840&nbsp;€</td></tr>
+                  <tr><td>Pose (2&nbsp;jours)</td><td>640&nbsp;€</td></tr>
+                  <tr><td>Évier inox et robinet</td><td>[à compléter]</td></tr>
+                </tbody>
+              </table>
+              <p class="m-note">Le prix manquant est signalé, pas inventé</p>
+              <p class="stamp"><span>Prêt</span><span>à relire</span></p>
+            </div>
+            <p class="m-offer">Offre&nbsp;: <a href="/offres/#offre-assistant">Assistant IA pour vos textes répétitifs, 149&nbsp;€</a></p>
+          </div>
         </div>
-        <figcaption id="demo-cap">Exemple fictif&nbsp;: ce que fait l'offre «&nbsp;Relances de factures automatiques&nbsp;».</figcaption>
+        <figcaption id="machine-cap">Exemples fictifs, sur des outils courants. Choisissez une tâche pour voir l'avant et l'après.</figcaption>
       </figure>
     </div>
   </section>
 </div>
 <!--/banner-->
-  <section class="tiles-section" aria-labelledby="tiles-title">
+  <section class="shelf" aria-labelledby="shelf-title">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Mes services</p>
-        <h2 id="tiles-title">Trois tâches que je peux automatiser pour vous</h2>
-        <p>Tout est installé sur vos propres outils&nbsp;: vous gardez la main.</p>
+      <div class="section-head">
+        <h2 id="shelf-title">Essayez ce que j'ai déjà construit</h2>
+        <p>Des outils gratuits, sans compte à créer&nbsp;: ouvrez-en un, il fonctionne tout de suite.</p>
       </div>
-      <div class="tiles">
-        <a class="sheet tile reveal" style="--i: 0" href="/offres/#offre-relances">
-          <p class="tile-kicker">Devis n° 01 · 390&nbsp;€</p>
-          <h3>Relances de factures automatiques</h3>
-          <p>Vos factures sont suivies automatiquement. Les relances partent dans votre ton et s'arrêtent dès que le client a payé.</p>
-          <span class="tile-more">Voir le détail</span>
-        </a>
-        <a class="sheet tile reveal" style="--i: 1" href="/offres/#offre-comptes-rendus">
-          <p class="tile-kicker">Devis n° 02 · 290&nbsp;€</p>
-          <h3>Comptes rendus et tâches automatiques</h3>
-          <p>Vos notes de rendez-vous deviennent un compte rendu clair, un e-mail récapitulatif à relire, et des tâches dans votre outil.</p>
-          <span class="tile-more">Voir le détail</span>
-        </a>
-        <a class="sheet tile reveal" style="--i: 2" href="/offres/#offre-assistant">
-          <p class="tile-kicker">Devis n° 03 · 149&nbsp;€</p>
-          <h3>Assistant IA pour vos textes répétitifs</h3>
-          <p>Un assistant qui rédige pour vous, chaque semaine, le même type de texte, dans votre format et avec vos mots.</p>
-          <span class="tile-more">Voir le détail</span>
-        </a>
-      </div>
+      <ul class="cards">
+        <li><a class="card" href="/outils/cout-taches-administratives/">
+          <span class="card-top"><span class="io"><span>Vos tâches</span><span>Heures et euros par an</span></span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#clock"/></svg></span>
+          <h3>Combien vous coûtent vos tâches répétitives&nbsp;?</h3>
+          <p>Les heures que vous prennent chaque année les tâches qui reviennent et, si vous le voulez, leur coût en euros. Rien ne quitte votre navigateur.</p>
+          <span class="card-more">Ouvrir l'outil</span>
+        </a></li>
+        <li><a class="card" href="/outils/notes-en-taches/">
+          <span class="card-top"><span class="io"><span>Notes en vrac</span><span>Tâches et e&#8209;mail</span></span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#notes"/></svg></span>
+          <h3>Notes de réunion en tâches</h3>
+          <p>Les décisions, qui fait quoi pour quand, et un e-mail récapitulatif. Votre texte est traité par une IA.</p>
+          <span class="card-more">Ouvrir l'outil</span>
+        </a></li>
+        <li><a class="card" href="/contact/" data-open-chat>
+          <span class="card-top"><span class="io"><span>Votre question</span><span>Une réponse tirée du site</span></span><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg></span>
+          <h3>L'assistant IA de ce site</h3>
+          <p>Posez-lui une question sur les offres, les prix ou le déroulé&nbsp;: il répond à partir des pages du site, sans inventer de prix ni de délai.</p>
+          <span class="card-more">Lui poser une question</span>
+        </a></li>
+      </ul>
+      <p class="shelf-more"><a class="link-arrow" href="/realisations/">Tous les projets</a></p>
     </div>
   </section>
 
-  <section class="fe" aria-labelledby="fe-title">
-    <div class="wrap fe-grid">
+  <section class="how" id="methode" aria-labelledby="methode-title">
+    <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">Facture électronique</p>
-        <h2 id="fe-title">La facture électronique devient obligatoire</h2>
-        <p>Elle concerne les factures entre entreprises, micro-entreprises comprises. C'est le bon moment pour remettre de l'ordre dans votre cycle devis, facture, relance.</p>
+        <h2 id="methode-title">Gardez la main à chaque étape</h2>
       </div>
-      <div>
-        <ol class="fe-dates">
+      <div class="how-grid">
+      <aside class="sheet id-card who">
+        <img class="id-photo" src="/assets/img/mohamed.jpg" alt="Mohamed Kanso" width="640" height="640" loading="lazy">
+        <p class="id-name">Mohamed Kanso</p>
+        <p class="id-role">Entrepreneur individuel, à Montpellier</p>
+        <p class="who-line">De 2023 à 2026, mon travail consistait à repérer où une IA se trompe. Dans mes automatisations, ce qui manque est signalé plutôt qu'inventé.</p>
+        <a class="link-arrow" href="/a-propos/">Mon parcours</a>
+      </aside>
+      <div class="how-text">
+        <ol class="steps">
           <li>
-            <p class="fe-date"><time datetime="2026-09-01">1<sup>er</sup> sept. 2026</time></p>
-            <div>
-              <strong>Recevoir</strong>
-              <p>Toutes les entreprises, quelle que soit leur taille, doivent pouvoir recevoir leurs factures sous forme électronique.</p>
-              <span class="tag">En vigueur</span>
-            </div>
+            <h3>Vous décrivez la tâche</h3>
+            <p class="when">Quelques lignes</p>
+            <p>Par le formulaire de contact ou par e-mail&nbsp;: ce que vous faites, avec quels outils et à quelle fréquence.</p>
           </li>
           <li>
-            <p class="fe-date"><time datetime="2027-09-01">1<sup>er</sup> sept. 2027</time></p>
-            <div>
-              <strong>Émettre</strong>
-              <p>Les PME et les micro-entreprises devront aussi émettre leurs factures entre entreprises au format électronique, via une plateforme agréée.</p>
-              <span class="tag tag-next">À venir</span>
-            </div>
+            <h3>Je vous appelle, si c'est utile</h3>
+            <p class="when">20 minutes, gratuit</p>
+            <p>Sans engagement, après lecture de votre message&nbsp;: nous regardons ensemble comment vous travaillez aujourd'hui.</p>
+          </li>
+          <li>
+            <h3>Vous recevez un devis écrit</h3>
+            <p class="when">Sous un jour ouvré</p>
+            <p>Le prix, le délai, ce qui est inclus et ce qui ne l'est pas. C'est un forfait&nbsp;: il ne change pas en cours de route.</p>
+          </li>
+          <li>
+            <h3>J'installe et je teste</h3>
+            <p class="when">De 2 à 5&nbsp;jours ouvrés</p>
+            <p>Sur vos comptes, que vous connectez vous-même. Vous recevez ensuite un guide écrit et, avec les offres à 299&nbsp;€, une courte vidéo de passation.</p>
           </li>
         </ol>
-        <p class="fe-link"><a class="link-arrow" href="/outils/facture-electronique/">Voir vos dates et vos mentions en quatre questions</a></p>
-        <p class="fine">Source&nbsp;: <a href="https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation">impots.gouv.fr</a>. Suivel n'est pas une plateforme agréée&nbsp;: je ne transmets pas vos factures. J'organise vos outils et vos relances autour de la plateforme que vous aurez choisie.</p>
+      </div>
       </div>
     </div>
   </section>
 
-  <section class="proof" aria-labelledby="proof-title">
-    <div class="wrap proof-grid">
-      <div class="section-head reveal">
-        <p class="eyebrow">Démos et projets</p>
-        <h2 id="proof-title">Ce que j'ai déjà construit</h2>
-        <p>Des outils publics que vous pouvez ouvrir et tester vous-même.</p>
-        <p class="reveal"><a class="link-arrow" href="/realisations/">Voir tous les projets</a></p>
-      </div>
-      <div>
-        <ul class="proof-list">
-          <li class="reveal" style="--i: 0"><strong><a href="/outils/facture-electronique/">Facture électronique&nbsp;: vos dates</a></strong>&nbsp;: quatre questions sur votre entreprise, et vous savez quand recevoir puis émettre vos factures électroniques, avec les mentions à ajouter.</li>
-          <li class="reveal" style="--i: 1"><strong><a href="/outils/lettre-de-relance/">Lettre de relance de facture impayée</a></strong>&nbsp;: rappel poli, relance ferme ou mise en demeure, prête à copier.</li>
-          <li class="reveal" style="--i: 2"><strong><a href="/outils/relances-en-lot/">Relances de factures en lot</a></strong>&nbsp;: collez vos factures impayées depuis un tableur&nbsp;; pour chacune, les jours de retard, le niveau de relance et un texte prêt à copier.</li>
-          <li class="reveal" style="--i: 3"><strong><a href="/realisations/#demos">Deux démos en vidéo</a></strong>&nbsp;: les relances de factures et les comptes rendus automatiques, filmés sur des données fictives.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="method" id="methode" aria-labelledby="methode-title">
+  <section class="pick" id="prix" aria-labelledby="pick-title">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">Comment ça marche</p>
-        <h2 id="methode-title">Quatre étapes, et vous gardez la main</h2>
+        <h2 id="pick-title">Commencez par une seule tâche</h2>
+        <p>Le prix dépend de ce que la tâche demande. Il est fixe, et le devis détaille ce qui est inclus.</p>
       </div>
-      <ol class="steps">
-        <li>
-          <h3>Vous décrivez la tâche</h3>
-          <p>Par le formulaire de contact ou par e-mail&nbsp;: quelques lignes suffisent.</p>
+      <ul class="tiers">
+        <li class="sheet tier">
+          <p class="tier-kind">Une tâche, deux outils</p>
+          <h3>Votre première automatisation</h3>
+          <p class="tier-price"><strong>99&nbsp;€</strong><span>5&nbsp;jours ouvrés</span></p>
+          <p class="tier-for">Une tâche répétitive entre deux de vos outils, sans IA. Par exemple&nbsp;:</p>
+          <ul class="tier-list">
+            <li>Classer les pièces jointes de vos e-mails dans le bon dossier</li>
+            <li>Recopier dans un tableau les demandes de votre formulaire</li>
+            <li>Envoyer à vos clients un rappel par e-mail la veille de leur rendez-vous</li>
+            <li>Ajouter une tâche à votre Trello ou votre Todoist quand un client vous écrit</li>
+          </ul>
+          <p class="tier-cost">Outil gratuit quand il suffit.</p>
+          <a class="tier-more" href="/offres/#offre-premiere-automatisation">Voir le devis détaillé</a>
         </li>
-        <li>
-          <h3>Je vous appelle, si c'est utile</h3>
-          <p>Après avoir lu votre message&nbsp;: 20 minutes, gratuit et sans engagement. Nous regardons ensemble comment vous travaillez aujourd'hui, et avec quels outils.</p>
+        <li class="sheet tier">
+          <p class="tier-kind">Un assistant IA</p>
+          <h3>Assistant IA pour vos textes répétitifs</h3>
+          <p class="tier-price"><strong>149&nbsp;€</strong><span>2&nbsp;jours ouvrés</span></p>
+          <p class="tier-for">Un assistant qui rédige toujours le même type de texte à partir de ce que vous lui donnez, dans votre format et avec vos mots. Par exemple&nbsp;:</p>
+          <ul class="tier-list">
+            <li>Vos devis, à partir de vos notes</li>
+            <li>Vos rapports clients du mois</li>
+            <li>Vos réponses aux questions qui reviennent</li>
+            <li>Vos procédures internes</li>
+          </ul>
+          <p class="tier-cost">Abonnement Claude à votre nom, en plus.</p>
+          <a class="tier-more" href="/offres/#offre-assistant">Voir le devis détaillé</a>
         </li>
-        <li>
-          <h3>Un devis écrit</h3>
-          <p>Sous un jour ouvré&nbsp;: prix fixe, délai, et ce qui est inclus ou non.</p>
+        <li class="sheet tier">
+          <p class="tier-kind">Plusieurs outils, avec ou sans IA</p>
+          <h3>Une automatisation en plusieurs étapes</h3>
+          <p class="tier-price"><strong>299&nbsp;€</strong><span>5&nbsp;jours ouvrés</span></p>
+          <p class="tier-for">Plusieurs outils qui s'enchaînent, avec une vidéo de passation. Par exemple&nbsp;:</p>
+          <ul class="tier-list">
+            <li>Vos notes de rendez-vous en compte rendu, e-mail récapitulatif et tâches</li>
+            <li>Une demande de rendez-vous qui remplit votre agenda et envoie la confirmation</li>
+            <li>Les demandes reçues triées par type, avec un brouillon de réponse pour chacune</li>
+            <li>Chaque lundi, un e-mail avec vos devis en attente, vos tâches et vos rendez-vous de la semaine</li>
+          </ul>
+          <p class="tier-cost">Outils et IA à votre nom, en plus.</p>
+          <a class="tier-more" href="/offres/#offre-comptes-rendus">Voir les devis détaillés</a>
         </li>
-        <li>
-          <h3>Mise en place et passation</h3>
-          <p>Sur vos comptes, que vous connectez vous-même. Vous recevez un guide écrit et, selon l'offre, une courte vidéo.</p>
-        </li>
-      </ol>
+      </ul>
+      <p class="tiers-foot">TVA non applicable, art. 293 B du CGI. Une autre tâche&nbsp;? <a href="/contact/">Décrivez-la</a>&nbsp;: je vous dis si elle est faisable, et à quel prix.</p>
+    </div>
+  </section>
+
+  <section class="faq faq-home" id="questions" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="faq-title">Trouvez vos réponses avant de commencer</h2>
+      </div>
+      <div class="qa">
+<!--include: faq-->
+      </div>
     </div>
   </section>
 
   <section class="cta-band" aria-labelledby="cta-title">
     <div class="wrap cta-inner">
       <div>
-        <p class="eyebrow">Contact</p>
         <h2 id="cta-title">Parlons de ce qui vous prend du temps</h2>
         <p>Quelques lignes suffisent. Je vous réponds par écrit sous un jour ouvré&nbsp;: ce qui peut être automatisé, et comment.</p>
       </div>

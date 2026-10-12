@@ -42,7 +42,7 @@
     var recipient = value('client') ? 'Destinataire : ' + value('client') + '\n' : '';   // formal letter only (address block)
 
     if (level === '1') {
-      return 'Objet : Facture ' + invoice + ' — rappel\n\n' + hello + '\n\n' +
+      return 'Objet : rappel de paiement, facture ' + invoice + '\n\n' + hello + '\n\n' +
         'Sauf erreur de ma part, la facture ' + invoice + ' du ' + issued + ', d\'un montant de ' + amount +
         ', arrivée à échéance le ' + due + ', n\'a pas encore été réglée.\n\n' +
         'Il s\'agit sans doute d\'un oubli : je vous remets la facture en pièce jointe.\n\n' +
@@ -51,7 +51,7 @@
     }
 
     if (level === '2') {
-      return 'Objet : Facture ' + invoice + ' — relance\n\n' + hello + '\n\n' +
+      return 'Objet : relance, facture ' + invoice + '\n\n' + hello + '\n\n' +
         'Je reviens vers vous au sujet de la facture ' + invoice + ' du ' + issued + ', d\'un montant de ' + amount +
         ', échue le ' + due + lateText + '.\n\n' +
         'À ce jour, je n\'ai pas reçu votre règlement. Merci de procéder au paiement sous huit jours, ou de m\'indiquer une date à laquelle il sera fait.\n\n' +
@@ -59,7 +59,7 @@
         'Bien à vous,\n' + signature;
     }
 
-    return 'Objet : Mise en demeure de payer — facture ' + invoice + '\n\n' +
+    return 'Objet : mise en demeure de payer, facture ' + invoice + '\n\n' +
       city + ', le ' + frenchDate(today) + '\n' +
       'Lettre recommandée avec accusé de réception\n' + recipient + '\n' +
       'Madame, Monsieur,\n\n' +

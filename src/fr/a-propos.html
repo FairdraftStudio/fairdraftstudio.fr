@@ -8,56 +8,86 @@ nav: a-propos
 kicker: À propos
 h1: Mohamed Kanso
 intro: Suivel, c'est moi, à Montpellier. Voici d'où je viens et comment je travaille.
+script: /assets/route.js, /assets/about.js
 -->
   <section class="bio" aria-label="Qui je suis">
-    <div class="wrap bio-grid">
-      <div class="bio-text reveal">
-        <p><span class="story-lead">Trois diplômes, trois langues.</span> Une licence en gestion, un MSc en finance à Montpellier Business School, puis un Master 2 en systèmes d'information à l'Université Grenoble Alpes. Je parle français, anglais et arabe.</p>
-        <p><span class="story-lead">Trois ans d'évaluation de modèles d'IA.</span> À mon compte depuis 2022, j'ai participé de 2023 à 2026 à l'entraînement et à l'évaluation de modèles d'IA, sur différents types de données. Mon travail consistait à repérer où une IA se trompe.</p>
-        <p><span class="story-lead">Cette expérience profite à vos automatisations.</span> Je sais ce qu'on peut confier à une IA, ce qu'il faut encadrer et ce qu'il vaut mieux ne pas lui demander. Dans mes automatisations, ce qui manque est signalé plutôt qu'inventé, et tout est testé sur vos propres exemples avant la livraison.</p>
-        <p><span class="story-lead">Suivel vient de «&nbsp;suivi&nbsp;».</span> Relancer une facture, mettre au propre un compte rendu, refaire le même type de devis&nbsp;: ces tâches de suivi reviennent chaque semaine et passent après votre métier. J'ai créé Suivel pour qu'elles avancent sans que vous ayez à leur courir après.</p>
+    <div class="wrap intro-grid">
+      <figure class="face reveal">
+        <img src="/assets/img/mohamed.jpg" alt="Mohamed Kanso" width="640" height="640" loading="lazy">
+        <figcaption><span class="id-name">Mohamed Kanso</span><span class="id-role">Entrepreneur individuel, à Montpellier</span></figcaption>
+      </figure>
+      <div class="intro-text reveal" style="--i: 1">
+        <h2 class="mission">Ma mission&nbsp;: vous libérer des tâches qui reviennent</h2>
+        <p>Classer des pièces jointes, mettre au propre un compte rendu, refaire le même type de devis&nbsp;: ces tâches reviennent chaque semaine et passent après votre métier. Je les automatise sur vos propres outils, avec des solutions simples que vous comprenez et que vous gardez.</p>
+        <p class="id-story">Je suis <span class="hl">à mon compte depuis 2022</span>. Je travaille depuis <span class="hl" style="--n: 1">Montpellier</span>, et à distance partout en France, <span class="hl" style="--n: 2">en français, en anglais ou en arabe</span>.</p>
+        <a class="btn" href="/contact/">Me contacter</a>
       </div>
-      <aside class="sheet id-card reveal" style="--i: 1">
-        <img class="id-photo" src="/assets/img/mohamed.jpg" alt="Mohamed Kanso" width="640" height="640" loading="lazy">
-        <p class="id-kicker">Suivel</p>
-        <p class="id-name">Mohamed Kanso</p>
-        <p class="id-role">Entrepreneur individuel, à Montpellier</p>
-        <dl class="id-facts">
-          <div><dt>Où</dt><dd>Montpellier, et à distance partout en France</dd></div>
-          <div><dt>Langues</dt><dd>français, anglais, arabe</dd></div>
-          <div><dt>À mon compte</dt><dd>depuis 2022</dd></div>
-          <div><dt>SIRET</dt><dd>938 479 193 00014</dd></div>
-        </dl>
-        <a class="link-arrow" href="/contact/">Me contacter</a>
-      </aside>
+    </div>
+  </section>
+
+  <section class="path" aria-labelledby="path-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="path-title">Mon parcours, jusqu'à Suivel</h2>
+      </div>
+      <div class="route route-mid">
+        <span class="route-line" aria-hidden="true"></span>
+        <span class="route-fill" aria-hidden="true"></span>
+        <article class="stop" aria-labelledby="p1">
+          <p class="stop-node">2016&nbsp;→&nbsp;2022</p>
+          <div class="tl-card">
+            <h3 id="p1">Gestion, finance et systèmes d'information</h3>
+            <p>Une licence en gestion, un MSc en finance à Montpellier Business School, puis un Master 2 en systèmes d'information à l'Université Grenoble Alpes.</p>
+          </div>
+        </article>
+        <article class="stop" aria-labelledby="p2">
+          <p class="stop-node">2023&nbsp;→&nbsp;2026</p>
+          <div class="tl-card">
+            <h3 id="p2">Trois ans d'évaluation de modèles d'IA</h3>
+            <p>J'ai participé à l'entraînement et à l'évaluation de modèles d'IA, sur différents types de données. Mon travail consistait à repérer où une IA se trompe.</p>
+          </div>
+        </article>
+        <article class="stop" aria-labelledby="p3">
+          <p class="stop-node">Aujourd'hui</p>
+          <div class="tl-card">
+            <h3 id="p3">Cette expérience profite à vos automatisations</h3>
+            <p>Je sais ce qu'on peut confier à une IA, ce qu'il faut encadrer et ce qu'il vaut mieux ne pas lui demander. Dans mes automatisations, ce qui manque est signalé plutôt qu'inventé.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <section class="rules" aria-labelledby="rules-title">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Engagements</p>
-        <h2 id="rules-title">Mes engagements</h2>
+    <div class="wrap rules-grid">
+      <div class="rules-head">
+        <h2 id="rules-title">Quatre règles pour chaque projet</h2>
+        <p>Elles valent pour toutes les offres.</p>
+        <div class="deck-nav" hidden>
+          <button type="button" class="deck-btn deck-prev" aria-controls="deck" aria-label="Règle précédente"><span aria-hidden="true">←</span></button>
+          <p class="deck-count" aria-live="polite">Règle <span class="deck-now">1</span> sur 4</p>
+          <button type="button" class="deck-btn deck-next" aria-controls="deck">Suivante <span aria-hidden="true">→</span></button>
+        </div>
       </div>
-      <ol class="articles">
-        <li>
-          <span class="art-no">Article 1</span>
-          <h3>Vos comptes restent les vôtres.</h3>
+      <ol class="deck" id="deck">
+        <li class="deck-card">
+          <span class="art-no">Règle 1</span>
+          <h3>Vos comptes restent les vôtres</h3>
           <p>Vous connectez vous-même vos outils. Je ne vous demande jamais vos mots de passe.</p>
         </li>
-        <li>
-          <span class="art-no">Article 2</span>
-          <h3>Le prix annoncé est le prix payé.</h3>
+        <li class="deck-card">
+          <span class="art-no">Règle 2</span>
+          <h3>Le prix annoncé est le prix payé</h3>
           <p>Le devis fixe le prix total. Si un abonnement est nécessaire (outil d'automatisation, IA), son coût est écrit sur le devis et vous le payez directement à l'éditeur, sans marge de ma part.</p>
         </li>
-        <li>
-          <span class="art-no">Article 3</span>
-          <h3>Rien d'inventé.</h3>
+        <li class="deck-card">
+          <span class="art-no">Règle 3</span>
+          <h3>Rien d'inventé</h3>
           <p>Pas de faux avis, pas de promesses chiffrées. Les résultats publiés ici seront ceux de vrais clients, avec leur accord.</p>
         </li>
-        <li>
-          <span class="art-no">Article 4</span>
-          <h3>Tout est testé avant la livraison.</h3>
+        <li class="deck-card">
+          <span class="art-no">Règle 4</span>
+          <h3>Tout est testé avant la livraison</h3>
           <p>L'IA m'aide à concevoir et à rédiger&nbsp;; chaque automatisation est ensuite testée sur vos propres exemples.</p>
         </li>
       </ol>

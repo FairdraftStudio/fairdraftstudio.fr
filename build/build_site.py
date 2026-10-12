@@ -24,20 +24,20 @@ LOGO_NAME = ('<svg class="brand-name" viewBox="579.4 31.4 1522.1 657.2" aria-hid
 SITE = "https://suivel.fr/"   # final domain: canonical, og:url, sitemap, robots.txt
 # Social preview image: source marketing/15-brand/og-suivel-fr.html (French text on both languages).
 OG_IMAGE = SITE + "assets/img/og-suivel-1200x630.png"
-OG_IMAGE_ALT = {"fr": "Suivel&nbsp;: l'administratif des petites entreprises, automatisé.",
-                "en": "Suivel: “L'administratif des petites entreprises, automatisé” (small-business admin, automated)."}
+OG_IMAGE_ALT = {"fr": "Suivel&nbsp;: vos tâches répétitives, automatisées.",
+                "en": "Suivel: “Vos tâches répétitives, automatisées” (your repetitive tasks, automated)."}
 
 EMAIL = "contact@suivel.fr"
 
 NAV = {
     "fr": [("/offres/", "Offres et prix", "offres"),
            ("/outils/", "Outils gratuits", "outils"),
-           ("/realisations/", "Démos et projets", "realisations"),
+           ("/realisations/", "Réalisations", "realisations"),
            ("/a-propos/", "À propos", "a-propos"),
            ("/contact/", "Contact", "contact")],
     "en": [("/en/offers/", "Offers and prices", "offers"),
            ("/en/tools/", "Free tools", "tools"),
-           ("/en/work/", "Demos and projects", "work"),
+           ("/en/work/", "Projects", "work"),
            ("/en/about/", "About", "about"),
            ("/en/contact/", "Contact", "contact")],
 }
@@ -46,43 +46,26 @@ TEXT = {
     "fr": dict(menu="Menu", skip="Aller au contenu", home="Suivel, accueil", nav="Navigation principale",
                cta="Décrire mon besoin", cta_href="/contact/", lang_label="English version",
                lang_code="EN", lang_href="/en/", lang_hreflang="en",
-               tagline="L'administratif des petites entreprises, automatisé.",
-               f_offers="Offres", f_studio="En savoir plus", f_contact="Contact",
+               tagline="Les tâches répétitives des petites entreprises, automatisées.",
+               f_studio="Le site", f_contact="Contact",
                f_reply="Réponse écrite sous un jour ouvré", f_where="Montpellier · à distance, partout en France",
                f_legal="Mentions légales", f_privacy="Confidentialité", f_terms="Conditions générales de vente",
                f_vat="TVA non applicable, art. 293 B du CGI",
-               f_cookies="Aucun cookie. Les visites sont comptées sans vous identifier (GoatCounter).",
-               f_siret="Micro-entreprise (EI) · SIRET 938 479 193 00014"),
+               f_siret="Entrepreneur individuel (EI) · SIRET 938 479 193 00014"),
     "en": dict(menu="Menu", skip="Skip to content", home="Suivel, home", nav="Main navigation",
                cta="Describe your task", cta_href="/en/contact/", lang_label="Version française",
                lang_code="FR", lang_href="/", lang_hreflang="fr",
-               tagline="Small-business admin, automated.",
-               f_offers="Offers", f_studio="Learn more", f_contact="Contact",
+               tagline="Repetitive tasks for small businesses, automated.",
+               f_studio="Pages", f_contact="Contact",
                f_reply="Written reply within one working day", f_where="Montpellier, France · remote",
                f_legal="Legal notice (FR)", f_privacy="Privacy (FR)", f_terms="Terms of sale (FR)",
                f_vat="VAT not applicable, art. 293 B of the French tax code (CGI)",
-               f_cookies="No cookies. Visits are counted without identifying you (GoatCounter).",
                f_siret="Sole trader (EI) · SIRET 938 479 193 00014"),
 }
 
-FOOTER_LINKS = {
-    "fr": {
-        "offers": [("/offres/#offre-relances", "Relances de factures automatiques · 390&nbsp;€"),
-                   ("/offres/#offre-comptes-rendus", "Comptes rendus et tâches automatiques · 290&nbsp;€"),
-                   ("/offres/#offre-assistant", "Assistant IA pour vos textes répétitifs · 149&nbsp;€"),
-                   ("/offres/#suivi", "Suivi mensuel · 49&nbsp;€/mois")],
-        "studio": [("/realisations/", "Démos et projets"), ("/a-propos/", "À propos"),
-                   ("/contact/", "Contact"), ("/en/", "English")],
-    },
-    "en": {
-        "offers": [("/en/offers/#offer-reminders", "Automatic invoice reminders · €390"),
-                   ("/en/offers/#offer-meetings", "Automatic meeting notes and tasks · €290"),
-                   ("/en/offers/#offer-assistant", "Custom AI assistant for repetitive writing · €149"),
-                   ("/en/offers/#support", "Monthly support · €49/month")],
-        "studio": [("/en/work/", "Demos and projects"), ("/en/about/", "About"),
-                   ("/en/contact/", "Contact"), ("/", "Français")],
-    },
-}
+# Footer "Le site" column: the menu pages plus the other language. Prices live on the offers page only
+# (11 Oct: a price list repeated in the footer of 20 pages was one more copy to keep true).
+FOOTER_EXTRA = {"fr": [("/en/", "English")], "en": [("/", "Français")]}
 
 SHELL = """<!doctype html>
 <html lang="{lang}">
@@ -151,15 +134,8 @@ SHELL = """<!doctype html>
       <p class="footer-where">{f_where}</p>
     </div>
     <div>
-      <h2 class="footer-title">{f_offers}</h2>
-      <ul class="footer-list">
-{footer_offers}
-      </ul>
-      <p class="footer-note footer-vat">{f_vat}</p>
-    </div>
-    <div>
       <h2 class="footer-title">{f_studio}</h2>
-      <ul class="footer-list">
+      <ul class="footer-list footer-list-2">
 {footer_studio}
       </ul>
     </div>
@@ -172,13 +148,12 @@ SHELL = """<!doctype html>
     </div>
   </div>
   <div class="wrap footer-bottom">
-    <p>© 2026 Suivel · {f_siret}</p>
+    <p>© 2026 Suivel · {f_siret} · {f_vat}</p>
     <nav class="footer-legal" aria-label="{f_legal}">
       <a href="/mentions-legales.html">{f_legal}</a>
       <a href="/confidentialite.html">{f_privacy}</a>
       <a href="/cgv.html">{f_terms}</a>
     </nav>
-    <p class="footer-note">{f_cookies}</p>
   </div>
 </footer>
 </body>
@@ -195,18 +170,18 @@ PAGE_HEAD = """<div class="desk desk-page">
 
 
 def offers_from_site():
-    """The three offers (anchor, name, price in euros) read from the French offers page, so the structured data
+    """The four offers (anchor, name, price in euros) read from the French offers page, so the structured data
     on the home page cannot drift from /offres/. Stops the build if the page layout changes."""
     text = (SRC / "fr" / "offres.html").read_text(encoding="utf-8")
-    found = re.findall(r'<article class="sheet quote" id="(offre-[a-z-]+)".*?<h3 id="q\d">(.*?)</h3>'
-                       r'.*?<p class="quote-total"><span>Total</span><strong>(\d+)&nbsp;€</strong>', text, re.S)
-    if len(found) != 3:
-        sys.exit("offres.html: expected 3 offers for the JSON-LD, found {}".format(len(found)))
+    found = re.findall(r'<article class="stop[^"]*" id="(offre-[a-z-]+)".*?<h2 id="q\d">(.*?)</h2>'
+                       r'.*?<p class="stop-price"><strong>(\d+)&nbsp;€</strong>', text, re.S)
+    if len(found) != 4:
+        sys.exit("offres.html: expected 4 offers for the JSON-LD, found {}".format(len(found)))
     return [(anchor, unescape(name), int(price)) for anchor, name, price in found]
 
 
 def home_jsonld() -> str:
-    """JSON-LD for the French home page only: ProfessionalService (with the three offers) and WebSite.
+    """JSON-LD for the French home page only: ProfessionalService (with the four offers) and WebSite.
     Only facts that are on the site: no reviews, no ratings, no street address."""
     offers = offers_from_site()
     prices = [price for _, _, price in offers]
@@ -223,6 +198,9 @@ def home_jsonld() -> str:
                     "addressCountry": "FR"},
         "areaServed": {"@type": "Country", "name": "France"},
         "knowsLanguage": ["fr", "en"],
+        # Profiles that show Suivel (both opened in Chrome 11 Oct 2026: LinkedIn page heading "Suivel",
+        # Malt experience "Suivel"). The owner's personal LinkedIn is not here: ask before adding it.
+        "sameAs": ["https://www.linkedin.com/company/suivel/", "https://www.malt.fr/profile/mohamedkanso"],
         "priceRange": "{} € – {} €".format(min(prices), max(prices)),
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -277,20 +255,16 @@ def add_reveal(html: str) -> str:
                     r'(<ol class="articles">)(.*?)(</ol>)',
                     r'(<ol class="fe-dates">)(.*?)(</ol>)'):
         html = re.sub(wrapper, number, html, flags=re.S)
-
-    count = [0]
-
-    def quote(m):
-        i = count[0]
-        count[0] += 1
-        return '<article class="sheet quote reveal" style="--i: {}"'.format(i)
-
-    return re.sub(r'<article class="sheet quote"', quote, html)
+    return html
 
 
 def build_page(lang: str, fragment: str) -> tuple[Path, str, str | None]:
     """Returns (output path, html, public URL for the sitemap, or None when the page is 'robots: noindex')."""
     meta, banner, content = parse(fragment)
+    # <!--include: name--> pastes src/<lang>/_name.html, so a block shown on two pages (the FAQ) is written once
+    content = re.sub(r"<!--include: ([\w-]+)-->",
+                     lambda m: (SRC / lang / "_{}.html".format(m.group(1))).read_text(encoding="utf-8").rstrip("\n"),
+                     content)
     content = add_reveal(content)
     t = TEXT[lang]
     path = meta["path"]
@@ -320,7 +294,8 @@ def build_page(lang: str, fragment: str) -> tuple[Path, str, str | None]:
     # "switch:" overrides the language switch only (no hreflang pair), for pages with no translation.
     t = dict(t, lang_href=meta.get("switch", "/" + alt_url))
     extra = meta.get("script", "")
-    extra_script = '\n<script src="{}" defer></script>'.format(extra) if extra else ""
+    # "script:" takes one path or several separated by commas (À propos loads the route and the deck)
+    extra_script = "".join('\n<script src="{}" defer></script>'.format(s.strip()) for s in extra.split(",") if s.strip())
     html = SHELL.format(
         extra_script=extra_script, jsonld=home_jsonld() if path == "index.html" else "",
         lang=lang, title=meta["title"], description=meta["description"],
@@ -329,8 +304,8 @@ def build_page(lang: str, fragment: str) -> tuple[Path, str, str | None]:
         ogtitle=meta.get("ogtitle", meta["title"]), logo=LOGO, logo_name=LOGO_NAME,
         home_href="/" if lang == "fr" else "/en/", navlinks=navlinks, banner=banner, content=content,
         email=EMAIL,
-        footer_offers="\n".join('        <li><a href="{}">{}</a></li>'.format(h, l) for h, l in FOOTER_LINKS[lang]["offers"]),
-        footer_studio="\n".join('        <li><a href="{}">{}</a></li>'.format(h, l) for h, l in FOOTER_LINKS[lang]["studio"]),
+        footer_studio="\n".join('        <li><a href="{}">{}</a></li>'.format(h, l)
+                                for h, l in [(h, l) for h, l, _ in NAV[lang]] + FOOTER_EXTRA[lang]),
         **t)
     return ROOT / path, html, None if noindex else SITE + path_url
 
@@ -340,6 +315,8 @@ def main():
     urls = []
     for lang in ("fr", "en"):
         for fragment_path in sorted((SRC / lang).glob("*.html")):
+            if fragment_path.name.startswith("_"):   # shared block, pasted by <!--include-->, not a page
+                continue
             out, html, url = build_page(lang, fragment_path.read_text(encoding="utf-8"))
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(html, encoding="utf-8", newline="\n")

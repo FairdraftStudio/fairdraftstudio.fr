@@ -1,0 +1,114 @@
+<!--meta
+title: Compte rendu de réunion par IA&nbsp;: tâches et e-mail · Suivel
+ogtitle: Notes de réunion en tâches&nbsp;: l'outil gratuit
+description: Collez vos notes de réunion&nbsp;: l'IA en tire un compte rendu avec les décisions, les tâches (qui, pour quand) et un e-mail à copier. Gratuit, sans inscription.
+path: outils/notes-en-taches/index.html
+switch: /en/tools/
+nav: outils
+script: /assets/notes-taches.js
+kicker: Outil gratuit
+h1: Notes de réunion en tâches
+intro: Collez vos notes en vrac&nbsp;: l'outil en tire un compte rendu de réunion, avec les décisions, qui fait quoi pour quand, les points à confirmer et un e-mail récapitulatif. Un nom ou une échéance qui ne figurent pas dans vos notes sont remplacés par «&nbsp;à confirmer&nbsp;». Votre texte est envoyé à une IA (Claude, d'Anthropic) pour être traité&nbsp;: les détails sont sous la zone de texte.
+-->
+  <section class="tool" id="nt-app" aria-label="Notes de réunion en tâches">
+    <div class="wrap tool-grid nt-grid">
+      <form class="sheet tool-form" id="nt-form" novalidate>
+        <p class="form-head">Vos notes</p>
+        <div class="field">
+          <label for="nt-notes">Collez vos notes de réunion ou d'appel</label>
+          <textarea id="nt-notes" rows="13" spellcheck="false" autocomplete="off" placeholder="Notes en vrac, messages recopiés, transcription&nbsp;: le désordre ne gêne pas."></textarea>
+          <p class="nt-count" id="nt-count" aria-live="polite"></p>
+        </div>
+        <div class="nt-hp" aria-hidden="true">
+          <label for="nt-site">Ne pas remplir ce champ</label>
+          <input id="nt-site" name="site_web" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <p class="nt-privacy">Votre texte est envoyé à Anthropic (États-Unis) pour être traité&nbsp;; Suivel ne le conserve pas. Les prénoms suffisent&nbsp;: ne collez ni données sensibles (santé, coordonnées bancaires) ni données personnelles de vos clients. <a href="/confidentialite.html">Détails dans la politique de confidentialité</a>.</p>
+        <div class="tool-actions">
+          <button class="btn" type="submit" id="nt-go">Transformer mes notes</button>
+          <button class="btn btn-ghost" type="button" id="nt-example">Essayer avec un exemple</button>
+          <button class="btn btn-ghost" type="button" id="nt-clear">Effacer</button>
+        </div>
+        <p class="form-status" role="status" aria-live="polite" id="nt-status"></p>
+        <noscript><p class="nt-empty">Activez JavaScript pour utiliser cet outil.</p></noscript>
+      </form>
+
+      <div class="nt-out" id="nt-out" aria-busy="false">
+        <p class="sheet nt-empty" id="nt-empty">Le résultat apparaît ici&nbsp;: les décisions, un tableau «&nbsp;quoi, qui, pour quand&nbsp;», les points à confirmer et l'e-mail récapitulatif. Pas de notes sous la main&nbsp;? Cliquez sur «&nbsp;Essayer avec un exemple&nbsp;».</p>
+
+        <div class="nt-result" id="nt-result" hidden>
+          <section class="sheet nt-block" aria-labelledby="nt-h-decisions">
+            <p class="form-head" id="nt-h-decisions">Décisions prises</p>
+            <ul class="fe-list" id="nt-decisions"></ul>
+            <p class="nt-none" id="nt-decisions-none" hidden>Aucune décision claire dans ces notes.</p>
+          </section>
+
+          <section class="sheet nt-block" aria-labelledby="nt-h-tasks">
+            <p class="form-head" id="nt-h-tasks">Tâches</p>
+            <table class="nt-table" id="nt-tasks-table">
+              <thead>
+                <tr><th scope="col">Quoi</th><th scope="col">Qui</th><th scope="col">Pour quand</th></tr>
+              </thead>
+              <tbody id="nt-tasks"></tbody>
+            </table>
+            <p class="nt-none" id="nt-tasks-none" hidden>Aucune tâche dans ces notes.</p>
+            <div class="tool-actions">
+              <button class="btn btn-small" type="button" id="nt-copy-tasks">Copier les tâches</button>
+            </div>
+          </section>
+
+          <section class="sheet nt-block" aria-labelledby="nt-h-questions">
+            <p class="form-head" id="nt-h-questions">Points à confirmer</p>
+            <ul class="fe-list" id="nt-questions"></ul>
+            <p class="nt-none" id="nt-questions-none" hidden>Rien à confirmer, d'après ces notes.</p>
+          </section>
+
+          <section class="sheet nt-block" aria-labelledby="nt-h-email">
+            <p class="form-head" id="nt-h-email">E-mail récapitulatif</p>
+            <p class="nt-subject"><span class="nt-label">Objet&nbsp;:</span> <span id="nt-email-subject"></span></p>
+            <div class="nt-email" id="nt-email-body" tabindex="0" role="region" aria-label="Texte de l'e-mail"></div>
+            <div class="tool-actions">
+              <button class="btn btn-small" type="button" id="nt-copy-email">Copier l'e-mail</button>
+              <button class="btn btn-ghost btn-small" type="button" id="nt-copy-subject">Copier l'objet</button>
+            </div>
+          </section>
+
+          <p class="fine nt-ai">Résultat produit par une IA (Claude, d'Anthropic)&nbsp;: relisez-le avant de l'envoyer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap nt-notes">
+      <div>
+        <h2>Ce que l'outil fait de vos notes</h2>
+        <ul class="fe-list">
+          <li><strong>Il ne retient que ce qui est écrit.</strong> L'IA a pour consigne de ne garder que les décisions, les tâches et les questions qui figurent dans vos notes.</li>
+          <li><strong>Qui et pour quand&nbsp;: vos mots, sinon «&nbsp;à confirmer&nbsp;».</strong> L'outil vérifie que chaque nom et chaque échéance du tableau est écrit dans vos notes&nbsp;; sinon il le remplace par «&nbsp;à confirmer&nbsp;» et vous le signale. Un chiffre absent de vos notes est signalé aussi.</li>
+          <li><strong>Les dates restent comme vous les avez écrites.</strong> Si vous avez écrit «&nbsp;jeudi&nbsp;», le résultat garde «&nbsp;jeudi&nbsp;», sans le convertir en date&nbsp;: l'outil ne connaît pas la date de votre réunion et ne calcule rien.</li>
+          <li><strong>L'e-mail reprend le tableau.</strong> Il est assemblé à partir des décisions, des tâches et des points à confirmer ci-dessus, avec des formules de politesse fixes&nbsp;: rien d'autre n'y est ajouté.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ce que l'outil ne fait pas</h2>
+        <ul class="fe-list">
+          <li><strong>Il ne remplace pas votre relecture.</strong> Une IA peut oublier une décision ou rattacher une tâche à la mauvaise personne&nbsp;: relisez avant d'envoyer.</li>
+          <li><strong>Il n'envoie rien.</strong> L'e-mail est à copier dans votre messagerie, et Suivel ne garde pas vos notes.</li>
+          <li><strong>Il lit du texte, pas des fichiers.</strong> 6&nbsp;000 caractères au plus (environ deux pages), une réunion à la fois, ni audio ni PDF. Le résultat est en français.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="tool-next" aria-labelledby="tool-next-title">
+    <div class="wrap proof-grid">
+      <div class="section-head">
+        <p class="eyebrow">À chaque rendez-vous</p>
+        <h2 id="tool-next-title">Ces notes peuvent devenir un compte rendu toutes seules</h2>
+      </div>
+      <div>
+        <p>Coller vos notes ne prend qu'un instant. Mais après chaque rendez-vous, il faut recommencer&nbsp;: recopier les tâches dans votre outil, rédiger l'e-mail, ne rien oublier.</p>
+        <p>L'offre «&nbsp;Comptes rendus et tâches automatiques&nbsp;» le fait à votre place&nbsp;: vous déposez vos notes à un seul endroit, les tâches arrivent dans votre outil (Trello, Notion, Todoist, Google Tasks ou un tableau) et vous recevez un brouillon d'e-mail que vous relisez avant l'envoi.</p>
+        <p><a class="link-arrow" href="/offres/#offre-comptes-rendus">Voir l'offre et son prix</a></p>
+      </div>
+    </div>
+  </section>

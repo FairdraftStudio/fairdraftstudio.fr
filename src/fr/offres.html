@@ -1,71 +1,176 @@
 <!--meta
-title: Relances de factures et comptes rendus automatisés&nbsp;: prix · Suivel
-ogtitle: Trois offres à prix fixe
-description: Relances de factures 390&nbsp;€, comptes rendus et tâches 290&nbsp;€, assistant IA pour textes répétitifs 149&nbsp;€, suivi 49&nbsp;€/mois. Inclus, délais et conditions.
+title: Automatisations à prix fixe pour petites entreprises · Suivel
+ogtitle: Des automatisations à prix fixe
+description: Première automatisation 99&nbsp;€, assistant IA 149&nbsp;€, comptes rendus et tâches ou autre automatisation en plusieurs étapes 299&nbsp;€. Ce qui est inclus et les délais.
 path: offres/index.html
 alt: en/offers/index.html
 nav: offres
 kicker: Offres et prix
-h1: Trois offres à prix fixe
-intro: Chaque offre se lit comme un devis : ce qui est fait, le délai et le prix total. Pour ces trois offres, pas de prix « sur devis », ni de journée ajoutée en cours de route.
+h1: Des automatisations à prix fixe
+intro: Chaque offre se lit comme un devis&nbsp;: ce qui est fait, le délai et le prix total. Pas de «&nbsp;prix sur demande&nbsp;», ni de journée ajoutée en cours de route.
+script: /assets/route.js
 -->
-  <section class="offers" id="offres" aria-label="Les trois offres">
+  <section class="offers" id="offres" aria-label="Les offres">
     <div class="wrap">
-      <div class="quotes">
-        <article class="sheet quote" id="offre-relances" aria-labelledby="q1">
-          <p class="quote-head"><span>Devis n° 01</span><span>Délai&nbsp;: 5 jours ouvrés</span></p>
-          <h3 id="q1">Relances de factures automatiques</h3>
-          <p class="quote-for"><strong>Pour qui&nbsp;?</strong> Vous vérifiez à la main qui a payé, et relancer un client vous met mal à l'aise.</p>
-          <ul class="lines">
-            <li>Le suivi automatique de vos factures, depuis votre logiciel ou un simple tableau</li>
-            <li>Jusqu'à 3 relances rédigées avec vous, dans votre ton, aux dates que vous choisissez</li>
-            <li>Envoi depuis votre propre adresse e-mail</li>
-            <li>Arrêt automatique dès que la facture est marquée comme payée</li>
-            <li>Un récapitulatif des impayés chaque semaine</li>
-            <li>Un test sur vos vraies factures, un guide écrit et une vidéo de passation</li>
-          </ul>
-          <p class="quote-total"><span>Total</span><strong>390&nbsp;€</strong></p>
-          <p class="vat">TVA non applicable, art. 293 B du CGI</p>
-          <div class="accord">
-            <a class="btn" href="/contact/?offre=relances">Demander ce devis</a>
+      <div class="route">
+        <span class="route-line" aria-hidden="true"></span>
+        <span class="route-fill" aria-hidden="true"></span>
+
+        <article class="stop" id="offre-premiere-automatisation" aria-labelledby="q1">
+          <p class="stop-node" aria-hidden="true">99&nbsp;€</p>
+          <div class="stop-deal">
+            <p class="stop-kind">Une tâche, deux outils</p>
+            <h2 id="q1">Votre première automatisation</h2>
+            <p class="stop-price"><strong>99&nbsp;€</strong><span>Délai&nbsp;: 5&nbsp;jours ouvrés</span></p>
+            <p class="stop-for"><strong>Pour qui&nbsp;?</strong> Vous refaites chaque semaine la même tâche, de la même façon, entre des outils que vous avez déjà (e-mail, tableau, formulaire, agenda).</p>
+            <a class="btn" href="/contact/?offre=premiere">Demander ce devis</a>
+          </div>
+          <div class="stop-detail">
+            <div class="mini kb-skip" aria-hidden="true">
+              <div class="mini-before">
+                <p class="mini-label">Avant</p>
+                <p class="mini-from">Imprimerie Roux</p>
+                <p>Facture_0923.pdf</p>
+                <p class="mini-from">Votre banque</p>
+                <p>Releve_septembre.pdf</p>
+              </div>
+              <span class="mini-arrow"></span>
+              <div class="mini-after">
+                <p class="mini-label">Après</p>
+                <p class="mini-title">Google Drive</p>
+                <p class="mini-row"><span>Fournisseurs / Octobre</span><span>Facture_0923.pdf</span></p>
+                <p class="mini-row"><span>Banque / Relevés</span><span>Releve_septembre.pdf</span></p>
+                <p class="stamp"><span>Classé</span></p>
+              </div>
+              <p class="mini-cap">Exemple fictif&nbsp;: les pièces jointes rangées dès réception</p>
+            </div>
+            <h3>Ce qui est inclus</h3>
+            <ul class="lines">
+              <li>Un appel de 20 minutes ou un échange par écrit pour choisir la tâche et vérifier vos outils, avant tout paiement</li>
+              <li>Une seule tâche, automatisée sur vos propres comptes, entre deux outils au plus, sans IA</li>
+              <li>Par exemple&nbsp;: classer les pièces jointes de vos e-mails, ou copier dans un tableau les demandes de votre formulaire</li>
+              <li>Un test sur vos vrais exemples avant la livraison</li>
+              <li>Un guide écrit, pas à pas</li>
+            </ul>
           </div>
         </article>
 
-        <article class="sheet quote" id="offre-comptes-rendus" aria-labelledby="q2">
-          <p class="quote-head"><span>Devis n° 02</span><span>Délai&nbsp;: 5 jours ouvrés</span></p>
-          <h3 id="q2">Comptes rendus et tâches automatiques</h3>
-          <p class="quote-for"><strong>Pour qui&nbsp;?</strong> Après chaque rendez-vous client, vous retapez vos notes, l'e-mail récapitulatif et votre liste de tâches.</p>
-          <ul class="lines">
-            <li>Vous déposez vos notes, ou la transcription du rendez-vous, à un seul endroit</li>
-            <li>L'IA en tire un compte rendu clair&nbsp;: décisions, prochaines étapes, qui fait quoi</li>
-            <li>Un brouillon d'e-mail récapitulatif pour votre client, que vous relisez avant l'envoi</li>
-            <li>Les tâches ajoutées à votre outil (Trello, Notion, Todoist, Google Tasks ou un tableau)</li>
-            <li>Ce qui manque dans vos notes est signalé plutôt qu'inventé</li>
-            <li>Un test sur 3 de vos vrais rendez-vous, un guide écrit et une vidéo de passation</li>
-          </ul>
-          <p class="quote-total"><span>Total</span><strong>290&nbsp;€</strong></p>
-          <p class="vat">TVA non applicable, art. 293 B du CGI</p>
-          <div class="accord">
+        <article class="stop" id="offre-assistant" aria-labelledby="q3">
+          <p class="stop-node" aria-hidden="true">149&nbsp;€</p>
+          <div class="stop-deal">
+            <p class="stop-kind">Un assistant IA</p>
+            <h2 id="q3">Assistant IA pour vos textes répétitifs</h2>
+            <p class="stop-price"><strong>149&nbsp;€</strong><span>Délai&nbsp;: 2&nbsp;jours ouvrés</span></p>
+            <p class="stop-for"><strong>Pour qui&nbsp;?</strong> Vous rédigez chaque semaine le même type de texte (devis, rapport client, compte rendu, procédure).</p>
+            <a class="btn" href="/contact/?offre=assistant">Demander ce devis</a>
+          </div>
+          <div class="stop-detail">
+            <div class="mini kb-skip" aria-hidden="true">
+              <div class="mini-before">
+                <p class="mini-label">Avant</p>
+                <p>cuisine Mme&nbsp;Leroy</p>
+                <p>plan chêne 3&nbsp;m → 840</p>
+                <p>pose 2&nbsp;j → 640</p>
+                <p>évier inox + robinet&nbsp;??</p>
+              </div>
+              <span class="mini-arrow"></span>
+              <div class="mini-after">
+                <p class="mini-label">Après</p>
+                <p class="mini-title">Devis, cuisine Leroy</p>
+                <p class="mini-row"><span>Plan de travail en chêne, 3&nbsp;m</span><span>840&nbsp;€</span></p>
+                <p class="mini-row"><span>Pose (2&nbsp;jours)</span><span>640&nbsp;€</span></p>
+                <p class="mini-row"><span>Évier inox et robinet</span><span class="mini-tbc">[à compléter]</span></p>
+                <p class="stamp"><span>Prêt</span></p>
+              </div>
+              <p class="mini-cap">Exemple fictif&nbsp;: le prix manquant est signalé, pas inventé</p>
+            </div>
+            <h3>Ce qui est inclus</h3>
+            <ul class="lines">
+              <li>Un assistant construit avec Claude, l'IA d'Anthropic, et des consignes écrites pour votre tâche</li>
+              <li>Il répond toujours dans le même format, avec votre vocabulaire</li>
+              <li>Les informations manquantes restent marquées [à compléter] au lieu d'être inventées</li>
+              <li>Testé sur votre propre exemple avant la livraison</li>
+              <li>Un guide d'installation et une retouche groupée dans les 7 jours suivant la livraison</li>
+              <li>Un compte Claude est nécessaire&nbsp;: la formule Pro coûte 18&nbsp;€ HT par mois chez Anthropic (15&nbsp;€ HT par mois en paiement annuel). Avant de commencer, nous vérifions ensemble l'abonnement qu'il vous faut</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stop" id="offre-comptes-rendus" aria-labelledby="q2">
+          <p class="stop-node" aria-hidden="true">299&nbsp;€</p>
+          <div class="stop-deal">
+            <p class="stop-kind">Plusieurs outils, avec IA</p>
+            <h2 id="q2">Comptes rendus et tâches automatiques</h2>
+            <p class="stop-price"><strong>299&nbsp;€</strong><span>Délai&nbsp;: 5&nbsp;jours ouvrés</span></p>
+            <p class="stop-for"><strong>Pour qui&nbsp;?</strong> Après chaque rendez-vous client, vous remettez vos notes au propre, rédigez l'e-mail récapitulatif et mettez à jour vos tâches.</p>
             <a class="btn" href="/contact/?offre=comptes-rendus">Demander ce devis</a>
           </div>
+          <div class="stop-detail">
+            <div class="mini kb-skip" aria-hidden="true">
+              <div class="mini-before">
+                <p class="mini-label">Avant</p>
+                <p>rdv Cabinet Durand</p>
+                <p>devis site → moi, vendredi&nbsp;?</p>
+                <p>Paul relance fournisseur</p>
+                <p>prochain point&nbsp;??</p>
+              </div>
+              <span class="mini-arrow"></span>
+              <div class="mini-after">
+                <p class="mini-label">Après</p>
+                <p class="mini-title">Compte rendu</p>
+                <p class="mini-row"><span>Envoyer le devis du site</span><span>Vous, vendredi</span></p>
+                <p class="mini-row"><span>Relancer le fournisseur</span><span>Paul, <span class="mini-tbc">à confirmer</span></span></p>
+                <p class="mini-row"><span>Prochain point</span><span class="mini-tbc">À confirmer</span></p>
+                <p class="stamp"><span>Prêt</span></p>
+              </div>
+              <p class="mini-cap">Exemple fictif&nbsp;: les tâches partent dans votre outil, l'e-mail récapitulatif attend en brouillon</p>
+            </div>
+            <h3>Ce qui est inclus</h3>
+            <ul class="lines">
+              <li>Vous déposez vos notes, ou la transcription du rendez-vous, à un seul endroit</li>
+              <li>L'IA en tire un compte rendu clair&nbsp;: décisions, prochaines étapes, qui fait quoi</li>
+              <li>Un brouillon d'e-mail récapitulatif pour votre client, que vous relisez avant l'envoi</li>
+              <li>Les tâches ajoutées à votre outil (Trello, Notion, Todoist, Google Tasks ou un tableau)</li>
+              <li>Ce qui manque dans vos notes est signalé plutôt qu'inventé</li>
+              <li>Un test sur trois de vos vrais rendez-vous, un guide écrit et une vidéo de passation</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="sheet quote" id="offre-assistant" aria-labelledby="q3">
-          <p class="quote-head"><span>Devis n° 03</span><span>Délai&nbsp;: 48 h ouvrées</span></p>
-          <h3 id="q3">Assistant IA pour vos textes répétitifs</h3>
-          <p class="quote-for"><strong>Pour qui&nbsp;?</strong> Vous réécrivez chaque semaine le même type de texte&nbsp;: devis, rapport client, compte rendu, procédure.</p>
-          <ul class="lines">
-            <li>Un assistant basé sur Claude, l'IA d'Anthropic, avec des instructions écrites pour votre tâche</li>
-            <li>Il répond toujours dans le même format, avec votre vocabulaire</li>
-            <li>Les informations manquantes restent marquées [à compléter] au lieu d'être inventées</li>
-            <li>Testé sur votre propre exemple avant la livraison</li>
-            <li>Un guide d'installation et une retouche groupée dans les 7 jours suivant la livraison</li>
-            <li>Un compte Claude est nécessaire&nbsp;: la formule Pro coûte 18&nbsp;€ HT par mois chez Anthropic (15&nbsp;€ HT par mois en paiement annuel). Avant de commencer, nous vérifions ensemble la formule qu'il vous faut</li>
-          </ul>
-          <p class="quote-total"><span>Total</span><strong>149&nbsp;€</strong></p>
-          <p class="vat">TVA non applicable, art. 293 B du CGI</p>
-          <div class="accord">
-            <a class="btn" href="/contact/?offre=assistant">Demander ce devis</a>
+        <article class="stop" id="offre-plusieurs-etapes" aria-labelledby="q5">
+          <p class="stop-node" aria-hidden="true">299&nbsp;€</p>
+          <div class="stop-deal">
+            <p class="stop-kind">Plusieurs outils, avec ou sans IA</p>
+            <h2 id="q5">Une autre automatisation en plusieurs étapes</h2>
+            <p class="stop-price"><strong>299&nbsp;€</strong><span>Délai&nbsp;: 5&nbsp;jours ouvrés</span></p>
+            <p class="stop-for"><strong>Pour qui&nbsp;?</strong> Votre tâche passe par plusieurs outils et ne correspond à aucun des devis ci-dessus. Par exemple, trier les demandes reçues et préparer un brouillon de réponse pour chacune, relancer vos factures impayées aux dates que vous choisissez, ou recevoir chaque lundi un e-mail avec vos devis en attente, vos tâches et vos rendez-vous de la semaine.</p>
+            <a class="btn" href="/contact/?offre=plusieurs-etapes">Demander ce devis</a>
+          </div>
+          <div class="stop-detail">
+            <div class="mini kb-skip" aria-hidden="true">
+              <div class="mini-before">
+                <p class="mini-label">Avant</p>
+                <p class="mini-from">Nouveau message de votre site</p>
+                <p>Claire Petit&nbsp;: un devis pour trois portes intérieures, posées avant décembre.</p>
+              </div>
+              <span class="mini-arrow"></span>
+              <div class="mini-after">
+                <p class="mini-label">Après</p>
+                <p class="mini-title">Demandes clients</p>
+                <p class="mini-row"><span>Claire Petit, trois portes</span><span>Devis</span></p>
+                <p class="mini-row"><span>Brouillon de réponse</span><span>À relire</span></p>
+                <p class="stamp"><span>Trié</span></p>
+              </div>
+              <p class="mini-cap">Exemple fictif&nbsp;: la demande triée par type, avec un brouillon de réponse</p>
+            </div>
+            <h3>Ce qui est inclus</h3>
+            <ul class="lines">
+              <li>Un appel de 20 minutes ou un échange par écrit pour décrire la tâche et vérifier vos outils, avant tout paiement</li>
+              <li>Une seule tâche en plusieurs étapes, sur vos propres comptes, entre trois outils au plus, avec ou sans IA</li>
+              <li>Un test sur vos vrais exemples avant la livraison</li>
+              <li>Un guide écrit et une vidéo de passation</li>
+              <li>Le coût des outils et de l'IA, à votre nom, est écrit sur le devis</li>
+            </ul>
           </div>
         </article>
       </div>
@@ -77,12 +182,8 @@ intro: Chaque offre se lit comme un devis : ce qui est fait, le délai et le pr
           <p><span class="price">49&nbsp;€/mois.</span> Je vérifie que tout fonctionne et j'effectue les petits changements (textes, dates, destinataires). Sans engagement, résiliable par simple e-mail.</p>
         </div>
         <div>
-          <h3>Tarif de lancement</h3>
-          <p><span class="price">−30&nbsp;%</span> pour mes 3 premiers clients, en échange de l'autorisation de publier vos résultats réels (anonymisés si vous le préférez)&nbsp;: 273&nbsp;€ au lieu de 390&nbsp;€, 203&nbsp;€ au lieu de 290&nbsp;€, 104,30&nbsp;€ au lieu de 149&nbsp;€.</p>
-        </div>
-        <div>
           <h3>Outils incompatibles&nbsp;: rien à payer</h3>
-          <p>Je vérifie vos outils pendant l'appel, avant tout paiement. Si l'automatisation n'est pas possible chez vous, je vous le dis, et vous ne payez rien.</p>
+          <p>Je vérifie vos outils pendant un appel ou par écrit, avant tout paiement. Si l'automatisation n'est pas possible chez vous, je vous le dis, et vous ne payez rien.</p>
         </div>
       </div>
       <p class="other">Votre besoin est différent&nbsp;? <a href="/contact/">Décrivez-le</a>&nbsp;: je vous dis si c'est faisable, et à quel prix.</p>
@@ -96,34 +197,7 @@ intro: Chaque offre se lit comme un devis : ce qui est fait, le délai et le pr
         <h2 id="faq-title">Vos questions avant de commencer</h2>
       </div>
       <div class="qa">
-        <details>
-          <summary>Je ne suis pas à l'aise avec la technique. C'est pour moi&nbsp;?</summary>
-          <p>Oui. Vous n'avez rien à installer ni à programmer. Pendant la mise en place, vous vous connectez vous-même à vos comptes (quelques minutes, je vous guide). Ensuite, l'automatisation tourne seule.</p>
-        </details>
-        <details>
-          <summary>Y a-t-il des frais en plus du prix&nbsp;?</summary>
-          <p>Parfois. Une automatisation a besoin d'un service qui tourne en continu, et certaines étapes utilisent une IA payée à l'usage. Si c'est le cas, le coût est écrit sur le devis et vous le payez directement à l'éditeur, sans marge de ma part.</p>
-        </details>
-        <details>
-          <summary>Avec quels outils ça marche&nbsp;?</summary>
-          <p>Pour l'e-mail&nbsp;: Gmail ou Outlook. Pour les tableaux&nbsp;: Google Sheets ou Excel en ligne. Pour la facturation&nbsp;: votre logiciel s'il le permet, sinon un simple tableau. Je vérifie vos outils pendant l'appel, avant tout paiement.</p>
-        </details>
-        <details>
-          <summary>Et mes données&nbsp;?</summary>
-          <p>Elles restent dans vos outils, sur des comptes à votre nom. Quand une étape utilise l'IA, le texte concerné est envoyé au service d'IA choisi (par exemple Claude, d'Anthropic)&nbsp;; le devis le précise.</p>
-        </details>
-        <details>
-          <summary>Êtes-vous une plateforme de facturation électronique&nbsp;?</summary>
-          <p>Non. Je ne suis pas une plateforme agréée et je n'émets pas de factures pour vous. J'organise vos outils et vos relances autour de la plateforme que vous aurez choisie.</p>
-        </details>
-        <details>
-          <summary>Et si quelque chose ne marche plus&nbsp;?</summary>
-          <p>Pendant 30 jours après la livraison, je corrige gratuitement tout défaut de ce que j'ai livré. Ensuite, c'est le suivi mensuel à 49&nbsp;€/mois, ou une correction sur devis.</p>
-        </details>
-        <details>
-          <summary>Comment se passe le paiement&nbsp;?</summary>
-          <p>Par virement, sur facture&nbsp;: 50&nbsp;% à la commande et le solde à la livraison. Pour l'assistant IA à 149&nbsp;€, la totalité à la commande.</p>
-        </details>
+<!--include: faq-->
       </div>
     </div>
   </section>

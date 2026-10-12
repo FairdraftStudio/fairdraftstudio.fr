@@ -1,33 +1,107 @@
 <!--meta
-title: Outils gratuits&nbsp;: facture électronique, lettre de relance · Suivel
+title: Outils gratuits pour l'administratif des TPE · Suivel
 ogtitle: Outils gratuits pour l'administratif
-description: Des outils gratuits pour l'administratif des indépendants et des petites entreprises. Sans inscription, sans cookie&nbsp;: tout se passe dans votre navigateur.
+description: Coût de vos tâches répétitives, comptes rendus, facture électronique, relances&nbsp;: des outils gratuits pour indépendants et TPE, sans inscription.
 path: outils/index.html
 alt: en/tools/index.html
 nav: outils
 kicker: Outils gratuits
-h1: Des outils qui servent tout de suite.
-intro: Sans inscription, sans e-mail à laisser, sans cookie. Tout se calcule dans votre navigateur : rien de ce que vous tapez dans ces outils ne quitte votre ordinateur.
+h1: Des outils qui servent tout de suite
+intro: Sans inscription, sans e-mail à laisser, sans cookie. La plupart fonctionnent entièrement dans votre navigateur&nbsp;: rien de ce que vous y tapez ne quitte votre ordinateur. Seule exception&nbsp;: «&nbsp;Notes de réunion en tâches&nbsp;» envoie votre texte à une IA pour le traiter, comme l'indique la mention sous la zone de texte.
+script: /assets/outils.js
 -->
   <section class="work" aria-label="Outils disponibles">
-    <div class="wrap work-list">
-      <article class="sheet work-item reveal" style="--i: 0">
-        <p class="work-tag">Disponible</p>
-        <h2>Facture électronique&nbsp;: vos dates et vos mentions</h2>
-        <p>Quatre questions sur votre entreprise&nbsp;: vous voyez quand vous devez recevoir puis émettre vos factures électroniques, les mentions à ajouter et ce qu'il faut préparer, avec les sources officielles.</p>
-        <a class="link-arrow" href="/outils/facture-electronique/">Ouvrir l'outil</a>
-      </article>
-      <article class="sheet work-item reveal" style="--i: 1">
-        <p class="work-tag">Disponible</p>
-        <h2>Lettre de relance de facture impayée</h2>
-        <p>Trois niveaux&nbsp;: le rappel poli, la relance ferme, la mise en demeure avec les mentions du Code de commerce. Vous remplissez six cases, vous copiez la lettre.</p>
-        <a class="link-arrow" href="/outils/lettre-de-relance/">Ouvrir l'outil</a>
-      </article>
-      <article class="sheet work-item reveal" style="--i: 2">
-        <p class="work-tag">Disponible</p>
-        <h2>Relances de factures en lot</h2>
-        <p>Vous collez vos factures impayées depuis un tableur&nbsp;: pour chacune, les jours de retard, le niveau de relance, l'indemnité de 40&nbsp;€ pour les clients professionnels et un texte prêt à copier, avec un calendrier de suivi.</p>
-        <a class="link-arrow" href="/outils/relances-en-lot/">Ouvrir l'outil</a>
-      </article>
+    <div class="wrap">
+      <ul class="tool-rows">
+        <li class="tool-row">
+          <div class="tw-screen kb-skip" aria-hidden="true">
+            <span class="sc-lrow sc-s" style="--d: 0"><b>Comptes rendus</b><i>60&nbsp;h/an</i><em class="sc-lvl sc-l3">2&#8239;400&nbsp;€</em></span>
+            <span class="sc-lrow sc-s" style="--d: 1"><b>Devis</b><i>45&nbsp;h/an</i><em class="sc-lvl sc-l2">1&#8239;800&nbsp;€</em></span>
+            <span class="sc-lrow sc-s" style="--d: 2"><b>Recopier les demandes</b><i>37&nbsp;h&nbsp;30/an</i><em class="sc-lvl sc-l1">1&#8239;500&nbsp;€</em></span>
+            <span class="sc-foot sc-s" style="--d: 3">Cinq tâches&nbsp;: 183&nbsp;h par an, environ 7&#8239;320&nbsp;€ à 40&nbsp;€ de l'heure</span>
+            <span class="sc-cap">Exemple fictif</span>
+          </div>
+          <div class="tool-text">
+            <p class="chip">Rien ne quitte votre navigateur</p>
+            <h2>Combien vous coûtent vos tâches répétitives&nbsp;?</h2>
+            <p>Vous listez les tâches qui reviennent, avec leurs minutes et leur fréquence&nbsp;: vous voyez les heures qu'elles vous prennent par an, celle qui pèse le plus et, avec votre taux horaire, leur coût en euros.</p>
+            <a class="btn" href="/outils/cout-taches-administratives/">Ouvrir l'outil</a>
+          </div>
+        </li>
+        <li class="tool-row">
+          <div class="tw-screen sc-flow kb-skip" aria-hidden="true">
+            <span class="sc-pad">
+              <span class="sc-s" style="--d: 0">point équipe lundi</span>
+              <span class="sc-s" style="--d: 1">Léa envoie devis Martin vendredi</span>
+              <span class="sc-s" style="--d: 2">Paul relance fournisseur</span>
+              <span class="sc-s" style="--d: 3">commander cartons&nbsp;??</span>
+            </span>
+            <span class="sc-go sc-s" style="--d: 4">Transformer mes notes</span>
+            <span class="sc-card">
+              <span class="sc-row sc-s" style="--d: 6"><b>Envoyer le devis Martin</b><i>Léa, vendredi</i></span>
+              <span class="sc-row sc-s" style="--d: 7"><b>Relancer le fournisseur</b><i>Paul, <span class="sc-pill">à confirmer</span></i></span>
+              <span class="sc-row sc-s" style="--d: 8"><b>Commander les cartons</b><i><span class="sc-pill">à confirmer</span></i></span>
+            </span>
+            <span class="sc-cap">Exemple fictif</span>
+          </div>
+          <div class="tool-text">
+            <p class="chip">Votre texte est traité par une IA</p>
+            <h2>Notes de réunion en tâches</h2>
+            <p>Vous collez vos notes en vrac&nbsp;: vous obtenez les décisions, qui fait quoi pour quand, les points à confirmer et un e-mail récapitulatif. Un nom ou une échéance absents de vos notes deviennent «&nbsp;à confirmer&nbsp;».</p>
+            <a class="btn" href="/outils/notes-en-taches/">Ouvrir l'outil</a>
+          </div>
+        </li>
+        <li class="tool-row">
+          <div class="tw-screen kb-skip" aria-hidden="true">
+            <span class="sc-q sc-s" style="--d: 0">Micro-entreprise, TPE ou PME</span>
+            <span class="sc-q sc-s" style="--d: 1">À des entreprises, en France</span>
+            <span class="sc-dates">
+              <span class="sc-date sc-s" style="--d: 3"><b>1<sup>er</sup>&nbsp;sept. 2026</b><i>Recevoir</i></span>
+              <span class="sc-date sc-s" style="--d: 4"><b>1<sup>er</sup>&nbsp;sept. 2027</b><i>Émettre</i></span>
+            </span>
+            <span class="sc-cap">Exemple</span>
+          </div>
+          <div class="tool-text">
+            <p class="chip">Rien ne quitte votre navigateur</p>
+            <h2>Facture électronique&nbsp;: vos dates et vos mentions</h2>
+            <p>Quatre questions sur votre entreprise&nbsp;: vous voyez quand vous devez recevoir puis émettre vos factures électroniques, les mentions à ajouter et ce qu'il faut préparer, avec les sources officielles.</p>
+            <a class="btn" href="/outils/facture-electronique/">Ouvrir l'outil</a>
+          </div>
+        </li>
+        <li class="tool-row">
+          <div class="tw-screen kb-skip" aria-hidden="true">
+            <span class="sc-tabs sc-s" style="--d: 0"><i>Rappel poli</i><i class="is-sel">Relance ferme</i><i>Mise en demeure</i></span>
+            <span class="sc-card sc-letter">
+              <b class="sc-s" style="--d: 1">Objet&nbsp;: relance, facture 2026-014</b>
+              <span class="sc-s" style="--d: 2">Bonjour,</span>
+              <span class="sc-line sc-s" style="--d: 2"></span>
+              <span class="sc-line sc-s" style="--d: 3; width: 78%"></span>
+              <span class="sc-hl sc-s" style="--d: 4">indemnité forfaitaire de 40&nbsp;€</span>
+            </span>
+            <span class="sc-cap">Exemple fictif</span>
+          </div>
+          <div class="tool-text">
+            <p class="chip">Rien ne quitte votre navigateur</p>
+            <h2>Lettre de relance de facture impayée</h2>
+            <p>Trois niveaux&nbsp;: le rappel poli, la relance ferme, la mise en demeure avec les mentions du Code de commerce. Vous remplissez quelques cases, vous copiez la lettre.</p>
+            <a class="btn" href="/outils/lettre-de-relance/">Ouvrir l'outil</a>
+          </div>
+        </li>
+        <li class="tool-row">
+          <div class="tw-screen kb-skip" aria-hidden="true">
+            <span class="sc-lrow sc-s" style="--d: 0"><b>F-031</b><i>12 j</i><em class="sc-lvl sc-l1">Rappel poli</em></span>
+            <span class="sc-lrow sc-s" style="--d: 1"><b>F-027</b><i>21 j</i><em class="sc-lvl sc-l2">Relance ferme</em></span>
+            <span class="sc-lrow sc-s" style="--d: 2"><b>F-019</b><i>38 j</i><em class="sc-lvl sc-l3">Mise en demeure</em></span>
+            <span class="sc-foot sc-s" style="--d: 3">Un texte prêt à copier pour chacune, et les dates de suivi pour votre agenda</span>
+            <span class="sc-cap">Exemple fictif</span>
+          </div>
+          <div class="tool-text">
+            <p class="chip">Rien ne quitte votre navigateur</p>
+            <h2>Relances de factures en lot</h2>
+            <p>Vous collez vos factures impayées depuis un tableur&nbsp;: pour chacune, les jours de retard, le niveau de relance, l'indemnité de 40&nbsp;€ pour les clients professionnels et un texte prêt à copier, avec un calendrier de suivi.</p>
+            <a class="btn" href="/outils/relances-en-lot/">Ouvrir l'outil</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
