@@ -49,8 +49,7 @@ TEXT = {
                lang_code="EN", lang_href="/en/", lang_hreflang="en",
                tagline="Les tâches répétitives des petites entreprises, automatisées.",
                f_studio="Le site", f_contact="Contact",
-               f_built="Site construit par Mohamed Kanso, avec l'aide de l'IA", f_built_href="/realisations/#ce-site",
-               f_reply="Réponse écrite sous un jour ouvré", f_where="Montpellier · à distance, partout en France",
+               f_where="Montpellier · à distance, partout en France",
                f_legal="Mentions légales", f_privacy="Confidentialité", f_terms="Conditions générales de vente",
                f_vat="TVA non applicable, art. 293 B du CGI",
                f_siret="Entrepreneur individuel (EI) · SIRET 938 479 193 00014"),
@@ -59,8 +58,7 @@ TEXT = {
                lang_code="FR", lang_href="/", lang_hreflang="fr",
                tagline="Repetitive tasks for small businesses, automated.",
                f_studio="Pages", f_contact="Contact",
-               f_built="Site built by Mohamed Kanso, with AI help", f_built_href="/en/work/#ce-site",
-               f_reply="Written reply within one working day", f_where="Montpellier, France · remote",
+               f_where="Montpellier, France · remote",
                f_legal="Legal notice (FR)", f_privacy="Privacy (FR)", f_terms="Terms of sale (FR)",
                f_vat="VAT not applicable, art. 293 B of the French tax code (CGI)",
                f_siret="Sole trader (EI) · SIRET 938 479 193 00014"),
@@ -135,7 +133,6 @@ SHELL = """<!doctype html>
       </a>
       <p class="footer-tag">{tagline}</p>
       <p class="footer-where">{f_where}</p>
-      <p class="footer-built"><a href="{f_built_href}">{f_built}</a></p>
     </div>
     <div>
       <h2 class="footer-title">{f_studio}</h2>
@@ -147,7 +144,6 @@ SHELL = """<!doctype html>
       <h2 class="footer-title">{f_contact}</h2>
       <ul class="footer-list">
         <li><a href="mailto:{email}">{email}</a></li>
-        <li class="footer-note">{f_reply}</li>
       </ul>
     </div>
   </div>

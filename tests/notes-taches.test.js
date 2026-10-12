@@ -173,15 +173,18 @@ test('the /outils/ page lists the tool, and no longer says that everything stays
   assert.ok(built.includes('href="/outils/notes-en-taches/"'));
   const text = visibleText(built);
   assert.ok(!/Tout se calcule dans votre navigateur/.test(text));
-  assert.match(text, /La plupart fonctionnent entièrement dans votre navigateur/);
-  assert.match(text, /Seule exception\s*: «\s*Notes de réunion en tâches\s*» envoie votre texte à une IA pour le traiter/);
+  // 12 Oct trim pass: the intro is « Gratuits et sans inscription. » and each tool page carries its own privacy line;
+  // the hub keeps only the per-card chips, so the Notes card must still say that its text goes to an AI
+  assert.match(text, /Gratuits et sans inscription\./);
+  assert.ok(!/La plupart fonctionnent entièrement/.test(text));
+  assert.match(text, /Notes de réunion en tâches[\s\S]{0,400}Votre texte est traité par une IA|Votre texte est traité par une IA[\s\S]{0,200}Notes de réunion en tâches/);
   // 11 Oct: the English tools page lists the tool too (free-tool step 6, six places), so it must not say
   // that everything runs in the browser any more
   const en = read(SITE, 'en', 'tools', 'index.html');
   assert.ok(en.includes('href="/outils/notes-en-taches/"'));
   const enText = visibleText(en);
   assert.ok(!/Everything runs in your browser/.test(enText));
-  assert.match(enText, /The exception is .Meeting notes to tasks.: it sends your text to an AI to be processed/);   // EN name of the tool since 12 Oct (one name per tool)
+  assert.match(enText, /Meeting notes to tasks[\s\S]{0,400}Your text is processed by an AI|Your text is processed by an AI[\s\S]{0,200}Meeting notes to tasks/);   // EN name of the tool since 12 Oct (one name per tool)
 });
 
 test('the privacy page covers the tool next to the assistant (same processors, 30 days, nothing kept by the server)', () => {
