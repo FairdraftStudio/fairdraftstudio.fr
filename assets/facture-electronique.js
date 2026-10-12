@@ -9,6 +9,9 @@
 
   var PLATFORMS = 'https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees';
   var DISCOVER = 'https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique';
+  // Links to other sites open in a new tab (the build does the same for the static pages, build_site.py open_external_links)
+  var EXT = ' target="_blank" rel="noopener"';
+  var NEWTAB = '<span class="visually-hidden new-tab"> (nouvel onglet)</span>';
   var RECEIVE = '2026-09-01';
   var DATES = {
     '2026-09-01': { short: '1<sup>er</sup> sept. 2026', long: '1<sup>er</sup>&nbsp;septembre&nbsp;2026' },
@@ -21,7 +24,7 @@
     return el ? el.value : '';
   };
   var inForce = function (iso) { return new Date() >= new Date(iso + 'T00:00:00'); };
-  var plain = function (html) { return html.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' '); };
+  var plain = function (html) { return html.split(NEWTAB).join('').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' '); };
 
   function build() {
     var size = pick('taille'), clients = pick('clients'), vat = pick('tva'), sales = pick('ventes');
@@ -36,7 +39,7 @@
       date: RECEIVE, title: 'Recevoir des factures électroniques',
       lines: [
         'Vous devez pouvoir recevoir sous forme électronique les factures des fournisseurs obligés de les émettre&nbsp;: les grandes entreprises et les ETI depuis le&nbsp;' + DATES['2026-09-01'].long + ', puis toutes les entreprises à partir du&nbsp;' + DATES['2027-09-01'].long + '.',
-        'Pour recevoir comme pour émettre, il faut avoir choisi une plateforme agréée (<a href="' + PLATFORMS + '">liste officielle sur impots.gouv.fr</a>).'
+        'Pour recevoir comme pour émettre, il faut avoir choisi une plateforme agréée (<a href="' + PLATFORMS + '"' + EXT + '>liste officielle sur impots.gouv.fr' + NEWTAB + '</a>).'
       ]
     });
     if (b2b) {
@@ -47,7 +50,7 @@
     }
     if (b2c) {
       var reportLines = ['Vos clients particuliers ne reçoivent pas de facture électronique, mais ' + transmit + ' les données de ces ventes à l\'administration par votre plateforme agréée&nbsp;: c\'est l\'e-reporting.'];
-      if (franchise) reportLines.push('En franchise en base, vérifiez sur <a href="' + DISCOVER + '">impots.gouv.fr</a> ce que vous aurez à transmettre.');
+      if (franchise) reportLines.push('En franchise en base, vérifiez sur <a href="' + DISCOVER + '"' + EXT + '>impots.gouv.fr' + NEWTAB + '</a> ce que vous aurez à transmettre.');
       steps.push({ date: issue, title: 'Transmettre les données de vos ventes aux particuliers', lines: reportLines });
     }
     if (services && !franchise) {
@@ -73,7 +76,7 @@
     if (b2b && now) todo.push('Vous devez déjà émettre vos factures au format électronique&nbsp;: faites-en la priorité si ce n\'est pas encore en place.');
     todo.push('Si ce n\'est pas fait, choisissez dès maintenant votre plateforme agréée&nbsp;: vous devez pouvoir recevoir des factures électroniques depuis le&nbsp;' + DATES[RECEIVE].long + '. Si vous avez un logiciel de facturation, demandez d\'abord à son éditeur s\'il est relié à une plateforme agréée, comme le conseille impots.gouv.fr.');
     if (b2b) todo.push('Rassemblez le numéro SIREN de chacun de vos clients entreprises.');
-    if (services && franchise) todo.push('Vérifiez sur <a href="' + DISCOVER + '">impots.gouv.fr</a> si vous aurez des données de paiement à transmettre.');
+    if (services && franchise) todo.push('Vérifiez sur <a href="' + DISCOVER + '"' + EXT + '>impots.gouv.fr' + NEWTAB + '</a> si vous aurez des données de paiement à transmettre.');
     todo.push('Mettez votre modèle de facture à jour avec les mentions ci-dessus' + (now ? ', si ce n\'est pas déjà fait.' : ' avant le&nbsp;' + DATES[issue].long + '.'));
 
     var html = '<ol class="fe-steps">' + steps.map(function (s) {

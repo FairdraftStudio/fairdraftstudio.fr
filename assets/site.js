@@ -109,13 +109,23 @@
     });
   }
 
+  // Old offer anchors (the meetings offer had its own card until 12 Oct 2026) land on the multi-step offer
+  var oldAnchors = { '#offre-comptes-rendus': 'offre-plusieurs-etapes', '#offer-meetings': 'offer-multi-step' };
+  var anchorTarget = oldAnchors[window.location.hash] && document.getElementById(oldAnchors[window.location.hash]);
+  if (anchorTarget) {
+    window.history.replaceState(null, '', '#' + anchorTarget.id);
+    anchorTarget.scrollIntoView();
+  }
+
   var form = document.getElementById('contact-form');
   var select = document.getElementById('f-offer');
 
-  // "Request this quote" buttons link to the contact page with ?offre=<value>; preselect it here
+  // "Request this quote" buttons link to the contact page with ?offre=<value>; preselect it here.
+  // "comptes-rendus" was an offer of its own until 12 Oct 2026 (old LinkedIn and Malt links): it now means the multi-step offer.
   if (select) {
     var wanted = new URLSearchParams(window.location.search).get('offre');
-    if (wanted && Array.prototype.some.call(select.options, function (o) { return o.value === wanted; })) select.value = wanted;
+    if (wanted === 'comptes-rendus') wanted = 'plusieurs-etapes';
+    if (wanted &&Array.prototype.some.call(select.options, function (o) { return o.value === wanted; })) select.value = wanted;
   }
 
   if (!form) return;

@@ -12,6 +12,7 @@ import re
 import sys
 from html import unescape
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
@@ -48,6 +49,7 @@ TEXT = {
                lang_code="EN", lang_href="/en/", lang_hreflang="en",
                tagline="Les tâches répétitives des petites entreprises, automatisées.",
                f_studio="Le site", f_contact="Contact",
+               f_built="Site construit par Mohamed Kanso, avec l'aide de l'IA", f_built_href="/realisations/#ce-site",
                f_reply="Réponse écrite sous un jour ouvré", f_where="Montpellier · à distance, partout en France",
                f_legal="Mentions légales", f_privacy="Confidentialité", f_terms="Conditions générales de vente",
                f_vat="TVA non applicable, art. 293 B du CGI",
@@ -57,6 +59,7 @@ TEXT = {
                lang_code="FR", lang_href="/", lang_hreflang="fr",
                tagline="Repetitive tasks for small businesses, automated.",
                f_studio="Pages", f_contact="Contact",
+               f_built="Site built by Mohamed Kanso, with AI help", f_built_href="/en/work/#ce-site",
                f_reply="Written reply within one working day", f_where="Montpellier, France · remote",
                f_legal="Legal notice (FR)", f_privacy="Privacy (FR)", f_terms="Terms of sale (FR)",
                f_vat="VAT not applicable, art. 293 B of the French tax code (CGI)",
@@ -132,6 +135,7 @@ SHELL = """<!doctype html>
       </a>
       <p class="footer-tag">{tagline}</p>
       <p class="footer-where">{f_where}</p>
+      <p class="footer-built"><a href="{f_built_href}">{f_built}</a></p>
     </div>
     <div>
       <h2 class="footer-title">{f_studio}</h2>
@@ -170,18 +174,19 @@ PAGE_HEAD = """<div class="desk desk-page">
 
 
 def offers_from_site():
-    """The four offers (anchor, name, price in euros) read from the French offers page, so the structured data
+    """The offers (anchor, name, price in euros) read from the French offers page, so the structured data
     on the home page cannot drift from /offres/. Stops the build if the page layout changes."""
     text = (SRC / "fr" / "offres.html").read_text(encoding="utf-8")
     found = re.findall(r'<article class="stop[^"]*" id="(offre-[a-z-]+)".*?<h2 id="q\d">(.*?)</h2>'
                        r'.*?<p class="stop-price"><strong>(\d+)&nbsp;€</strong>', text, re.S)
-    if len(found) != 4:
-        sys.exit("offres.html: expected 4 offers for the JSON-LD, found {}".format(len(found)))
+    expected = text.count('<article class="stop')
+    if len(found) != expected or not found:
+        sys.exit("offres.html: {} offer card(s) but {} read for the JSON-LD".format(expected, len(found)))
     return [(anchor, unescape(name), int(price)) for anchor, name, price in found]
 
 
 def home_jsonld() -> str:
-    """JSON-LD for the French home page only: ProfessionalService (with the four offers) and WebSite.
+    """JSON-LD for the French home page only: ProfessionalService (with the offers of /offres/) and WebSite.
     Only facts that are on the site: no reviews, no ratings, no street address."""
     offers = offers_from_site()
     prices = [price for _, _, price in offers]
@@ -258,6 +263,48 @@ def add_reveal(html: str) -> str:
     return html
 
 
+OWN_HOSTS = {"suivel.fr", "www.suivel.fr"}
+NEW_TAB_HINT = {"fr": " (nouvel onglet)", "en": " (new tab)"}   # read out by screen readers only (.visually-hidden)
+_SKIP_BLOCKS = re.compile(r"(<script\b.*?</script>|<style\b.*?</style>)", re.S | re.I)
+_ANCHOR = re.compile(r"<a\b([^>]*)>(.*?)</a>", re.S | re.I)
+
+
+def open_external_links(html: str, lang: str) -> str:
+    """Owner, 12 Oct 2026: every link to another website opens in a new tab. Done on the generated page, so every
+    page (and every future one) gets it without JS: <a href="http(s)://other-host/..."> gets target="_blank" and
+    rel="noopener" (existing rel values kept; no noreferrer, so Agensi and GitHub still see where the visit came
+    from) plus a screen-reader hint. Relative links, #anchors, mailto: and tel:, suivel.fr links and links that
+    already have a target are left alone. Links built by scripts (assets/facture-electronique.js) do the same."""
+    hint = NEW_TAB_HINT[lang]
+
+    def one(m):
+        attrs, inner = m.group(1), m.group(2)
+        href = re.search(r'\bhref="([^"]*)"', attrs)
+        if not href or re.search(r"\btarget\s*=", attrs):
+            return m.group(0)
+        parts = urlsplit(unescape(href.group(1)).strip())
+        if parts.scheme not in ("http", "https") and not (parts.scheme == "" and href.group(1).strip().startswith("//")):
+            return m.group(0)
+        if (parts.hostname or "").lower() in OWN_HOSTS:
+            return m.group(0)
+        rel = re.search(r'\brel="([^"]*)"', attrs)
+        if rel:
+            values = rel.group(1).split()
+            if "noopener" not in values:
+                values.append("noopener")
+            attrs = attrs.replace(rel.group(0), 'rel="{}"'.format(" ".join(values)))
+        else:
+            attrs += ' rel="noopener"'
+        attrs += ' target="_blank"'
+        label = re.search(r'\baria-label="([^"]*)"', attrs)
+        if label:    # an aria-label replaces the link text for screen readers: the hint goes into it
+            attrs = attrs.replace(label.group(0), 'aria-label="{}{}"'.format(label.group(1), hint))
+            return "<a{}>{}</a>".format(attrs, inner)
+        return '<a{}>{}<span class="visually-hidden new-tab">{}</span></a>'.format(attrs, inner, hint)
+
+    return "".join(part if i % 2 else _ANCHOR.sub(one, part) for i, part in enumerate(_SKIP_BLOCKS.split(html)))
+
+
 def build_page(lang: str, fragment: str) -> tuple[Path, str, str | None]:
     """Returns (output path, html, public URL for the sitemap, or None when the page is 'robots: noindex')."""
     meta, banner, content = parse(fragment)
@@ -307,6 +354,7 @@ def build_page(lang: str, fragment: str) -> tuple[Path, str, str | None]:
         footer_studio="\n".join('        <li><a href="{}">{}</a></li>'.format(h, l)
                                 for h, l in [(h, l) for h, l, _ in NAV[lang]] + FOOTER_EXTRA[lang]),
         **t)
+    html = open_external_links(html, lang)
     return ROOT / path, html, None if noindex else SITE + path_url
 
 

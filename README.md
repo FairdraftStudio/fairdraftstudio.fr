@@ -10,6 +10,8 @@ The services site: French, with English pages under `/en/`. Static HTML, CSS and
 
 **Never edit the generated pages** (`index.html`, `offres/index.html`, `cgv.html`, …): the builder overwrites them.
 
+The builder also adds `target="_blank" rel="noopener"` (and a screen-reader hint) to every link to another website, so write plain `<a href="https://…">` in the fragments.
+
 | Page | Fragment |
 |---|---|
 | `/` accueil | `src/fr/index.html` |
