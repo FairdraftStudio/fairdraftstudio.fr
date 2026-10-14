@@ -124,7 +124,7 @@ test('the pasted notes do not come back after a reload (the privacy page says th
 
 test('the notice before sending says where the text goes, who keeps nothing, and what not to paste; the result says it is AI work', () => {
   const text = visibleText(read(SITE, 'src', 'fr', 'outils-notes-en-taches.html'));
-  assert.ok(text.includes('Votre texte est envoyé à Anthropic (États-Unis) pour être traité'));
+  assert.ok(text.includes('Votre texte est envoyé à une IA (Claude)'));
   assert.ok(text.includes('Suivel ne le conserve pas'));
   assert.match(text, /ne collez ni données sensibles \(santé, coordonnées bancaires\)/);
   assert.ok(text.includes('Détails dans la politique de confidentialité'));
