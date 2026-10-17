@@ -181,7 +181,7 @@
     button.disabled = true;
     status.textContent = T.sending;
     if (fallback) fallback.hidden = true;
-    fetch(CONTACT_ENDPOINT, {
+    fetch(CONTACT_ENDPOINT + (fr ? '' : '?lang=en'), {   // the Worker answers early errors (rate limit) in the page's language
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

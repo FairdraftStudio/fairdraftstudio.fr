@@ -267,7 +267,7 @@
       input.focus();
     }
 
-    fetch(ENDPOINT, {
+    fetch(ENDPOINT + (LANG === 'en' ? '?lang=en' : ''), {   /* the Worker answers early errors (rate limit) in the page's language */
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ messages: history, lang: LANG }),

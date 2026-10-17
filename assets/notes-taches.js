@@ -204,14 +204,20 @@ if (typeof module !== 'undefined' && module.exports) module.exports = NotesTache
 
   function copyText(text, message) {
     var fail = function () { say('La copie a échoué : sélectionnez le texte à la main.', true); };
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function () { say(message); }, fail);
-    } else {
+    // Older method, also tried when the browser refuses the clipboard API (some embedded browsers do; 17 Oct)
+    var legacy = function () {
       var area = document.createElement('textarea');
       area.setAttribute('aria-hidden', 'true');
       area.value = text; document.body.appendChild(area); area.select();
-      try { document.execCommand('copy'); say(message); } catch (e) { fail(); }
+      var done = false;
+      try { done = document.execCommand('copy'); } catch (e) { done = false; }
       document.body.removeChild(area);
+      if (done) say(message); else fail();
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { say(message); }, legacy);
+    } else {
+      legacy();
     }
   }
 

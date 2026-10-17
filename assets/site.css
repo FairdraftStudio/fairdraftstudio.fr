@@ -1381,3 +1381,11 @@ html:not(.js) .m-tabs { display: none; }   /* without the script only the first 
   .ct-table tr.is-top { background: var(--tint); padding-inline: 10px; }
   .ct-table tr.is-top td { background: none; }
 }
+
+/* demandes de formulaire en tableau (mail vers Excel) */
+#mt-app [hidden] { display: none; }
+#mt-paste { font: 400 .9375rem/1.5 var(--mono); min-height: 14rem; }
+.mt-summary { font-size: .9375rem; color: var(--ink); }
+.mt-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: .9375rem; }
+.mt-table th { text-align: left; white-space: nowrap; font: 600 .6875rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+.mt-table td { padding: 10px; vertical-align: top; border-bottom: 1px solid var(--rule); white-space: pre-line; max-width: 28rem; }

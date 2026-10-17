@@ -112,13 +112,20 @@
   form.addEventListener('change', build);
   copyButton.addEventListener('click', function () {
     var done = function () { status.textContent = 'Liste copiée.'; };
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(lastText).then(done, function () { status.textContent = 'La copie a échoué : sélectionnez le texte à la main.'; });
-    } else {
+    var fail = function () { status.textContent = 'La copie a échoué : sélectionnez le texte à la main.'; };
+    // Older method, also tried when the browser refuses the clipboard API (some embedded browsers do; 17 Oct)
+    var legacy = function () {
       var area = document.createElement('textarea');
       area.value = lastText; document.body.appendChild(area); area.select();
-      try { document.execCommand('copy'); done(); } catch (e) { status.textContent = 'La copie a échoué : sélectionnez le texte à la main.'; }
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
       document.body.removeChild(area);
+      if (ok) done(); else fail();
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(lastText).then(done, legacy);
+    } else {
+      legacy();
     }
   });
   build();

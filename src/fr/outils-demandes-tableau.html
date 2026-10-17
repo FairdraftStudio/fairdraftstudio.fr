@@ -1,0 +1,86 @@
+<!--meta
+title: Extraire les données d'un mail vers Excel · Suivel
+ogtitle: Vos demandes de contact, du mail au tableau
+description: Collez les e-mails de votre formulaire de contact&nbsp;: une ligne par demande, pour Google Sheets, Excel ou un CSV. Gratuit, vos e-mails ne sont pas envoyés.
+path: outils/mail-vers-excel/index.html
+switch: /en/tools/
+nav: outils
+script: /assets/demandes-tableau.js
+kicker: Outil gratuit
+h1: Vos demandes de contact, du mail au tableau
+intro: Collez les e-mails que votre formulaire de contact vous envoie. Chaque demande devient une ligne (nom, e-mail, message…), prête à coller dans Google Sheets ou Excel, ou à télécharger en CSV. Tout se passe dans votre navigateur&nbsp;: rien de ce que vous collez n'est envoyé ni enregistré.
+-->
+  <section class="tool" id="mt-app" aria-label="Vos demandes de contact, du mail au tableau">
+    <div class="wrap rl-stack">
+      <form class="sheet rl-form" id="mt-form" novalidate>
+        <p class="form-head">Les e-mails de votre formulaire</p>
+        <div class="field">
+          <label for="mt-paste">Collez un ou plusieurs e-mails, l'un après l'autre</label>
+          <textarea id="mt-paste" rows="10" spellcheck="false" autocomplete="off" placeholder="Nom&nbsp;: …&#10;E-mail&nbsp;: …&#10;Message&nbsp;: …"></textarea>
+          <p class="choice-help">Copiez le texte de chaque e-mail de notification, sans son en-tête (expéditeur, date). L'outil reconnaît les lignes «&nbsp;Nom&nbsp;: Claire&nbsp;», les blocs <span class="nowrap">«&nbsp;--- Nom ---&nbsp;»</span> et les noms de champ courants (Nom, E-mail, Message…) seuls sur leur ligne, avec la valeur en dessous. Ces e-mails contiennent les coordonnées de vos clients&nbsp;: elles restent sur votre ordinateur.</p>
+        </div>
+        <div class="tool-actions">
+          <button class="btn btn-ghost btn-small" type="button" id="mt-example">Voir un exemple fictif</button>
+          <button class="btn btn-ghost btn-small" type="button" id="mt-clear">Tout effacer</button>
+        </div>
+        <p class="form-status" role="status" aria-live="polite" id="mt-status"></p>
+      </form>
+
+      <div class="rl-out">
+        <p class="sheet rl-empty" id="mt-empty">Collez vos e-mails&nbsp;: le tableau apparaît ici. Pas d'e-mail sous la main&nbsp;? Chargez l'exemple fictif.</p>
+        <noscript><p class="sheet rl-empty">Activez JavaScript pour utiliser cet outil.</p></noscript>
+        <section class="sheet rl-block" id="mt-result" hidden aria-labelledby="mt-h">
+          <p class="form-head" id="mt-h">Une ligne par demande</p>
+          <p class="mt-summary" id="mt-summary" aria-live="polite"></p>
+          <div class="rl-scroll">
+            <table class="mt-table">
+              <thead><tr id="mt-head"></tr></thead>
+              <tbody id="mt-rows"></tbody>
+            </table>
+          </div>
+          <div class="tool-actions">
+            <button class="btn" type="button" id="mt-copy">Copier pour Google Sheets ou Excel</button>
+            <button class="btn btn-ghost" type="button" id="mt-csv">Télécharger en CSV</button>
+          </div>
+          <p class="rl-small">Collez dans la cellule A1 d'une feuille vide. Dans la copie, les retours à la ligne d'un message deviennent «&nbsp;/&nbsp;»&nbsp;; le fichier CSV les garde.</p>
+        </section>
+      </div>
+
+      <div class="rl-notes">
+        <div>
+          <h2>Comment l'outil lit vos e-mails</h2>
+          <ul class="fe-list">
+            <li><strong>Les champs.</strong> Une ligne «&nbsp;Nom du champ&nbsp;: valeur&nbsp;», un bloc <span class="nowrap">«&nbsp;--- Nom du champ ---&nbsp;»</span> suivi de la valeur, ou un nom de champ connu seul sur sa ligne, avec la valeur en dessous. Un message sur plusieurs lignes reste entier.</li>
+            <li><strong>Les colonnes.</strong> Les noms courants sont regroupés&nbsp;: «&nbsp;Email&nbsp;», «&nbsp;Courriel&nbsp;» et «&nbsp;Adresse e-mail&nbsp;» donnent la même colonne «&nbsp;E-mail&nbsp;». Les autres champs gardent leur nom. Un champ inconnu placé après le message est ajouté au message.</li>
+            <li><strong>Les demandes.</strong> Une nouvelle demande commence quand un champ déjà lu revient (un deuxième «&nbsp;Nom&nbsp;», par exemple).</li>
+            <li><strong>Ce qui est laissé de côté.</strong> Les lignes hors des champs, la signature du formulaire (la ligne <span class="nowrap">«&nbsp;--&nbsp;»</span> et le texte qui suit) et les lignes techniques (adresse IP, navigateur). Le résumé au-dessus du tableau indique combien de lignes hors des champs ont été laissées de côté.</li>
+            <li><strong>Une précaution.</strong> Une valeur qui commence par = + - ou @ (un numéro en +33, par exemple) est précédée d'une apostrophe dans la copie et le CSV, pour que le tableur ne la lise pas comme une formule.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ce que l'outil ne couvre pas</h2>
+          <ul class="fe-list">
+            <li><strong>Les fichiers d'e-mail.</strong> Il lit le texte collé, pas les fichiers .eml ou .msg, et ne se connecte pas à votre messagerie.</li>
+            <li><strong>Les doublons.</strong> Une demande collée deux fois donne deux lignes.</li>
+            <li><strong>Les formulaires qui n'envoient pas les réponses.</strong> Certaines notifications disent seulement qu'une réponse est arrivée, sans son contenu&nbsp;: les réponses sont alors dans le formulaire lui-même.</li>
+            <li><strong>Tous les formats.</strong> Il reconnaît le format par défaut des e-mails de Contact Form 7, WPForms, Elementor et Shopify (relevé dans leur code source ou dans des e-mails publiés), et les lignes «&nbsp;Nom&nbsp;: …&nbsp;». Avec un autre format, vérifiez le tableau avant de l'utiliser.</li>
+          </ul>
+          <p class="fine">Rien de ce que vous collez n'est envoyé ni enregistré&nbsp;: tout se passe dans votre navigateur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tool-next" aria-labelledby="tool-next-title">
+    <div class="wrap proof-grid">
+      <div class="section-head">
+        <p class="eyebrow">Et si ça revient chaque semaine&nbsp;?</p>
+        <h2 id="tool-next-title">Chaque demande peut arriver seule dans votre tableau</h2>
+      </div>
+      <div>
+        <p>Coller vos e-mails prend une minute. Une automatisation fait mieux&nbsp;: chaque nouvelle demande de votre formulaire s'ajoute à votre tableau dès qu'elle arrive, sans copier-coller.</p>
+        <p>Une tâche entre deux de vos outils, sans IA&nbsp;: c'est «&nbsp;Votre première automatisation&nbsp;», à 99&nbsp;€.</p>
+        <p><a class="link-arrow" href="/offres/#offre-premiere-automatisation">Voir l'offre et son prix</a></p>
+      </div>
+    </div>
+  </section>

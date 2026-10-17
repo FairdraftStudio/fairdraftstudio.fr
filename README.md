@@ -24,6 +24,7 @@ The builder also adds `target="_blank" rel="noopener"` (and a screen-reader hint
 | `/outils/relances-en-lot/` (free batch reminders for unpaid invoices; script `assets/relances-lot.js`, tests `tests/relances-lot.test.js`) | `src/fr/outils-relances-en-lot.html` |
 | `/outils/notes-en-taches/` (free meeting notes to tasks; the text goes to the Worker route `/notes`, then Anthropic; script `assets/notes-taches.js`, tests `tests/notes-taches.test.js`) | `src/fr/outils-notes-en-taches.html` |
 | `/outils/cout-taches-administratives/` (free calculator: hours and euros a year spent on repetitive tasks; in the browser, nothing sent; script `assets/cout-taches.js`, tests `tests/cout-taches.test.js`) | `src/fr/outils-cout-taches.html` |
+| `/outils/mail-vers-excel/` (free: contact-form e-mails pasted in, one row per request, copy for a spreadsheet or CSV; in the browser, nothing sent; script `assets/demandes-tableau.js`, tests `tests/demandes-tableau.test.js`) | `src/fr/outils-demandes-tableau.html` |
 | `/mentions-legales.html`, `/confidentialite.html`, `/cgv.html` | `src/fr/…` |
 | `/en/`, `/en/offers/`, `/en/tools/`, `/en/work/`, `/en/about/`, `/en/contact/` | `src/en/…` |
 | 404 page (GitHub Pages serves `/404.html` for any unknown address; `robots: noindex` in its meta block) | `src/fr/404.html` |
